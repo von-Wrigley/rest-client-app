@@ -1,0 +1,10 @@
+@use "sass:list";
+@use "sass:color";
+
+$font-stack: Helvetica, Arial;
+$primary-color: #333;
+
+.size {
+  width: 400px;
+  height: 400px
+}
