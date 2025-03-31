@@ -16,15 +16,19 @@ const Home: React.FC = () => {
       <div className={styles.container}>
         <Header />
         <main className={styles.main}>
-          <section className={styles.welcome}>
+          <section className={styles.welcome} data-testid="welcome-section">
             <h2>Welcome!</h2>
             <p>
               This REST client application allows you to test any API, manage
               request history, and work with variables.
             </p>
             <div className={styles.authButtons}>
-              <a href="/signin" className={styles.button}>Sign In</a>
-              <a href="/signup" className={styles.button}>Sign Up</a>
+              <a href="/signin" className={styles.button}>
+                Sign In
+              </a>
+              <a href="/signup" className={styles.button}>
+                Sign Up
+              </a>
             </div>
           </section>
         </main>

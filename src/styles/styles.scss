@@ -1,12 +1,8 @@
 // add all component's styles here !
-
-@import "./page.module.scss";
-@import "./mixins.scss";
 @import "./fonts.scss";
-@import './colors.scss';
-@import './globals.scss';
-@import './variables.scss';
+@import "./colors.scss";
+@import "./variables.scss";
+@import "./mixins.scss";
+@import "./globals.scss";
 
 // components styles
-@import '../app/components/Footer/Footer.module.scss';
-@import '../app/components/Header/Header.module.scss';

@@ -1,0 +1,7 @@
+// small elements like icons become bigger
+@mixin hover-scale($scale: 1.2, $duration: 0.3s, $easing: ease) {
+  transition: transform $duration $easing;
+  &:hover {
+    transform: scale($scale);
+  }
+}
