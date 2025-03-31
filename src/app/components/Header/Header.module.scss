@@ -1,0 +1,63 @@
+@import '../../../styles/variables.scss';
+
+.header {
+  position: fixed;
+  top: 0;
+  background-color: $header-bg;
+  padding: 16px 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  transition: all 0.3s ease;
+
+  &:hover {
+    background-color: lighten($header-bg, 5%);
+  }
+  flex-direction: column;
+}
+
+.logoContainer {
+  .logo {
+    color: $text-color;
+    font-size: 24px;
+    font-weight: bold;
+    text-decoration: none;
+  }
+}
+
+.headerRight {
+  margin-top: 10px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  img {
+    height: auto;
+    width: 24px;
+  }
+
+  .langToggle {
+    background: transparent;
+    border: none;
+    color: $text-color;
+    font-size: 16px;
+    cursor: pointer;
+  }
+
+  .authLinks {
+    display: flex;
+    gap: 12px;
+
+    .link {
+      color: $text-color;
+      text-decoration: none;
+      font-size: 16px;
+      transition: color 0.2s ease;
+      &:hover {
+        color: $accent-color;
+      }
+    }
+  }
+}

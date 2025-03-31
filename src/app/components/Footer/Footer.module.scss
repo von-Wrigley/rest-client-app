@@ -1,0 +1,35 @@
+@import "../../../styles/variables.scss";
+
+.footer {
+  background-color: $footer-bg;
+  padding: 12px 24px;
+  text-align: center;
+  color: $text-color;
+  font-size: 14px;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+}
+
+.footerContent {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 16px;
+
+  .link {
+    color: $text-color;
+    text-decoration: none;
+    transition: color 0.2s ease;
+    &:hover {
+      color: $accent-color;
+    }
+  }
+
+  .courseLink {
+    img {
+      width: 24px;
+      height: auto;
+    }
+  }
+}
