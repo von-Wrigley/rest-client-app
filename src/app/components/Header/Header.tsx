@@ -16,6 +16,11 @@ const Header: React.FC = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  // Note: uncomment to make an error when you scroll down the page and header become sticky, can be achieved via dding more content to the page and scrolling down
+
+  // if (isSticky) {
+  //   throw new Error("Test error from Header component");
+  // }
   return (
     <header
       data-testid="header"

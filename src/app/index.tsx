@@ -1,6 +1,6 @@
 import Head from "next/head";
-import Header from "../components/Header/Header";
-import Footer from "../components/Footer/Footer";
+import Header from "./components/Header/Header";
+import Footer from "./components/Footer/Footer";
 import styles from "../styles/Home.module.scss";
 
 const Home: React.FC = () => {

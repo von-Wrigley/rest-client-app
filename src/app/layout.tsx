@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Header from "./components/Header/Header";
 import Footer from "./components/Footer/Footer";
+import ErrorBoundary from "./components/ErrorBoundary/ErrorBoundary";
 import "../styles/globals.scss";
 
 export const metadata: Metadata = {
@@ -16,9 +17,11 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className="layoutContainer">
-        <Header />
-        <main className="contentArea">{children}</main>
-        <Footer />
+        <ErrorBoundary>
+          <Header />
+          <main className="contentArea">{children}</main>
+          <Footer />
+        </ErrorBoundary>
       </body>
     </html>
   );
