@@ -1,9 +1,11 @@
+@use "sass:color";
+
 $background-color: #fafafa;
 $text-color: #5c6773;
 $accent-color: #f78c6c;
 $header-bg: #e6e6e6;
 $footer-bg: #e6e6e6;
 $link-color: #61afef;
-$link-hover: darken($link-color, 10%);
+$link-hover: color.scale($link-color, $lightness: -10%);
 
 $font-primary: "Ayu Sans", sans-serif;

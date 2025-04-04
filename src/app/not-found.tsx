@@ -1,17 +1,13 @@
-import React from "react";
-import Link from "next/link";
-import styles from "@/styles/notFound.module.scss";
+"use client";
 
-const NotFound: React.FC = () => {
+import Error from "next/error";
+
+export default function NotFound() {
   return (
-    <div className={styles.container}>
-      <h1>404 - Page Not Found</h1>
-      <p>Sorry, we couldn’t find the page you were looking for.</p>
-      <Link href="/" className={styles.homeLink}>
-        Go back home
-      </Link>
-    </div>
+    <html lang="en">
+      <body>
+        <Error statusCode={404} />
+      </body>
+    </html>
   );
-};
-
-export default NotFound;
+}

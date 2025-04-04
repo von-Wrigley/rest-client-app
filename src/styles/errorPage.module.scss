@@ -1,4 +1,5 @@
-@import "./variables.scss";
+@use "sass:color";
+@use "./variables.scss" as *;
 
 .errorPage {
   display: flex;
@@ -23,6 +24,6 @@
   cursor: pointer;
   transition: background-color 0.2s ease;
   &:hover {
-    background-color: darken($accent-color, 5%);
+    background-color: color.adjust($accent-color, $lightness: -5%);
   }
 }

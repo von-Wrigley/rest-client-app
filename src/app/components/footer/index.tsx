@@ -1,7 +1,10 @@
 import Link from "next/link";
-import styles from "./Footer.module.scss";
+import styles from "./index.module.scss";
+import { useTranslations } from "next-intl";
 
 const Footer: React.FC = () => {
+  const t = useTranslations("Footer");
+
   return (
     <footer className={styles.footer}>
       <div className={styles.footerContent}>
@@ -9,7 +12,7 @@ const Footer: React.FC = () => {
           href="https://github.com/von-Wrigley/rest-client-app"
           className={styles.link}
         >
-          GitHub Link
+          {t("github")}
         </Link>
         <span>&copy; {new Date().getFullYear()}</span>
         <Link
@@ -18,7 +21,7 @@ const Footer: React.FC = () => {
         >
           <img
             src="/rss-logo.svg"
-            alt="Course Logo"
+            alt={t("courseAlt")}
             className={styles.courseLogo}
           />
         </Link>

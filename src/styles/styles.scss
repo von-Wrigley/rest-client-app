@@ -1,8 +1,8 @@
 // add all component's styles here !
-@import "./fonts.scss";
-@import "./colors.scss";
-@import "./variables.scss";
-@import "./mixins.scss";
-@import "./globals.scss";
+@use "./fonts.scss" as *;
+@use "./colors.scss" as *;
+@use "./variables.scss" as *;
+@use "./mixins.scss" as *;
+@use "./globals.scss" as *;
 
 // components styles

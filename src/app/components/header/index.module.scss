@@ -1,5 +1,6 @@
-@import "../../../styles/variables.scss";
-@import "../../../styles/mixins.scss";
+@use "sass:color";
+@use "../../../styles/variables.scss" as *;
+@use "../../../styles/mixins.scss" as *;
 
 .header {
   position: sticky;
@@ -24,7 +25,7 @@
 
 .sticky {
   padding: 12px 24px;
-  background-color: darken($header-bg, 15%);
+  background-color: color.scale($header-bg, $lightness: -15%);
   border-bottom-left-radius: 9px;
   border-bottom-right-radius: 9px;
 }
@@ -47,14 +48,6 @@
     width: 24px;
     height: auto;
     @include hover-scale();
-  }
-
-  .langToggle {
-    background: transparent;
-    border: none;
-    color: $text-color;
-    font-size: 16px;
-    cursor: pointer;
   }
 
   .authLinks {

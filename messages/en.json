@@ -1,0 +1,40 @@
+{
+  "LocaleSwitcher": {
+    "label": "Language",
+    "locales": {
+      "en": "🇺🇸 English",
+      "de": "🇩🇪 German",
+      "ru": "🇷🇺 Russian",
+      "ge": "🇬🇪 Georgian",
+      "pl": "🇵🇱 Polish"
+    }
+  },
+  "Header": {
+    "title": "Postman Clone",
+    "signIn": "Sign In",
+    "signUp": "Sign Up"
+  },
+  "Footer": {
+    "github": "GitHub Link",
+    "courseAlt": "Course Logo"
+  },
+  "HomePage": {
+    "title": "Welcome!",
+    "subtitle": "REST Client Application",
+    "description": "This REST client application allows you to test any API, manage request history, and work with variables.",
+    "signIn": "Sign In",
+    "signUp": "Sign Up",
+    "signInAria": "Navigate to sign in page",
+    "signUpAria": "Navigate to sign up page"
+  },
+  "NotFoundPage": {
+    "title": "404 - Page Not Found",
+    "description": "Sorry, we couldn't find the page you were looking for.",
+    "homeLink": "Go back home"
+  },
+  "UnauthorizedPage": {
+    "title": "401 - Unauthorized",
+    "description": "You do not have access to this page.",
+    "homeLink": "Go back home"
+  }
+}

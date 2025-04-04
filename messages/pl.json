@@ -1,0 +1,40 @@
+{
+  "LocaleSwitcher": {
+    "label": "Język",
+    "locales": {
+      "en": "🇺🇸 Angielski",
+      "de": "🇩🇪 Niemiecki",
+      "ru": "🇷🇺 Rosyjski",
+      "ge": "🇬🇪 Gruziński",
+      "pl": "🇵🇱 Polski"
+    }
+  },
+  "Header": {
+    "title": "Klon Postman",
+    "signIn": "Zaloguj się",
+    "signUp": "Zarejestruj się"
+  },
+  "Footer": {
+    "github": "Link do GitHub",
+    "courseAlt": "Logo kursu"
+  },
+  "HomePage": {
+    "title": "Witaj!",
+    "subtitle": "Aplikacja REST Client",
+    "description": "Ta aplikacja REST Client umożliwia testowanie dowolnego API, zarządzanie historią żądań i pracę ze zmiennymi.",
+    "signIn": "Zaloguj się",
+    "signUp": "Zarejestruj się",
+    "signInAria": "Przejdź do strony logowania",
+    "signUpAria": "Przejdź do strony rejestracji"
+  },
+  "NotFoundPage": {
+    "title": "404 - Strona nie znaleziona",
+    "description": "Przepraszamy, nie znaleźliśmy strony, której szukasz.",
+    "homeLink": "Wróć do strony głównej"
+  },
+  "UnauthorizedPage": {
+    "title": "401 - Nieautoryzowany",
+    "description": "Nie masz dostępu do tej strony.",
+    "homeLink": "Wróć do strony głównej"
+  }
+}
