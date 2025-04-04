@@ -1,6 +1,7 @@
 import Head from "next/head";
-import Header from "./components/Header/Header";
-import Footer from "./components/Footer/Footer";
+import Link from "next/link";
+import Header from "./components/header";
+import Footer from "./components/footer";
 import styles from "../styles/Home.module.scss";
 
 const Home: React.FC = () => {
@@ -23,12 +24,12 @@ const Home: React.FC = () => {
               request history, and work with variables.
             </p>
             <div className={styles.authButtons}>
-              <a href="/signin" className={styles.button}>
+              <Link href="/signin" className={styles.button}>
                 Sign In
-              </a>
-              <a href="/signup" className={styles.button}>
+              </Link>
+              <Link href="/signup" className={styles.button}>
                 Sign Up
-              </a>
+              </Link>
             </div>
           </section>
         </main>

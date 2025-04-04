@@ -2,10 +2,13 @@
 
 import { useEffect, useState } from "react";
 import Link from "next/link";
-import styles from "./Header.module.scss";
+import styles from "./index.module.scss";
+import LocaleSwitcher from "../locale-switcher";
+import { useTranslations } from "next-intl";
 
 const Header: React.FC = () => {
   const [isSticky, setIsSticky] = useState(false);
+  const t = useTranslations("Header");
 
   useEffect(() => {
     const handleScroll = () => {
@@ -16,11 +19,6 @@ const Header: React.FC = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  // Note: uncomment to make an error when you scroll down the page and header become sticky, can be achieved via dding more content to the page and scrolling down
-
-  // if (isSticky) {
-  //   throw new Error("Test error from Header component");
-  // }
   return (
     <header
       data-testid="header"
@@ -29,18 +27,18 @@ const Header: React.FC = () => {
       <div className={styles.headerContent}>
         <div className={styles.logoContainer}>
           <Link href="/" className={styles.logo}>
-            Postman Clone
+            {t("title")}
           </Link>
         </div>
         <div className={styles.headerRight}>
           <img src="/rss-logo.svg" alt="Course Logo" />
-          <button className={styles.langToggle}>EN</button>
+          <LocaleSwitcher />
           <div className={styles.authLinks}>
             <Link href="/signin" className={styles.link}>
-              Sign In
+              {t("signIn")}
             </Link>
             <Link href="/signup" className={styles.link}>
-              Sign Up
+              {t("signUp")}
             </Link>
           </div>
         </div>

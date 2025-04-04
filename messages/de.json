@@ -1,0 +1,40 @@
+{
+  "LocaleSwitcher": {
+    "label": "Sprache",
+    "locales": {
+      "en": "🇺🇸 Englisch",
+      "de": "🇩🇪 Deutsch",
+      "ru": "🇷🇺 Russisch",
+      "ge": "🇬🇪 Georgisch",
+      "pl": "🇵🇱 Polnisch"
+    }
+  },
+  "Header": {
+    "title": "Postman Klon",
+    "signIn": "Anmelden",
+    "signUp": "Registrieren"
+  },
+  "Footer": {
+    "github": "GitHub Link",
+    "courseAlt": "Kurs-Logo"
+  },
+  "HomePage": {
+    "title": "Willkommen!",
+    "subtitle": "REST Client Anwendung",
+    "description": "Diese REST-Client-Anwendung ermöglicht es Ihnen, jede API zu testen, Anfrageverlauf zu verwalten und mit Variablen zu arbeiten.",
+    "signIn": "Anmelden",
+    "signUp": "Registrieren",
+    "signInAria": "Zur Anmeldeseite navigieren",
+    "signUpAria": "Zur Registrierungsseite navigieren"
+  },
+  "NotFoundPage": {
+    "title": "404 - Seite nicht gefunden",
+    "description": "Entschuldigung, die von Ihnen gesuchte Seite konnte nicht gefunden werden.",
+    "homeLink": "Zurück zur Startseite"
+  },
+  "UnauthorizedPage": {
+    "title": "401 - Unbefugt",
+    "description": "Sie haben keinen Zugriff auf diese Seite.",
+    "homeLink": "Zurück zur Startseite"
+  }
+}
