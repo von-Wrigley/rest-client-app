@@ -12,7 +12,10 @@ interface ErrorBoundaryState {
   error: Error | null;
 }
 
-class ErrorBoundary extends React.Component<ErrorBoundaryProps, ErrorBoundaryState> {
+class ErrorBoundary extends React.Component<
+  ErrorBoundaryProps,
+  ErrorBoundaryState
+> {
   constructor(props: ErrorBoundaryProps) {
     super(props);
     this.state = { hasError: false, error: null };
@@ -28,7 +31,12 @@ class ErrorBoundary extends React.Component<ErrorBoundaryProps, ErrorBoundarySta
 
   render() {
     if (this.state.hasError && this.state.error) {
-      return <ErrorPage error={this.state.error} reset={() => this.setState({ hasError: false, error: null })} />;
+      return (
+        <ErrorPage
+          error={this.state.error}
+          reset={() => this.setState({ hasError: false, error: null })}
+        />
+      );
     }
     return this.props.children;
   }

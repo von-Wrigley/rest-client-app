@@ -1,7 +1,28 @@
+"use client";
+import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import styles from "./Footer.module.scss";
+import Skeleton from "../Skeleton/Skeleton";
 
 const Footer: React.FC = () => {
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    const timer = setTimeout(() => setIsLoading(false), 2000);
+    return () => clearTimeout(timer);
+  }, []);
+
+  if (isLoading) {
+    return (
+      <footer className={styles.footer}>
+        <div className={styles.footerContent}>
+          <Skeleton variant="large" />
+          <Skeleton variant="small" />
+          <Skeleton variant="large" />
+        </div>
+      </footer>
+    );
+  }
   return (
     <footer className={styles.footer}>
       <div className={styles.footerContent}>

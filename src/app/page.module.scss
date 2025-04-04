@@ -35,3 +35,21 @@
     background-color: darken($accent-color, 5%);
   }
 }
+
+/* Skeleton-specific classes */
+.titleSkeleton {
+  width: 20%;
+  height: 30px;
+  margin: 0 auto 20px;
+}
+
+.descriptionSkeleton {
+  width: 50%;
+  height: 20px;
+  margin: 0 auto 30px;
+}
+
+.buttonSkeleton {
+  width: 100px;
+  height: 40px;
+}
