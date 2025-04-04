@@ -5,7 +5,7 @@
       "en": "🇺🇸 Angielski",
       "de": "🇩🇪 Niemiecki",
       "ru": "🇷🇺 Rosyjski",
-      "ge": "🇬🇪 Gruziński",
+      "ka": "🇬🇪 Gruziński",
       "pl": "🇵🇱 Polski"
     }
   },
@@ -36,5 +36,10 @@
     "title": "401 - Nieautoryzowany",
     "description": "Nie masz dostępu do tej strony.",
     "homeLink": "Wróć do strony głównej"
+  },
+  "SigIn": {
+    "title": "Zaloguj się",
+    "description": "Proszę się zalogować, aby uzyskać dostęp do konta",
+    "homeLink": "Powrót do strony głównej"
   }
 }
