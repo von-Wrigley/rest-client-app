@@ -5,7 +5,7 @@
       "en": "🇺🇸 English",
       "de": "🇩🇪 German",
       "ru": "🇷🇺 Russian",
-      "ge": "🇬🇪 Georgian",
+      "ka": "🇬🇪 Georgian",
       "pl": "🇵🇱 Polish"
     }
   },
@@ -36,5 +36,10 @@
     "title": "401 - Unauthorized",
     "description": "You do not have access to this page.",
     "homeLink": "Go back home"
+  },
+  "SigIn": {
+    "title": "Sign In",
+    "description": "Please authenticate to access your account",
+    "homeLink": "Back to homepage"
   }
 }

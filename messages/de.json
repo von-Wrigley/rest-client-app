@@ -5,7 +5,7 @@
       "en": "🇺🇸 Englisch",
       "de": "🇩🇪 Deutsch",
       "ru": "🇷🇺 Russisch",
-      "ge": "🇬🇪 Georgisch",
+      "ka": "🇬🇪 Georgisch",
       "pl": "🇵🇱 Polnisch"
     }
   },
@@ -35,6 +35,11 @@
   "UnauthorizedPage": {
     "title": "401 - Unbefugt",
     "description": "Sie haben keinen Zugriff auf diese Seite.",
+    "homeLink": "Zurück zur Startseite"
+  },
+  "SigIn": {
+    "title": "Anmelden",
+    "description": "Bitte authentifizieren Sie sich, um auf Ihr Konto zuzugreifen",
     "homeLink": "Zurück zur Startseite"
   }
 }
