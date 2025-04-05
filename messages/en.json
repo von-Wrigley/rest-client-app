@@ -41,5 +41,10 @@
     "title": "Sign In",
     "description": "Please authenticate to access your account",
     "homeLink": "Back to homepage"
+  },
+  "CollectionsPage": {
+    "title": "Коллекция",
+    "description": "Пожалуйста, Коллекция",
+    "homeLink": "Коллекция"
   }
 }

@@ -41,5 +41,10 @@
     "title": "Anmelden",
     "description": "Bitte authentifizieren Sie sich, um auf Ihr Konto zuzugreifen",
     "homeLink": "Zurück zur Startseite"
+  },
+  "CollectionsPage": {
+    "title": "Коллекция",
+    "description": "Пожалуйста, Коллекция",
+    "homeLink": "Коллекция"
   }
 }

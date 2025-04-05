@@ -41,5 +41,10 @@
     "title": "Zaloguj się",
     "description": "Proszę się zalogować, aby uzyskać dostęp do konta",
     "homeLink": "Powrót do strony głównej"
+  },
+  "CollectionsPage": {
+    "title": "Коллекция",
+    "description": "Пожалуйста, Коллекция",
+    "homeLink": "Коллекция"
   }
 }
