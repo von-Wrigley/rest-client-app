@@ -18,10 +18,9 @@ describe("Footer component", () => {
     expect(screen.getByRole("contentinfo")).toBeInTheDocument();
   });
 
-  it("contains current year", () => {
+  it("contains creation year (2025)", () => {
     render(<Footer />);
-    const currentYear = new Date().getFullYear().toString();
-    expect(screen.getByText(`© ${currentYear}`)).toBeInTheDocument();
+    expect(screen.getByText("© 2025")).toBeInTheDocument();
   });
 
   it("has correct GitHub link", () => {

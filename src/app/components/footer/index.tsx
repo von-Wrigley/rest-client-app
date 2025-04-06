@@ -14,7 +14,7 @@ const Footer: React.FC = () => {
         >
           {t("github")}
         </Link>
-        <span>&copy; {new Date().getFullYear()}</span>
+        <span>&copy; 2025</span>
         <Link
           href="https://rs.school/courses/reactjs"
           className={styles.courseLink}
