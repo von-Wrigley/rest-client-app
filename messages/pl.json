@@ -2,11 +2,11 @@
   "LocaleSwitcher": {
     "label": "Język",
     "locales": {
-      "en": "🇺🇸 Angielski",
-      "de": "🇩🇪 Niemiecki",
-      "ru": "🇷🇺 Rosyjski",
-      "ka": "🇬🇪 Gruziński",
-      "pl": "🇵🇱 Polski"
+      "en": "Angielski",
+      "de": "Niemiecki",
+      "ru": "Rosyjski",
+      "ka": "Gruziński",
+      "pl": "Polski"
     }
   },
   "Header": {
@@ -15,8 +15,10 @@
     "signUp": "Zarejestruj się"
   },
   "Footer": {
-    "github": "Link do GitHub",
-    "courseAlt": "Logo kursu"
+    "github1": "Tatsjany GitHub",
+    "github2": "Eliny GitHub",
+    "github3": "Dawida GitHub",
+    "courseAlt": "Logo Kursu"
   },
   "HomePage": {
     "title": "Witaj!",

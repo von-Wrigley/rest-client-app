@@ -1,3 +1,4 @@
+"use client";
 import { render, screen } from "@testing-library/react";
 import "@testing-library/jest-dom";
 import Footer from "@/app/components/footer";
@@ -23,12 +24,25 @@ describe("Footer component", () => {
     expect(screen.getByText("© 2025")).toBeInTheDocument();
   });
 
-  it("has correct GitHub link", () => {
+  it("has three GitHub links with correct hrefs", () => {
     render(<Footer />);
-    const githubLink = screen.getByRole("link", { name: "github" });
-    expect(githubLink).toHaveAttribute(
+    const allLinks = screen.getAllByRole("link");
+    const githubLinks = allLinks.filter((link) =>
+      link.getAttribute("href")?.startsWith("https://github.com/"),
+    );
+    expect(githubLinks).toHaveLength(3);
+
+    expect(githubLinks[0]).toHaveAttribute(
       "href",
-      "https://github.com/von-Wrigley/rest-client-app",
+      "https://github.com/Tati-Moon",
+    );
+    expect(githubLinks[1]).toHaveAttribute(
+      "href",
+      "https://github.com/von-Wrigley",
+    );
+    expect(githubLinks[2]).toHaveAttribute(
+      "href",
+      "https://github.com/CROCIATOFAF",
     );
   });
 });

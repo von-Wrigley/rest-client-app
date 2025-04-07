@@ -37,3 +37,14 @@
     }
   }
 }
+
+/* Responsive styles for mobile devices */
+@media (max-width: 767px) {
+  .footer {
+    padding: 10px;
+  }
+  .footerContent {
+    flex-direction: column;
+    gap: 8px;
+  }
+}
