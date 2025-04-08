@@ -1,0 +1,32 @@
+@import "@/styles/variables.scss";
+
+.skeleton {
+  background: linear-gradient(90deg, #f0faff, #d0ecff, #f0faff);
+  background-size: 200% 100%;
+  animation: skeleton-loading 1.5s infinite;
+  border-radius: 4px;
+}
+
+.small {
+  width: 24px;
+  height: 24px;
+}
+
+.medium {
+  width: 150px;
+  height: 30px;
+}
+
+.large {
+  width: 200px;
+  height: 40px;
+}
+
+@keyframes skeleton-loading {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
+}
