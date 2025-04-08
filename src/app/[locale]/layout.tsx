@@ -5,6 +5,7 @@ import { routing } from "@/i18n/routing";
 import ErrorBoundary from "../components/ErrorBoundary/ErrorBoundary";
 import Header from "../components/header";
 import Footer from "../components/footer";
+import "@/styles/globals.scss";
 
 export const metadata: Metadata = {
   title: "Final Task App",

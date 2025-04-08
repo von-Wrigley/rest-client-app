@@ -2,11 +2,11 @@
   "LocaleSwitcher": {
     "label": "Language",
     "locales": {
-      "en": "🇺🇸 English",
-      "de": "🇩🇪 German",
-      "ru": "🇷🇺 Russian",
-      "ka": "🇬🇪 Georgian",
-      "pl": "🇵🇱 Polish"
+      "en": "English",
+      "de": "German",
+      "ru": "Russian",
+      "ka": "Georgian",
+      "pl": "Polish"
     }
   },
   "Header": {
@@ -15,7 +15,9 @@
     "signUp": "Sign Up"
   },
   "Footer": {
-    "github": "GitHub Link",
+    "github1": "Tatsiana's GitHub",
+    "github2": "Elina's GitHub",
+    "github3": "Davit's GitHub",
     "courseAlt": "Course Logo"
   },
   "HomePage": {
