@@ -1,4 +1,5 @@
-import { render, screen } from "@testing-library/react";
+"use client";
+import { render, screen, act } from "@testing-library/react";
 import "@testing-library/jest-dom";
 import { WelcomeSection } from "@/app/pages/home";
 
@@ -13,8 +14,22 @@ jest.mock("next-intl", () => ({
 }));
 
 describe("WelcomeSection component", () => {
-  it("renders correctly with all elements", () => {
+  beforeEach(() => {
+    jest.useFakeTimers();
+  });
+
+  afterEach(() => {
+    act(() => {
+      jest.runOnlyPendingTimers();
+    });
+    jest.useRealTimers();
+  });
+
+  it("renders correctly with all elements after loading", () => {
     render(<WelcomeSection />);
+    act(() => {
+      jest.advanceTimersByTime(2000);
+    });
 
     expect(screen.getByRole("heading", { level: 2 })).toHaveTextContent(
       "title",
@@ -28,8 +43,11 @@ describe("WelcomeSection component", () => {
     expect(signUpButton).toHaveAttribute("href", "/signup");
   });
 
-  it("matches snapshot", () => {
+  it("matches snapshot after loading", () => {
     const { asFragment } = render(<WelcomeSection />);
+    act(() => {
+      jest.advanceTimersByTime(2000);
+    });
     expect(asFragment()).toMatchSnapshot();
   });
 });
