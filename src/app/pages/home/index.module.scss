@@ -5,6 +5,7 @@
 .welcome {
   text-align: center;
   padding: 40px 20px;
+  justify-items: center;
 }
 
 .title {
@@ -34,6 +35,26 @@
   &:hover {
     background-color: color.scale($accent-color, $lightness: -5%);
   }
+}
+
+.skeleton {
+  background-color: #ccc;
+  border-radius: 4px;
+}
+
+.skeleton.small {
+  height: 20px;
+}
+
+.skeleton.medium {
+  height: 28px;
+}
+
+.skeletonLarge {
+  width: 80%;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 /* Mobile Styles */

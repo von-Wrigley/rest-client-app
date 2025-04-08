@@ -1,6 +1,7 @@
 "use client";
 
-import React, { useEffect } from "react";
+import React, { useState, useEffect } from "react";
+import Skeleton from "./components/skeleton";
 import styles from "@/styles/errorPage.module.scss";
 
 interface ErrorProps {
@@ -9,9 +10,24 @@ interface ErrorProps {
 }
 
 const ErrorPage: React.FC<ErrorProps> = ({ error, reset }) => {
+  const [isLoading, setIsLoading] = useState(true);
+
   useEffect(() => {
     console.error(error);
   }, [error]);
+
+  useEffect(() => {
+    const timer = setTimeout(() => setIsLoading(false), 2000);
+    return () => clearTimeout(timer);
+  }, []);
+
+  if (isLoading) {
+    return (
+      <div className={styles.skeletonWrapper}>
+        <Skeleton variant="large" />
+      </div>
+    );
+  }
 
   return (
     <div className={styles.errorPage}>

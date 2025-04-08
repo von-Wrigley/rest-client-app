@@ -1,7 +1,9 @@
-@import "@/styles/variables.scss";
+@use "sass:color";
+@use "../../../styles/variables.scss" as *;
+@use "../../../styles/mixins.scss" as *;
 
 .skeleton {
-  background: linear-gradient(90deg, #f0faff, #d0ecff, #f0faff);
+  background: linear-gradient(90deg, #f0faff 0%, #f0dfd0 50%, #f0faff 100%);
   background-size: 200% 100%;
   animation: skeleton-loading 1.5s infinite;
   border-radius: 4px;
@@ -20,13 +22,4 @@
 .large {
   width: 200px;
   height: 40px;
-}
-
-@keyframes skeleton-loading {
-  0% {
-    background-position: 200% 0;
-  }
-  100% {
-    background-position: -200% 0;
-  }
 }

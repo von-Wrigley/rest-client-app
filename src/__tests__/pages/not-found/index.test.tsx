@@ -1,5 +1,5 @@
 "use client";
-import { render, screen } from "@testing-library/react";
+import { render, screen, act } from "@testing-library/react";
 import "@testing-library/jest-dom";
 import NotFound from "@/app/pages/not-found";
 
@@ -14,8 +14,22 @@ jest.mock("next-intl", () => ({
 }));
 
 describe("NotFound Page", () => {
-  it("renders title, description, and home link", () => {
+  beforeEach(() => {
+    jest.useFakeTimers();
+  });
+
+  afterEach(() => {
+    act(() => {
+      jest.runOnlyPendingTimers();
+    });
+    jest.useRealTimers();
+  });
+
+  it("renders title, description, and home link after loading", () => {
     render(<NotFound />);
+    act(() => {
+      jest.advanceTimersByTime(2000);
+    });
 
     const heading = screen.getByRole("heading", { name: "title" });
     expect(heading).toBeInTheDocument();

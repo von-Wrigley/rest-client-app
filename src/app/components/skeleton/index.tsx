@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import styles from "./Skeleton.module.scss";
+import styles from "./index.module.scss";
 
 export interface SkeletonProps {
   variant?: "small" | "medium" | "large";
@@ -12,7 +12,9 @@ const Skeleton: React.FC<SkeletonProps> = ({
   variant = "medium",
   className = "",
 }) => {
-  return <div className={`${styles.skeleton} ${styles[variant]} ${className}`} />;
+  return (
+    <div className={`${styles.skeleton} ${styles[variant]} ${className}`} />
+  );
 };
 
 export default Skeleton;

@@ -10,7 +10,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  z-index: 10; // fixed typo
+  z-index: 10;
   transition: all 0.3s ease;
 }
 
@@ -76,7 +76,7 @@
   }
 }
 
-/* Skeleton-specific placeholder classes */
+/* Skeletons */
 .headerSkeleton {
   width: 150px;
   height: 30px;
@@ -118,4 +118,18 @@
     flex-direction: row;
     gap: 5px;
   }
+}
+
+/* Skeleton */
+.imageSkeleton {
+  width: 24px;
+  height: 24px;
+}
+.buttonSkeleton {
+  width: 50px;
+  height: 24px;
+}
+.linkSkeleton {
+  width: 60px;
+  height: 24px;
 }
