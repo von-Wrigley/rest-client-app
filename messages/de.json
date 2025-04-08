@@ -43,8 +43,12 @@
     "homeLink": "Zurück zur Startseite"
   },
   "CollectionsPage": {
-    "title": "Коллекция",
-    "description": "Пожалуйста, Коллекция",
-    "homeLink": "Коллекция"
+    "method": "Methode auswählen",
+    "btnSend": "Schicken",
+    "btnAdd": "Hinzufügen",
+    "btnDelete": "Löschen",
+    "headers": "Schlagzeilen",
+    "key": "Schlüssel",
+    "value": "Bedeutung"
   }
 }
