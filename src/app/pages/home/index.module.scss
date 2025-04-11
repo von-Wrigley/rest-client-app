@@ -5,6 +5,7 @@
 .welcome {
   text-align: center;
   padding: 40px 20px;
+  justify-items: center;
 }
 
 .title {
@@ -33,5 +34,56 @@
 
   &:hover {
     background-color: color.scale($accent-color, $lightness: -5%);
+  }
+}
+
+.skeleton {
+  background-color: #ccc;
+  border-radius: 4px;
+}
+
+.skeleton.small {
+  height: 20px;
+}
+
+.skeleton.medium {
+  height: 28px;
+}
+
+.skeletonLarge {
+  width: 80%;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Mobile Styles */
+@media (max-width: 767px) {
+  .welcome {
+    padding: 20px 10px;
+    justify-items: center;
+  }
+
+  .title {
+    font-size: 20px;
+    margin-bottom: 15px;
+  }
+
+  .description {
+    font-size: 16px;
+    margin-bottom: 20px;
+  }
+
+  .authButtons {
+    flex-direction: column;
+    gap: 10px;
+    width: 100%;
+    max-width: 200px;
+    justify-content: center;
+  }
+
+  .button {
+    padding: 8px 16px;
+    font-size: 14px;
   }
 }

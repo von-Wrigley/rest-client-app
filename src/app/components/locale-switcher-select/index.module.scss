@@ -11,7 +11,7 @@
   display: flex;
   align-items: center;
   gap: 8px;
-  padding: 8px 12px;
+  padding: 6px 12px;
   border: 1px solid #ccc;
   background-color: #fff;
   border-radius: 6px;
@@ -46,7 +46,7 @@
   background: white;
   border: 1px solid #ccc;
   border-radius: 6px;
-  width: 100%;
+  width: auto;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   padding: 4px 0;
 }
@@ -62,4 +62,14 @@
   &:hover {
     background-color: #eee;
   }
+}
+
+.flagWrapper {
+  position: relative;
+  width: 15px;
+  height: 15px;
+}
+
+.flagIcon {
+  object-fit: contain;
 }

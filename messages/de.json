@@ -2,11 +2,11 @@
   "LocaleSwitcher": {
     "label": "Sprache",
     "locales": {
-      "en": "🇺🇸 Englisch",
-      "de": "🇩🇪 Deutsch",
-      "ru": "🇷🇺 Russisch",
-      "ka": "🇬🇪 Georgisch",
-      "pl": "🇵🇱 Polnisch"
+      "en": "Englisch",
+      "de": "Deutsch",
+      "ru": "Russisch",
+      "ka": "Georgisch",
+      "pl": "Polnisch"
     }
   },
   "Header": {
@@ -15,7 +15,9 @@
     "signUp": "Registrieren"
   },
   "Footer": {
-    "github": "GitHub Link",
+    "github1": "Tatsianas GitHub",
+    "github2": "Elinas GitHub",
+    "github3": "Davits GitHub",
     "courseAlt": "Kurs-Logo"
   },
   "HomePage": {
