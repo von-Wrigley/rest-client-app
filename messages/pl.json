@@ -43,5 +43,14 @@
     "title": "Zaloguj się",
     "description": "Proszę się zalogować, aby uzyskać dostęp do konta",
     "homeLink": "Powrót do strony głównej"
+  },
+  "CollectionsPage": {
+    "method": "Wybierz metodę",
+    "btnSend": "Wysłać",
+    "btnAdd": "Dodać",
+    "btnDelete": "Usuwać",
+    "headers": "Nagłówki",
+    "key": "Klawisz",
+    "value": "Oznaczający"
   }
 }

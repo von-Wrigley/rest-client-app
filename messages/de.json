@@ -43,5 +43,14 @@
     "title": "Anmelden",
     "description": "Bitte authentifizieren Sie sich, um auf Ihr Konto zuzugreifen",
     "homeLink": "Zurück zur Startseite"
+  },
+  "CollectionsPage": {
+    "method": "Methode auswählen",
+    "btnSend": "Schicken",
+    "btnAdd": "Hinzufügen",
+    "btnDelete": "Löschen",
+    "headers": "Schlagzeilen",
+    "key": "Schlüssel",
+    "value": "Bedeutung"
   }
 }
