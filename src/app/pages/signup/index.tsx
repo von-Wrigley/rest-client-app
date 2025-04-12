@@ -5,8 +5,8 @@ import { useTranslations } from "next-intl";
 import Link from "next/link";
 import styles from "./index.module.scss";
 
-const SignIn = () => {
-  const t = useTranslations("SigIn");
+const SignUp = () => {
+  const t = useTranslations("SigUp");
   const [isLoading, setIsLoading] = useState(true);
   const [formData, setFormData] = useState({ email: "", password: "" });
   const [isValidEmail, setIsValidEmail] = useState(true);
@@ -27,7 +27,7 @@ const SignIn = () => {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    console.log("SignIn submitted:", formData);
+    console.log("SignUp submitted:", formData);
   };
 
   const isFormValid = formData.email && formData.password && isValidEmail;
@@ -72,4 +72,4 @@ const SignIn = () => {
   );
 };
 
-export default SignIn;
+export default SignUp;

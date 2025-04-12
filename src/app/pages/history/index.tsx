@@ -1,15 +1,12 @@
-'use client';
-import { useLocalStorage } from '@/app/hooks/LocStor';
-import Link from 'next/link';
-import React from 'react';
+"use client";
+import { useLocalStorage } from "@/app/hooks/LocStor";
+import Link from "next/link";
+import React from "react";
 
-
-import { useState, useEffect } from 'react';
-
-
+import { useState, useEffect } from "react";
 
 const History = () => {
-  const [name] = useLocalStorage('country', []);
+  const [name] = useLocalStorage("country", []);
   const [routes, setRoutes] = useState([]);
 
   useEffect(() => {
@@ -42,29 +39,32 @@ const History = () => {
             ...x,
             date:
               new Date(x.date).getDate() +
-              '.' +
+              "." +
               (new Date(x.date).getMonth() + 1 < 10
-                ? '0' + (new Date(x.date).getMonth() + 1)
+                ? "0" + (new Date(x.date).getMonth() + 1)
                 : new Date(x.date).getMonth() + 1) +
-              '.' +
+              "." +
               new Date(x.date).getFullYear() +
-              ' ' +
+              " " +
               new Date(x.date).getHours() +
-              ':' +
+              ":" +
               (new Date(x.date).getMinutes() < 10
-                ? '0' + new Date(x.date).getMinutes()
+                ? "0" + new Date(x.date).getMinutes()
                 : new Date(x.date).getMinutes()),
           }))
           .map((x, index) => (
             <div key={index}>
               <p>{x.date}</p>
-              <Link href="/personal"  as={`personal/${x.method}/${x.urlCode}/${x.body}?${x.headers}`}>
-                {x.method} {x.input} 
+              <Link
+                href="/personal"
+                as={`personal/${x.method}/${x.urlCode}/${x.body}?${x.headers}`}
+              >
+                {x.method} {x.input}
               </Link>
             </div>
           ))}
     </div>
   );
-}
+};
 
 export default History;
