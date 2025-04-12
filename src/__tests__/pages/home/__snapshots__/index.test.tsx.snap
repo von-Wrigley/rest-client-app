@@ -1,6 +1,5 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-
 exports[`WelcomeSection component matches snapshot after loading 1`] = `
 <DocumentFragment>
   <section

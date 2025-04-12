@@ -43,14 +43,5 @@
     "title": "Sign In",
     "description": "Please authenticate to access your account",
     "homeLink": "Back to homepage"
-  },
-  "CollectionsPage": {
-   "method": "Select method",
-    "btnSend": "Send",
-    "btnAdd": "Add",
-    "btnDelete": "Delete",
-    "headers": "Headers",
-    "key": "Key",
-    "value": "Value"
   }
 }
