@@ -41,8 +41,23 @@
   },
   "SigIn": {
     "title": "Zaloguj się",
-    "description": "Proszę się zalogować, aby uzyskać dostęp do konta",
-    "homeLink": "Powrót do strony głównej"
+    "description": "Wprowadź swoje dane logowania.",
+    "email": "Email",
+    "password": "Hasło",
+    "submit": "Zaloguj się",
+    "homeLink": "Powrót do strony głównej",
+    "invalidEmail": "Nieprawidłowy adres email.",
+    "loading": "Ładowanie"
+  },
+  "SigUp": {
+    "title": "Rejestracja",
+    "description": "Utwórz nowe konto poniżej.",
+    "email": "Email",
+    "password": "Hasło",
+    "submit": "Zarejestruj się",
+    "homeLink": "Powrót do strony głównej",
+    "invalidEmail": "Nieprawidłowy adres email.",
+    "loading": "Ładowanie"
   },
   "CollectionsPage": {
     "method": "Wybierz metodę",

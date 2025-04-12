@@ -41,11 +41,26 @@
   },
   "SigIn": {
     "title": "Sign In",
-    "description": "Please authenticate to access your account",
-    "homeLink": "Back to homepage"
+    "description": "Please enter your credentials to log in.",
+    "email": "Email",
+    "password": "Password",
+    "submit": "Log In",
+    "homeLink": "Back to home",
+    "invalidEmail": "Invalid email address.",
+    "loading": "Loading"
+  },
+  "SigUp": {
+    "title": "Sign Up",
+    "description": "Create a new account below.",
+    "email": "Email",
+    "password": "Password",
+    "submit": "Register",
+    "homeLink": "Back to home",
+    "invalidEmail": "Invalid email address.",
+    "loading": "Loading"
   },
   "CollectionsPage": {
-   "method": "Select method",
+    "method": "Select method",
     "btnSend": "Send",
     "btnAdd": "Add",
     "btnDelete": "Delete",

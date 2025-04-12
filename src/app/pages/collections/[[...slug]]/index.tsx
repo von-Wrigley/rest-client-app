@@ -1,4 +1,4 @@
-'use client'
+"use client";
 
 import BodyEditor from "@/app/components/Collections/BodyEditor";
 import BtnSend from "@/app/components/Collections/BtnSend";
@@ -10,31 +10,23 @@ import ResponseBody from "@/app/components/Collections/ResponseBody";
 import { store } from "@/app/redux/store";
 import { Provider } from "react-redux";
 
-
-
-
-
 const Collections = () => {
-  
-
   return (
     <Provider store={store()}>
-    <div className="w-1/5 mx-auto my-10 flex flex-col gap-y-8">
-      <div className="flex flex-col gap-y-3">
-        <div className="border flex flex-row"> 
-          <Method />
-          <EndpointURL />
+      <div className="w-1/5 mx-auto my-10 flex flex-col gap-y-8">
+        <div className="flex flex-col gap-y-3">
+          <div className="border flex flex-row">
+            <Method />
+            <EndpointURL />
+          </div>
+          <BodyEditor />
         </div>
-      <BodyEditor  / >
+        <Headers />
+        <GenerateCodeRequest />
+        <BtnSend />
+        <ResponseBody />
       </div>
-      <Headers />
-     <GenerateCodeRequest />  
-     <BtnSend / >
-      <ResponseBody />
-    </div>
     </Provider>
-         
-        )
-      }
-
+  );
+};
 export default Collections;

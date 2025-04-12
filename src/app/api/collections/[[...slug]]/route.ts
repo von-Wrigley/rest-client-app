@@ -1,13 +1,13 @@
-import { NextRequest, NextResponse } from 'next/server';
-import { headers } from 'next/headers';
+import { NextRequest, NextResponse } from "next/server";
+import { headers } from "next/headers";
 
 //  2. Добавь хедеры
 
 export async function GET(
   request: NextRequest,
-  { params }: { params: Promise<{ slug: string }> }
+  { params }: { params: Promise<{ slug: string }> },
 ) {
-//   const reqf = request.nextUrl.pathname.slice(14);
+  //   const reqf = request.nextUrl.pathname.slice(14);
 
   // const slug = await params.slug
   // const newSlug = slug.replace(/,/g, "/");
@@ -17,7 +17,7 @@ export async function GET(
   const param = await params;
   const slug = await param.slug;
 
-  const newSlug = slug.join('/');
+  const newSlug = slug.join("/");
 
   const res = await fetch(newSlug);
   const newData = await res.json();
@@ -26,17 +26,17 @@ export async function GET(
 
 export async function POST(
   req: NextRequest,
-  { params }: { params: Promise<{ slug: string[] }> }
+  { params }: { params: Promise<{ slug: string[] }> },
 ) {
   const body = await req.json();
   const param = await params;
   const slug = await param.slug;
-  const newSlug = slug.join('/');
+  const newSlug = slug.join("/");
   const req2 = await fetch(newSlug, {
-    method: 'POST',
+    method: "POST",
     body: body,
     headers: {
-      'Content-type': 'application/json; charset=UTF-8',
+      "Content-type": "application/json; charset=UTF-8",
     },
   });
   const res = await req2.json();
@@ -45,32 +45,32 @@ export async function POST(
 
 export async function DELETE(
   req: NextRequest,
-  { params }: { params: Promise<{ slug: string[] }> }
+  { params }: { params: Promise<{ slug: string[] }> },
 ) {
   const param = await params;
   const slug = await param.slug;
 
-  const newSlug = slug.join('/');
+  const newSlug = slug.join("/");
   console.log(newSlug);
-  const data = fetch(newSlug, { method: 'DELETE' });
+  const data = fetch(newSlug, { method: "DELETE" });
 
   return NextResponse.json(data);
 }
 
 export async function PUT(
   req: NextRequest,
-  { params }: { params: Promise<{ slug: string[] }> }
+  { params }: { params: Promise<{ slug: string[] }> },
 ) {
   const body = await req.json();
   const param = await params;
   const slug = await param.slug;
 
-  const newSlug = slug.join('/');
+  const newSlug = slug.join("/");
   const req2 = await fetch(newSlug, {
-    method: 'PUT',
+    method: "PUT",
     body: body,
     headers: {
-      'Content-type': 'application/json; charset=UTF-8',
+      "Content-type": "application/json; charset=UTF-8",
     },
   });
 
@@ -81,18 +81,18 @@ export async function PUT(
 
 export async function PATCH(
   req: NextRequest,
-  { params }: { params: Promise<{ slug: string[] }> }
+  { params }: { params: Promise<{ slug: string[] }> },
 ) {
   const body = await req.json();
   const param = await params;
   const slug = await param.slug;
-  const newSlug = slug.join('/');
+  const newSlug = slug.join("/");
 
   const req2 = await fetch(newSlug, {
-    method: 'PATCH',
+    method: "PATCH",
     body: body,
     headers: {
-      'Content-type': 'application/json; charset=UTF-8',
+      "Content-type": "application/json; charset=UTF-8",
     },
   });
 
