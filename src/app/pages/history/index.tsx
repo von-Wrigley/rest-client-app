@@ -56,8 +56,8 @@ const History = () => {
             <div key={index}>
               <p>{x.date}</p>
               <Link
-                href="/personal"
-                as={`personal/${x.method}/${x.urlCode}/${x.body}?${x.headers}`}
+                href="/collections"
+                as={`collections/${x.method}/${x.urlCode}/${x.body}?${x.headers}`}
               >
                 {x.method} {x.input}
               </Link>
