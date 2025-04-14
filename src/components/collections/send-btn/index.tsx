@@ -7,39 +7,39 @@ import { useLocalStorage } from "@/app/hooks/LocStor";
 function BtnSend() {
   const dispatch = useAppDispatch();
 
-  const [variablestorage, setVariableStorage] = useLocalStorage(
+  const [variablestorage] = useLocalStorage(
     "variables",
-    [],
+    []
   );
   const [storage, setStorage] = useLocalStorage("country", []);
   const [responseStorage, setResponseStorage] = useLocalStorage("req", []);
   const dt = new Date();
 
   const stateMethod = useAppSelector(
-    (state) => state.selected.selectedContent,
+    (state) => state.selected.selectedContent
   ).method;
   const inputState = useAppSelector(
-    (state) => state.selected.selectedContent,
+    (state) => state.selected.selectedContent
   ).inputURL;
   const bodyPost = useAppSelector(
-    (state) => state.selected.selectedContent,
+    (state) => state.selected.selectedContent
   ).bodyReq;
   const headers = useAppSelector(
-    (state) => state.selected.selectedContent,
+    (state) => state.selected.selectedContent
   ).headers;
 
   let normalURL = atob(inputState);
 
   const handlerequest = async () => {
     const provewithoutVariables = variablestorage.map((x) =>
-      normalURL.includes(x.key),
+      normalURL.includes(x.key)
     );
 
     if (provewithoutVariables) {
       const newX = variablestorage.map((x) => {
         const newstr = normalURL.replace(
           new RegExp("\{\{(?:\\s+)?(" + x.key + ")(?:\\s+)?\}\}"),
-          x.value,
+          x.value
         );
         normalURL = newstr;
 
@@ -49,7 +49,7 @@ function BtnSend() {
 
     if (stateMethod === "GET") {
       console.log(normalURL);
-      const res = await fetch(`/api/personal/${normalURL}`, {
+      const res = await fetch(`/api/collections/${normalURL}`, {
         headers: {
           Authorization: "EFfw2342",
           "Access-Control-Allow-Origin": "*",
@@ -96,7 +96,7 @@ function BtnSend() {
           },
         ]);
       }
-      const res = await fetch(`/api/personal/${normalURL}`, {
+      const res = await fetch(`/api/collections/${normalURL}`, {
         method: "DELETE",
       });
 
@@ -118,7 +118,7 @@ function BtnSend() {
           },
         ]);
       }
-      const res = await fetch(`/api/personal/${normalURL}`, {
+      const res = await fetch(`/api/collections/${normalURL}`, {
         method: "POST",
         body: JSON.stringify(bodyPost),
         headers: {
@@ -144,7 +144,7 @@ function BtnSend() {
           },
         ]);
       }
-      const res = await fetch(`/api/personal/${normalURL}`, {
+      const res = await fetch(`/api/collections/${normalURL}`, {
         method: "PUT",
         body: JSON.stringify(bodyPost),
         headers: {
@@ -168,7 +168,7 @@ function BtnSend() {
           },
         ]);
       }
-      const res = await fetch(`/api/personal/${normalURL}`, {
+      const res = await fetch(`/api/collections/${normalURL}`, {
         method: "PATCH",
         body: JSON.stringify(bodyPost),
         headers: {

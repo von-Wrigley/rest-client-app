@@ -21,26 +21,22 @@ function GenerateCodeRequest() {
   const [generatedSnippet, setGeneratedSnippet] = useState("");
 
   const stateMethod = useAppSelector(
-    (state) => state.selected.selectedContent,
+    (state) => state.selected.selectedContent
   ).method;
   const inputState = useAppSelector(
-    (state) => state.selected.selectedContent,
+    (state) => state.selected.selectedContent
   ).inputURL;
   const headersRedux = useAppSelector(
-    (state) => state.selected.selectedContent,
+    (state) => state.selected.selectedContent
   ).headers;
   const bodyRedux = useAppSelector(
-    (state) => state.selected.selectedContent,
+    (state) => state.selected.selectedContent
   ).bodyReq;
-  const [variablestorage, setVariableStorage] = useLocalStorage(
-    "variables",
-    [],
-  );
+  const [variablestorage] = useLocalStorage("variables", []);
 
-  const handlechange = (e) => {
+  const handlechange = (e: React.ChangeEvent<HTMLSelectElement>) => {
     setSelectLang(e.target.value);
   };
-  const urlInput = atob(inputState);
   const getVariant = (lang: string) => {
     if (lang === "Go") {
       return "Native";
@@ -63,14 +59,14 @@ function GenerateCodeRequest() {
 
   useEffect(() => {
     let atobURl = atob(inputState);
-    const provewithoutVariables = variablestorage.map((x) =>
-      atobURl.includes(x.key),
+    const provewithoutVariables = variablestorage.map(
+      (x: { key: string; value: string }) => atobURl.includes(x.key)
     );
     if (provewithoutVariables) {
-      const newX = variablestorage.map((x) => {
+      const newX = variablestorage.map((x: { key: string; value: string }) => {
         const newstr = atobURl.replace(
           new RegExp("\{\{(?:\\s+)?(" + x.key + ")(?:\\s+)?\}\}"),
-          x.value,
+          x.value
         );
         atobURl = newstr;
         console.log(newstr);
@@ -89,7 +85,7 @@ function GenerateCodeRequest() {
 
     const output = snippet.convert(
       selectLang.length > 7 ? selectLang.slice(0, 10) : selectLang,
-      getVariant(selectLang),
+      getVariant(selectLang)
     );
     setGeneratedSnippet(output);
   }, [selectLang, inputState]);
