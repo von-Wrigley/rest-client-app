@@ -5,18 +5,22 @@ type ResponseDet = {
   resStatus: number;
 };
 
-type InitSt = {
+type InitState = {
   method: string;
   inputURL: string;
   bodyReq: string;
   bodyRes: string;
   details: ResponseDet[];
-  generateCode: [];
+  generateCode: string[];
   selectedLang: string;
-  headers: [];
+  headers: Record<string, string>[];
 };
 
-const initState = {
+type State = {
+  selectedContent: InitState;
+};
+
+const initialState: State = {
   selectedContent: {
     method: "",
     inputURL: "",
@@ -29,38 +33,41 @@ const initState = {
   },
 };
 
-const StoreSelecedSlice = createSlice({
+const StoreSelectedSlice = createSlice({
   name: "selectedItems",
-  initialState: initState,
+  initialState,
   reducers: {
-    addItem: (state, action: PayloadAction) => {
+    addMethod: (state, action: PayloadAction<string>) => {
       state.selectedContent.method = action.payload;
     },
-    addInputURL: (state, action: PayloadAction) => {
+    addInputURL: (state, action: PayloadAction<string>) => {
       state.selectedContent.inputURL = action.payload;
     },
-    addBodyReq: (state, action: PayloadAction) => {
+    addBodyReq: (state, action: PayloadAction<string>) => {
       state.selectedContent.bodyReq = action.payload;
     },
-    addBodyRes: (state, action: PayloadAction) => {
+    addBodyRes: (state, action: PayloadAction<string>) => {
       state.selectedContent.bodyRes = action.payload;
     },
-    resContentDetails: (state, action: PayloadAction) => {
+    resContentDetails: (state, action: PayloadAction<ResponseDet[]>) => {
       state.selectedContent.details = action.payload;
     },
-    generateCodePOSTMAN: (state, action: PayloadAction) => {
+    generateCodePOSTMAN: (state, action: PayloadAction<string[]>) => {
       state.selectedContent.generateCode = action.payload;
     },
-    selectedLanguage: (state, action: PayloadAction) => {
+    selectedLanguage: (state, action: PayloadAction<string>) => {
       state.selectedContent.selectedLang = action.payload;
     },
-    selectedHeaders: (state, action: PayloadAction) => {
+    selectedHeaders: (
+      state,
+      action: PayloadAction<Record<string, string>[]>
+    ) => {
       state.selectedContent.headers = action.payload;
     },
   },
 });
 export const {
-  addItem,
+  addMethod,
   addInputURL,
   addBodyReq,
   addBodyRes,
@@ -68,5 +75,6 @@ export const {
   generateCodePOSTMAN,
   selectedLanguage,
   selectedHeaders,
-} = StoreSelecedSlice.actions;
-export default StoreSelecedSlice.reducer;
+} = StoreSelectedSlice.actions;
+
+export default StoreSelectedSlice.reducer;

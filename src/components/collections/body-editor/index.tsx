@@ -1,68 +1,25 @@
 "use client";
 import { addBodyReq } from "@/app/redux/ContentSelected";
 import { useAppSelector, useAppDispatch } from "@/app/redux/hooks";
-import { useParams, usePathname } from "next/navigation";
 import React, { useState } from "react";
 
 function BodyEditor() {
   const [useSelect, setSelect] = useState("JSON");
 
-  const pathname = usePathname();
   const dispatch = useAppDispatch();
-  const stateMethod = useAppSelector(
-    (state) => state.selected.selectedContent,
-  ).method;
-  const inputURL = useAppSelector(
-    (state) => state.selected.selectedContent,
-  ).inputURL;
-  const headers =
-    useAppSelector((state) => state.selected.selectedContent).headers ?? "";
 
-  const params = useParams();
-  const historyMethod = params.slug?.[0];
-  const inputfromhistory = params.slug?.[1];
-  const bodyfromhistory = params.slug?.[2] ?? "";
+  const bodyFromHistory = useAppSelector(
+    (state) => state.selected.selectedContent.bodyReq
+  );
 
   const [bodyPost, setBodyPost] = useState(
-    decodeURIComponent(bodyfromhistory) ?? "",
+    decodeURIComponent(bodyFromHistory) ?? ""
   );
   const handleSelect = ({ target }: React.ChangeEvent<HTMLSelectElement>) => {
     setSelect(target.value);
   };
   const handleBodyRequest = () => {
-    const currentUrl = new URL(window.location.href);
-    console.log(currentUrl.pathname);
-    const bodyRequest = btoa(bodyPost);
     dispatch(addBodyReq(bodyPost));
-
-    if (bodyfromhistory?.length > 0) {
-      window.history.replaceState(
-        null,
-        "",
-        "/personal" +
-          "/" +
-          historyMethod +
-          "/" +
-          (inputfromhistory ?? "") +
-          "/" +
-          (bodyPost ?? "") +
-          "?" +
-          (headers ?? ""),
-      );
-    }
-
-    window.history.pushState(
-      window.history.state,
-      "",
-      pathname +
-        "/" +
-        stateMethod +
-        "/" +
-        (inputURL ?? "") +
-        (bodyRequest.length > 0 ? "/" + bodyRequest : "") +
-        "?" +
-        (headers ?? ""),
-    );
   };
 
   const formatCode = (bodyPost: string) => {

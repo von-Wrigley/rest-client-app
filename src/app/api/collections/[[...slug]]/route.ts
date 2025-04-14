@@ -5,7 +5,7 @@ import { headers } from "next/headers";
 
 export async function GET(
   request: NextRequest,
-  { params }: { params: Promise<{ slug: string }> },
+  { params }: { params: Promise<{ slug: string[] }> },
 ) {
   //   const reqf = request.nextUrl.pathname.slice(14);
 

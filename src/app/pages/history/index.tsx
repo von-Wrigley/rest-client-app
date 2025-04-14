@@ -23,7 +23,7 @@ const History = () => {
           <Link
             className="bg-amber-300 mx-auto p-2.5 rounded-sm 
        "
-            href="/personal"
+            href="/collections"
           >
             REST CLIENT
           </Link>
