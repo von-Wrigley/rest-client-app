@@ -10,10 +10,10 @@ type inputsDispatch = {
 
 function Headers() {
   const headers = useAppSelector(
-    (state) => state.selected.selectedContent.headers
+    (state) => state.selected.selectedContent.headers,
   );
   const [inputs, setInputs] = useState<inputsDispatch[]>(
-    headers.length > 0 ? headers : [{ name: "", value: "" }]
+    headers.length > 0 ? headers : [{ name: "", value: "" }],
   );
 
   const dispatch = useAppDispatch();
@@ -37,7 +37,7 @@ function Headers() {
 
   const handleHeader = (
     e: React.ChangeEvent<HTMLInputElement>,
-    index: number
+    index: number,
   ) => {
     const { name, value } = e.target;
     const list = [...inputs.map((input) => ({ ...input }))];

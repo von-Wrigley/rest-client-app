@@ -7,39 +7,36 @@ import { useLocalStorage } from "@/app/hooks/LocStor";
 function BtnSend() {
   const dispatch = useAppDispatch();
 
-  const [variablestorage] = useLocalStorage(
-    "variables",
-    []
-  );
+  const [variablestorage] = useLocalStorage("variables", []);
   const [storage, setStorage] = useLocalStorage("country", []);
   const [responseStorage, setResponseStorage] = useLocalStorage("req", []);
   const dt = new Date();
 
   const stateMethod = useAppSelector(
-    (state) => state.selected.selectedContent
+    (state) => state.selected.selectedContent,
   ).method;
   const inputState = useAppSelector(
-    (state) => state.selected.selectedContent
+    (state) => state.selected.selectedContent,
   ).inputURL;
   const bodyPost = useAppSelector(
-    (state) => state.selected.selectedContent
+    (state) => state.selected.selectedContent,
   ).bodyReq;
   const headers = useAppSelector(
-    (state) => state.selected.selectedContent
+    (state) => state.selected.selectedContent,
   ).headers;
 
   let normalURL = atob(inputState);
 
   const handlerequest = async () => {
     const provewithoutVariables = variablestorage.map((x) =>
-      normalURL.includes(x.key)
+      normalURL.includes(x.key),
     );
 
     if (provewithoutVariables) {
       const newX = variablestorage.map((x) => {
         const newstr = normalURL.replace(
           new RegExp("\{\{(?:\\s+)?(" + x.key + ")(?:\\s+)?\}\}"),
-          x.value
+          x.value,
         );
         normalURL = newstr;
 

@@ -12,7 +12,12 @@
   "Header": {
     "title": "Postman Klon",
     "signIn": "Anmelden",
-    "signUp": "Registrieren"
+    "signUp": "Registrieren",
+    "signOut": "Abmelden",
+    "collections": "Sammlungen",
+    "history": "Verlauf",
+    "variables": "Variablen",
+    "language": "Sprache"
   },
   "Footer": {
     "github1": "Tatsianas GitHub",
@@ -27,7 +32,11 @@
     "signIn": "Anmelden",
     "signUp": "Registrieren",
     "signInAria": "Zur Anmeldeseite navigieren",
-    "signUpAria": "Zur Registrierungsseite navigieren"
+    "signUpAria": "Zur Registrierungsseite navigieren",
+    "signOut": "Abmelden",
+    "collections": "Sammlungen",
+    "history": "Verlauf",
+    "variables": "Variablen"
   },
   "NotFoundPage": {
     "title": "404 - Seite nicht gefunden",

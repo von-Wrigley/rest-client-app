@@ -1,4 +1,5 @@
 "use client";
+import withAuth from "@/app/components/withAuth";
 import { useLocalStorage } from "@/app/hooks/LocStor";
 import Link from "next/link";
 import React from "react";
@@ -67,4 +68,4 @@ const History = () => {
   );
 };
 
-export default History;
+export default withAuth(History);

@@ -5,7 +5,7 @@ import { useAppDispatch, useAppSelector } from "@/app/redux/hooks";
 
 function Method() {
   const method = useAppSelector(
-    (state) => state.selected.selectedContent.method
+    (state) => state.selected.selectedContent.method,
   );
 
   const dispatch = useAppDispatch();

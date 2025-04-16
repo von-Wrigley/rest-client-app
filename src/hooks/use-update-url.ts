@@ -11,17 +11,17 @@ type HeaderItem = {
 export const useUpdateUrl = () => {
   const pathname = usePathname();
   const method = useAppSelector(
-    (state) => state.selected.selectedContent.method
+    (state) => state.selected.selectedContent.method,
   );
   const inputURL = useAppSelector(
-    (state) => state.selected.selectedContent.inputURL
+    (state) => state.selected.selectedContent.inputURL,
   );
   const bodyReq = useAppSelector(
-    (state) => state.selected.selectedContent.bodyReq
+    (state) => state.selected.selectedContent.bodyReq,
   );
 
   const headers = useAppSelector(
-    (state) => state.selected.selectedContent.headers
+    (state) => state.selected.selectedContent.headers,
   );
 
   useEffect(() => {
@@ -29,7 +29,7 @@ export const useUpdateUrl = () => {
       .filter(({ name }) => name.trim() !== "")
       .map(
         ({ name, value }) =>
-          `${encodeURIComponent(name)}=${encodeURIComponent(value)}`
+          `${encodeURIComponent(name)}=${encodeURIComponent(value)}`,
       )
       .join("&");
 
@@ -40,7 +40,7 @@ export const useUpdateUrl = () => {
     window.history.replaceState(
       window.history.state,
       "",
-      `${baseUrl}/${method ? `${method}` : "UNDEFINED"}${inputURL ? `/${inputURL}` : ""}${bodyReq ? `/${bodyReq}` : ""}${queryParams ? `?${queryParams}` : ""}`
+      `${baseUrl}/${method ? `${method}` : "UNDEFINED"}${inputURL ? `/${inputURL}` : ""}${bodyReq ? `/${bodyReq}` : ""}${queryParams ? `?${queryParams}` : ""}`,
     );
   }, [method, inputURL, bodyReq, headers, pathname]);
 };

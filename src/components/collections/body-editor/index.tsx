@@ -9,11 +9,11 @@ function BodyEditor() {
   const dispatch = useAppDispatch();
 
   const bodyFromHistory = useAppSelector(
-    (state) => state.selected.selectedContent.bodyReq
+    (state) => state.selected.selectedContent.bodyReq,
   );
 
   const [bodyPost, setBodyPost] = useState(
-    decodeURIComponent(bodyFromHistory) ?? ""
+    decodeURIComponent(bodyFromHistory) ?? "",
   );
   const handleSelect = ({ target }: React.ChangeEvent<HTMLSelectElement>) => {
     setSelect(target.value);

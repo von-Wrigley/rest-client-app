@@ -12,7 +12,12 @@
   "Header": {
     "title": "Klon Postman",
     "signIn": "Zaloguj się",
-    "signUp": "Zarejestruj się"
+    "signUp": "Zarejestruj się",
+    "signOut": "Wyloguj się",
+    "collections": "Kolekcje",
+    "history": "Historia",
+    "variables": "Zmienne",
+    "language": "Język"
   },
   "Footer": {
     "github1": "Tatsjany GitHub",
@@ -27,7 +32,11 @@
     "signIn": "Zaloguj się",
     "signUp": "Zarejestruj się",
     "signInAria": "Przejdź do strony logowania",
-    "signUpAria": "Przejdź do strony rejestracji"
+    "signUpAria": "Przejdź do strony rejestracji",
+    "signOut": "Wyloguj się",
+    "collections": "Kolekcje",
+    "history": "Historia",
+    "variables": "Zmienne"
   },
   "NotFoundPage": {
     "title": "404 - Strona nie znaleziona",
