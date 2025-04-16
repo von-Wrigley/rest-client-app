@@ -3,6 +3,7 @@ import { useAppSelector, useAppDispatch } from "@/app/redux/hooks";
 import React from "react";
 import { addBodyRes, resContentDetails } from "@/app/redux/ContentSelected";
 import { useLocalStorage } from "@/app/hooks/LocStor";
+import styles from "./index.module.scss";
 
 function BtnSend() {
   const dispatch = useAppDispatch();
@@ -194,7 +195,7 @@ function BtnSend() {
   };
 
   return (
-    <button type="submit" className="bg-blue-100 p-4" onClick={handlerequest}>
+    <button type="submit" className={styles.sendButton} onClick={handlerequest}>
       Send
     </button>
   );

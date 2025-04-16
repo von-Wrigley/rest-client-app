@@ -1,3 +1,7 @@
+@use "sass:list";
+@use "sass:color";
+@use "../styles/variables.scss" as *;
+
 @mixin hover-scale($scale: 1.2, $duration: 0.3s, $easing: ease) {
   transition: transform $duration $easing;
   &:hover {
@@ -12,5 +16,29 @@
   }
   100% {
     background-position: -200% 0;
+  }
+}
+
+// inputs
+@mixin input-style {
+  border: 1px solid #f78c6c;
+  border-radius: 10px;
+  color: #222222;
+  background-color: #ffffff;
+  padding: 12px;
+}
+
+// buttons
+@mixin button-style {
+  background-color: $accent-color;
+  color: #ffffff;
+  padding: 12px 20px;
+  text-decoration: none;
+  border-radius: 10px;
+  transition: background-color 0.2s ease;
+  border-style: none;
+
+  &:hover {
+    background-color: color.scale($accent-color, $lightness: -5%);
   }
 }

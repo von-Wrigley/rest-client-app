@@ -3,12 +3,13 @@ import React, { useEffect, useState } from "react";
 import { useAppSelector } from "@/app/redux/hooks";
 import { HTTPSnippet } from "@readme/httpsnippet";
 import { useLocalStorage } from "@/app/hooks/LocStor";
+import Skeleton from "@/app/components/skeleton";
+import styles from "./index.module.scss";
 
 // const listOfLanguages = {
 //     "curl": "cURL",
-//
-// JavaScript (Fetch api)
-// JavaScript (XHR)
+//     JavaScript (Fetch api)
+//     JavaScript (XHR)
 //     "nodejs": "NodeJs",
 //     "python": "Python",
 //     "java": "Java",
@@ -19,6 +20,7 @@ import { useLocalStorage } from "@/app/hooks/LocStor";
 function GenerateCodeRequest() {
   const [selectLang, setSelectLang] = useState("null");
   const [generatedSnippet, setGeneratedSnippet] = useState("");
+  const [isLoading, setIsLoading] = useState(true);
 
   const stateMethod = useAppSelector(
     (state) => state.selected.selectedContent,
@@ -37,6 +39,7 @@ function GenerateCodeRequest() {
   const handlechange = (e: React.ChangeEvent<HTMLSelectElement>) => {
     setSelectLang(e.target.value);
   };
+
   const getVariant = (lang: string) => {
     if (lang === "Go") {
       return "Native";
@@ -88,14 +91,27 @@ function GenerateCodeRequest() {
       getVariant(selectLang),
     );
     setGeneratedSnippet(output);
+    setIsLoading(false);
   }, [selectLang, inputState]);
 
+  // SKELETON STATE: mirror the final structure with placeholders
+  if (isLoading) {
+    return (
+      <div className={styles.container}>
+        <Skeleton variant="medium" className={styles.title} />
+        <Skeleton variant="small" className={styles.selector} />
+        <Skeleton variant="large" className={styles.textarea} />
+      </div>
+    );
+  }
+
   return (
-    <div>
-      <h2>Code snippet </h2>
+    <div className={styles.container}>
+      <h2 className={styles.title}>Code snippet</h2>
       <select
-        name="selLang"
         id="selLang"
+        className={styles.selector}
+        name="selLang"
         value={selectLang}
         onChange={handlechange}
       >
@@ -112,10 +128,9 @@ function GenerateCodeRequest() {
         <option value="go">Go</option>
       </select>
       <textarea
-        className="border"
-        cols={40}
-        name="generateCode"
         id="generateCode"
+        className={styles.textarea}
+        name="generateCode"
         readOnly
         value={generatedSnippet}
       ></textarea>

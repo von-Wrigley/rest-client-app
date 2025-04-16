@@ -2,6 +2,7 @@
 
 import React, { useEffect, useState } from "react";
 import { useAppSelector, useAppDispatch } from "@/app/redux/hooks";
+import styles from "./index.module.scss";
 
 import { addInputURL } from "@/app/redux/ContentSelected";
 
@@ -30,7 +31,7 @@ function EndpointURL() {
     <input
       type="text"
       value={inputState}
-      className="p-4"
+      className={styles.input}
       onChange={handleChangeURL}
     />
   );

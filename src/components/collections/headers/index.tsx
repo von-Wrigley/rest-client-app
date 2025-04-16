@@ -3,6 +3,8 @@ import React, { useEffect, useState } from "react";
 import Form from "next/form";
 import { useAppDispatch, useAppSelector } from "@/app/redux/hooks";
 import { selectedHeaders } from "@/app/redux/ContentSelected";
+import styles from "./index.module.scss";
+
 type inputsDispatch = {
   key: string;
   value: string;
@@ -50,24 +52,24 @@ function Headers() {
   return (
     <Form action="">
       <h2>Headers</h2>
-      <div className="flex flex-col gap-y-7">
+      <div className={styles.headersWrapper}>
         <button
           onClick={handleAddHeader}
           type="button"
-          className="bg-green-400 w-18"
+          className={styles.addButton}
         >
           Add
         </button>
 
         {inputs?.map((item, index) => (
-          <div className="flex gap-x-2  " key={index}>
+          <div className={styles.inputWrapper} key={index}>
             <input
               type="text"
               placeholder="key"
               name="name"
               value={item.name}
               onChange={(e) => handleHeader(e, index)}
-              className="border border-gray-300 "
+              className={styles.inputKey}
             />
             <input
               type="text"
@@ -75,12 +77,12 @@ function Headers() {
               name="value"
               value={item.value}
               onChange={(e) => handleHeader(e, index)}
-              className="border border-gray-300 "
+              className={styles.inputValue}
             />
             <button
               type="button"
               onClick={() => handleRemoveHeader(index)}
-              className="bg-red-600 p-3"
+              className={styles.deleteButton}
             >
               Delete
             </button>

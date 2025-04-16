@@ -2,6 +2,7 @@
 
 import { useLocalStorage } from "@/app/hooks/LocStor";
 import React, { useEffect, useState } from "react";
+import styles from "./Variable.module.scss";
 
 type Variable = {
   key: string;

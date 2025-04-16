@@ -1,0 +1,12 @@
+@use "@/styles/mixins.scss" as *;
+
+.textarea {
+  @include input-style;
+  width: 90%;
+  max-width: 800px;
+  max-height: 200px;
+  margin: 0 auto;
+  resize: vertical;
+  font-family: Menlo, Consolas, monospace;
+  line-height: 1.4;
+}
