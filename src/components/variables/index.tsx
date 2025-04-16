@@ -1,7 +1,6 @@
 "use client";
 
 import VariablesComponent from "@/app/components/Variables/Variable";
-import withAuth from "@/app/components/withAuth";
 import React from "react";
 
 function Variables() {
@@ -15,4 +14,4 @@ function Variables() {
   );
 }
 
-export default withAuth(Variables);
+export default Variables;

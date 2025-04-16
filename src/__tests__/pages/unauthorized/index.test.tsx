@@ -1,7 +1,7 @@
 "use client";
 import { render, screen, act } from "@testing-library/react";
 import "@testing-library/jest-dom";
-import Unauthorized from "@/app/pages/unauthorized";
+import Unauthorized from "@/components/unauthorized";
 
 jest.mock("next/link", () => {
   return ({ children, href }: { children: React.ReactNode; href: string }) => (

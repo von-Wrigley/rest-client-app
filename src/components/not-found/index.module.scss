@@ -1,12 +1,12 @@
-@use "../../../styles/variables.scss" as *;
-@use "../../../app/page.module.scss" as *;
+@use "../../styles/variables.scss" as *;
+@use "../../app/page.module.scss" as *;
 
 .container {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  height: 64vh;
+  height: 100vh;
   text-align: center;
   background-color: $background-color;
   color: $text-color;

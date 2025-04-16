@@ -1,1 +1,1 @@
-export { default } from "../pages/not-found";
+export { default } from "../../components/not-found";

@@ -1,7 +1,7 @@
 "use client";
 import { render, screen, act } from "@testing-library/react";
 import "@testing-library/jest-dom";
-import { WelcomeSection } from "@/app/pages/home";
+import { WelcomeSection } from "@/components/home";
 
 jest.mock("next/link", () => {
   return ({ children, href }: { children: React.ReactNode; href: string }) => {

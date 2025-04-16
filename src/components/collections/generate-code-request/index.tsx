@@ -21,16 +21,16 @@ function GenerateCodeRequest() {
   const [generatedSnippet, setGeneratedSnippet] = useState("");
 
   const stateMethod = useAppSelector(
-    (state) => state.selected.selectedContent,
+    (state) => state.selected.selectedContent
   ).method;
   const inputState = useAppSelector(
-    (state) => state.selected.selectedContent,
+    (state) => state.selected.selectedContent
   ).inputURL;
   const headersRedux = useAppSelector(
-    (state) => state.selected.selectedContent,
+    (state) => state.selected.selectedContent
   ).headers;
   const bodyRedux = useAppSelector(
-    (state) => state.selected.selectedContent,
+    (state) => state.selected.selectedContent
   ).bodyReq;
   const [variablestorage] = useLocalStorage("variables", []);
 
@@ -60,19 +60,18 @@ function GenerateCodeRequest() {
   useEffect(() => {
     let atobURl = atob(inputState);
     const provewithoutVariables = variablestorage.map(
-      (x: { key: string; value: string }) => atobURl.includes(x.key),
+      (x: { key: string; value: string }) => atobURl.includes(x.key)
     );
     if (provewithoutVariables) {
       const newX = variablestorage.map((x: { key: string; value: string }) => {
         const newstr = atobURl.replace(
           new RegExp("\{\{(?:\\s+)?(" + x.key + ")(?:\\s+)?\}\}"),
-          x.value,
+          x.value
         );
         atobURl = newstr;
         console.log(newstr);
         return atobURl;
       });
-      console.log(newX[0]);
     }
     //нужно проверить с боди гнератор
 
@@ -85,9 +84,10 @@ function GenerateCodeRequest() {
 
     const output = snippet.convert(
       selectLang.length > 7 ? selectLang.slice(0, 10) : selectLang,
-      getVariant(selectLang),
+      getVariant(selectLang)
     );
-    setGeneratedSnippet(output);
+
+    setGeneratedSnippet(output || "");
   }, [selectLang, inputState]);
 
   return (
