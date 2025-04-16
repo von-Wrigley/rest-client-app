@@ -12,7 +12,12 @@
   "Header": {
     "title": "Postman-ის კლონი",
     "signIn": "შესვლა",
-    "signUp": "რეგისტრაცია"
+    "signUp": "რეგისტრაცია",
+    "signOut": "გამოსვლა",
+    "collections": "კოლექციები",
+    "history": "ისტორია",
+    "variables": "ცვლადები",
+    "language": "ენა"
   },
   "Footer": {
     "github1": "თაციანას GitHub",
@@ -27,7 +32,11 @@
     "signIn": "შესვლა",
     "signUp": "რეგისტრაცია",
     "signInAria": "შესვლის გვერდზე გადასვლა",
-    "signUpAria": "რეგისტრაციის გვერდზე გადასვლა"
+    "signUpAria": "რეგისტრაციის გვერდზე გადასვლა",
+    "signOut": "გამოსვლა",
+    "collections": "კოლექციები",
+    "history": "ისტორია",
+    "variables": "ცვლადები"
   },
   "NotFoundPage": {
     "title": "404 - გვერდი არ მოიძებნა",

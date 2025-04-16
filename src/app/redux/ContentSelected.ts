@@ -60,7 +60,7 @@ const StoreSelectedSlice = createSlice({
     },
     selectedHeaders: (
       state,
-      action: PayloadAction<Record<string, string>[]>
+      action: PayloadAction<Record<string, string>[]>,
     ) => {
       state.selectedContent.headers = action.payload;
     },

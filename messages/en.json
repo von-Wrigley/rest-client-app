@@ -12,7 +12,12 @@
   "Header": {
     "title": "Postman Clone",
     "signIn": "Sign In",
-    "signUp": "Sign Up"
+    "signUp": "Sign Up",
+    "signOut": "Sign Out",
+    "collections": "Collections",
+    "history": "History",
+    "variables": "Variables",
+    "language": "Language"
   },
   "Footer": {
     "github1": "Tatsiana's GitHub",
@@ -27,7 +32,11 @@
     "signIn": "Sign In",
     "signUp": "Sign Up",
     "signInAria": "Navigate to sign in page",
-    "signUpAria": "Navigate to sign up page"
+    "signUpAria": "Navigate to sign up page",
+    "signOut": "Sign Out",
+    "collections": "Collections",
+    "history": "History",
+    "variables": "Variables"
   },
   "NotFoundPage": {
     "title": "404 - Page Not Found",

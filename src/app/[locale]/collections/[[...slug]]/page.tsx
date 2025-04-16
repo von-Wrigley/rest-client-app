@@ -5,6 +5,7 @@ import Collections from "@/components/collections";
 import { createStore } from "@/app/redux/store";
 import { Provider } from "react-redux";
 import React from "react";
+import withAuth from "@/app/components/withAuth";
 
 const CollectionsPage = ({
   params,
@@ -20,7 +21,7 @@ const CollectionsPage = ({
     ([key, value]) => ({
       name: decodeURIComponent(key),
       value: decodeURIComponent(value),
-    })
+    }),
   );
 
   const preloadedState = {
@@ -44,4 +45,4 @@ const CollectionsPage = ({
     </Provider>
   );
 };
-export default CollectionsPage;
+export default withAuth(CollectionsPage);

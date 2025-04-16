@@ -12,7 +12,12 @@
   "Header": {
     "title": "Клон Postman",
     "signIn": "Войти",
-    "signUp": "Зарегистрироваться"
+    "signUp": "Зарегистрироваться",
+    "signOut": "Выход",
+    "collections": "Коллекции",
+    "history": "История",
+    "variables": "Переменные",
+    "language": "Язык"
   },
   "Footer": {
     "github1": "GitHub Таццяны",
@@ -27,7 +32,11 @@
     "signIn": "Войти",
     "signUp": "Зарегистрироваться",
     "signInAria": "Перейти на страницу входа",
-    "signUpAria": "Перейти на страницу регистрации"
+    "signUpAria": "Перейти на страницу регистрации",
+    "signOut": "Выход",
+    "collections": "Коллекции",
+    "history": "История",
+    "variables": "Переменные"
   },
   "NotFoundPage": {
     "title": "404 - Страница не найдена",

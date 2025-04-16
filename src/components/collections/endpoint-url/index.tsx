@@ -7,7 +7,7 @@ import { addInputURL } from "@/app/redux/ContentSelected";
 
 function EndpointURL() {
   const inputURL = useAppSelector(
-    (state) => state.selected.selectedContent.inputURL
+    (state) => state.selected.selectedContent.inputURL,
   );
 
   const normalURL = atob(decodeURIComponent(inputURL));

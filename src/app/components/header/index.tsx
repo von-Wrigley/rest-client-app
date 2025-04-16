@@ -6,16 +6,34 @@ import Skeleton from "../skeleton";
 import LocaleSwitcher from "../locale-switcher";
 import { useTranslations } from "next-intl";
 import styles from "./index.module.scss";
+import { useRouter } from "next/navigation";
+import { supabase } from "@/helper/supabaseClient";
 
 const Header: React.FC = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [isSticky, setIsSticky] = useState(false);
+  const [session, setSession] = useState<any>(null);
   const t = useTranslations("Header");
+  const router = useRouter();
 
-  // Simulates a 2-second loading delay
   useEffect(() => {
-    const timer = setTimeout(() => setIsLoading(false), 2000);
-    return () => clearTimeout(timer);
+    const fetchSession = async () => {
+      const {
+        data: { session },
+      } = await supabase.auth.getSession();
+      setSession(session);
+      setIsLoading(false);
+    };
+
+    fetchSession();
+
+    const {
+      data: { subscription },
+    } = supabase.auth.onAuthStateChange((_event, session) => {
+      setSession(session);
+    });
+
+    return () => subscription.unsubscribe();
   }, []);
 
   useEffect(() => {
@@ -26,6 +44,11 @@ const Header: React.FC = () => {
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
+
+  const handleSignOut = async () => {
+    await supabase.auth.signOut();
+    router.refresh();
+  };
 
   if (isLoading) {
     return (
@@ -61,13 +84,33 @@ const Header: React.FC = () => {
         <div className={styles.headerRight}>
           <img src="/rss-logo.svg" alt="Course Logo" />
           <LocaleSwitcher />
+
           <div className={styles.authLinks}>
-            <Link href="/signin" className={styles.link}>
-              {t("signIn")}
-            </Link>
-            <Link href="/signup" className={styles.link}>
-              {t("signUp")}
-            </Link>
+            {session ? (
+              <>
+                <Link href="/collections" className={styles.link}>
+                  {t("collections")}
+                </Link>
+                <Link href="/history" className={styles.link}>
+                  {t("history")}
+                </Link>
+                <Link href="/variables" className={styles.link}>
+                  {t("variables")}
+                </Link>
+                <button onClick={handleSignOut} className={styles.link}>
+                  {t("signOut")}
+                </button>
+              </>
+            ) : (
+              <>
+                <Link href="/signin" className={styles.link}>
+                  {t("signIn")}
+                </Link>
+                <Link href="/signup" className={styles.link}>
+                  {t("signUp")}
+                </Link>
+              </>
+            )}
           </div>
         </div>
       </div>
