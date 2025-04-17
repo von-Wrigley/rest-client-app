@@ -15,7 +15,7 @@ function BtnSend() {
   const currentDate = new Date();
 
   const { method, inputURL, bodyReq, headers } = useAppSelector(
-    (state) => state.selected.selectedContent
+    (state) => state.selected.selectedContent,
   );
 
   let decodedURL = atob(inputURL);

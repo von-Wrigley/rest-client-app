@@ -5,15 +5,15 @@ import { useTranslations } from "next-intl";
 import Skeleton from "@/app/components/skeleton";
 import Link from "next/link";
 import styles from "./index.module.scss";
-
 import { useRouter } from "next/navigation";
 import { supabase } from "@/helper/supabaseClient";
+import { Session } from "@supabase/supabase-js";
 
 export const WelcomeSection = () => {
   const t = useTranslations("HomePage");
   const router = useRouter();
-  const [isLoading, setIsLoading] = useState(true);
-  const [session, setSession] = useState<any>(null);
+  const [isLoading, setIsLoading] = useState<boolean>(true);
+  const [session, setSession] = useState<Session | null>(null);
 
   useEffect(() => {
     const checkSession = async () => {

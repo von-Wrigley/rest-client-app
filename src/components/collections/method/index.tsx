@@ -4,7 +4,6 @@ import { addMethod } from "@/app/redux/ContentSelected";
 import { useAppDispatch, useAppSelector } from "@/app/redux/hooks";
 import { HttpMethod } from "@/app/types/http";
 
-
 function Method() {
   const method = useAppSelector(
     (state) => state.selected.selectedContent.method,
