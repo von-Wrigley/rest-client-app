@@ -12,10 +12,17 @@ body {
 .layoutContainer {
   margin: 0 auto;
   display: flex;
-  min-height: calc(100vh - 80px);
   flex-direction: column;
+  height: 100vh;     
 }
 
 .contentArea {
   padding: 20px 20px 65px 20px;
+  margin-bottom: $footer-height;
+}
+
+@media (max-width: 767px) {
+  .contentArea {
+    margin-bottom: $footer-height-mob;
+  }
 }
