@@ -3,49 +3,48 @@ import React, { useEffect, useState } from "react";
 import Form from "next/form";
 import { useAppDispatch, useAppSelector } from "@/app/redux/hooks";
 import { selectedHeaders } from "@/app/redux/ContentSelected";
-type inputsDispatch = {
-  key: string;
+
+type HeaderField = {
+  name: string;
   value: string;
 };
 
 function Headers() {
-  const headers = useAppSelector(
+  const savedHeaders = useAppSelector(
     (state) => state.selected.selectedContent.headers,
   );
-  const [inputs, setInputs] = useState<inputsDispatch[]>(
-    headers.length > 0 ? headers : [{ name: "", value: "" }],
+
+  const [headerFields, setHeaderFields] = useState<HeaderField[]>(
+    savedHeaders.length > 0 ? savedHeaders : [{ name: "", value: "" }],
   );
 
   const dispatch = useAppDispatch();
 
   const handleAddHeader = () => {
-    setInputs([...inputs, { name: "", value: "" }]);
+    setHeaderFields([...headerFields, { name: "", value: "" }]);
   };
+
   const handleRemoveHeader = (index: number) => {
-    const newArray = [...inputs];
-    newArray.splice(index, 1);
-    setInputs(newArray);
+    const updatedHeaders = headerFields.filter((_, i) => i !== index);
+    setHeaderFields(updatedHeaders);
   };
 
-  useEffect(() => {
-    let newInp = [];
-
-    inputs.map((x) => newInp.push({ name: x.name, value: x.value }));
-
-    dispatch(selectedHeaders(newInp));
-  }, [inputs]);
-
-  const handleHeader = (
+  const handleHeaderChange = (
     e: React.ChangeEvent<HTMLInputElement>,
     index: number,
   ) => {
     const { name, value } = e.target;
-    const list = [...inputs.map((input) => ({ ...input }))];
 
-    list[index][name as keyof inputsDispatch] = value;
+    const updatedFields = headerFields.map((field, i) =>
+      i === index ? { ...field, [name]: value } : field,
+    );
 
-    setInputs(list);
+    setHeaderFields(updatedFields);
   };
+
+  useEffect(() => {
+    dispatch(selectedHeaders(headerFields));
+  }, [headerFields, dispatch]);
 
   return (
     <Form action="">
@@ -59,23 +58,23 @@ function Headers() {
           Add
         </button>
 
-        {inputs?.map((item, index) => (
-          <div className="flex gap-x-2  " key={index}>
+        {headerFields.map((field, index) => (
+          <div className="flex gap-x-2" key={index}>
             <input
               type="text"
               placeholder="key"
               name="name"
-              value={item.name}
-              onChange={(e) => handleHeader(e, index)}
-              className="border border-gray-300 "
+              value={field.name}
+              onChange={(e) => handleHeaderChange(e, index)}
+              className="border border-gray-300"
             />
             <input
               type="text"
               placeholder="value"
               name="value"
-              value={item.value}
-              onChange={(e) => handleHeader(e, index)}
-              className="border border-gray-300 "
+              value={field.value}
+              onChange={(e) => handleHeaderChange(e, index)}
+              className="border border-gray-300"
             />
             <button
               type="button"

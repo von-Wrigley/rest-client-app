@@ -47,7 +47,7 @@ const Header: React.FC = () => {
 
   const handleSignOut = async () => {
     await supabase.auth.signOut();
-    router.refresh();
+    router.push("/signin");
   };
 
   if (isLoading) {

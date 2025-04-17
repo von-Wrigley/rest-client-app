@@ -72,9 +72,7 @@ function GenerateCodeRequest() {
         console.log(newstr);
         return atobURl;
       });
-      console.log(newX[0]);
     }
-    //нужно проверить с боди гнератор
 
     const snippet = new HTTPSnippet({
       method: stateMethod,
@@ -87,7 +85,8 @@ function GenerateCodeRequest() {
       selectLang.length > 7 ? selectLang.slice(0, 10) : selectLang,
       getVariant(selectLang),
     );
-    setGeneratedSnippet(output);
+
+    setGeneratedSnippet(output || "");
   }, [selectLang, inputState]);
 
   return (

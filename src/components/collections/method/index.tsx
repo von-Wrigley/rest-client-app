@@ -2,6 +2,8 @@
 import React from "react";
 import { addMethod } from "@/app/redux/ContentSelected";
 import { useAppDispatch, useAppSelector } from "@/app/redux/hooks";
+import { HttpMethod } from "@/app/types/http";
+
 
 function Method() {
   const method = useAppSelector(
@@ -11,7 +13,7 @@ function Method() {
   const dispatch = useAppDispatch();
 
   const handleChange = ({ target }: React.ChangeEvent<HTMLSelectElement>) => {
-    dispatch(addMethod(target.value));
+    dispatch(addMethod(target.value as HttpMethod));
   };
 
   return (
@@ -25,11 +27,12 @@ function Method() {
       <option disabled value="">
         Select Method
       </option>
-      <option value="GET">GET</option>
-      <option value="DELETE">DELETE</option>
-      <option value="POST">POST</option>
-      <option value="PUT">PUT</option>
-      <option value="PATCH">PATCH</option>
+      {}
+      {Object.values(HttpMethod).map((m) => (
+        <option key={m} value={m}>
+          {m}
+        </option>
+      ))}
     </select>
   );
 }

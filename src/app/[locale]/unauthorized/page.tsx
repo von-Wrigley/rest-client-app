@@ -1,1 +1,1 @@
-export { default } from "../../pages/unauthorized";
+export { default } from "../../../components/unauthorized";
