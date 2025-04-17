@@ -1,4 +1,5 @@
 @use "../../../styles/variables.scss" as *;
+@use "../../../styles/mixins.scss" as *;
 @use "../../../app/page.module.scss" as *;
 
 .container {
@@ -11,4 +12,26 @@
   background-color: $background-color;
   color: $text-color;
   padding: 20px;
+}
+
+.form {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+.input {
+  @include input-style;
+  margin-left: 10px;
+}
+
+.button {
+  @include button-style;
+}
+
+.buttonDisabled {
+  @include button-disabled;
+}
+
+.link {
+  @include postman-link;
 }

@@ -46,24 +46,24 @@ function VariablesComponent() {
   };
 
   return (
-    <div className="border flex flex-col gap-y-3 p-2.5  ">
+    <div className={styles.variablesWrapper}>
       <button
         onClick={handleAddVariable}
         type="button"
-        className="bg-green-400 w-18 py-1.5"
+        className={styles.addButton}
       >
         Add
       </button>
 
       {inputs?.map((item: Variable, index: number) => (
-        <div className="flex gap-x-2 " key={index}>
+        <div className={styles.inputWrapper} key={index}>
           <input
             type="text"
             placeholder="key"
             name="key"
             value={item.key}
             onChange={(e) => handleVariable(e, index)}
-            className="border border-gray-300 "
+            className={styles.input}
           />
           <input
             type="text"
@@ -71,12 +71,12 @@ function VariablesComponent() {
             name="value"
             value={item.value}
             onChange={(e) => handleVariable(e, index)}
-            className="border border-gray-300 "
+            className={styles.input}
           />
           <button
             type="button"
             onClick={() => handleRemoveVariable(index)}
-            className="bg-red-600 p-3"
+            className={styles.button}
           >
             Delete
           </button>

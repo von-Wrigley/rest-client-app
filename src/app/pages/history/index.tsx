@@ -3,6 +3,7 @@ import withAuth from "@/app/components/withAuth";
 import { useLocalStorage } from "@/app/hooks/LocStor";
 import Link from "next/link";
 import React from "react";
+import styles from "./index.module.scss";
 
 import { useState, useEffect } from "react";
 
@@ -19,13 +20,11 @@ const History = () => {
       {routes.length > 0 ? (
         <h1 className="text-3xl">Last Request(s)</h1>
       ) : (
-        <div className=" text-4xl flex flex-col  my-auto gap-y-3 ">
-          <h3>You haven't executed any requests. It's empty here. Try:</h3>
-          <Link
-            className="bg-amber-300 mx-auto p-2.5 rounded-sm 
-       "
-            href="/collections"
-          >
+        <div className={styles.requestHistoryWrapper}>
+          <h3 className={styles.historyHeader}>
+            You haven't executed any requests. It's empty here. Try:
+          </h3>
+          <Link className={styles.link} href="/collections">
             REST CLIENT
           </Link>
         </div>

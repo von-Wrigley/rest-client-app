@@ -42,3 +42,39 @@
     background-color: color.scale($accent-color, $lightness: -5%);
   }
 }
+
+// disabled
+@mixin button-disabled {
+  background-color: $btn-disabled-bg;
+  color: $btn-disabled-text;
+  border: 1px solid darken($btn-disabled-bg, 10%);
+  cursor: not-allowed;
+  padding: 12px 20px;
+  opacity: 0.7;
+  border-radius: 10px;
+  transition: background-color 0.2s ease;
+  border-style: none;
+}
+
+// postman style links
+
+@mixin postman-link {
+  color: $link-color;
+  text-decoration: none;
+  border-bottom: 2px solid $link-color;
+  display: inline-flex;
+  align-items: center;
+  cursor: pointer;
+  padding: 4px 8px;
+  transition:
+    color 0.15s ease,
+    border-color 0.15s ease;
+
+  &:hover {
+    color: $link-hover;
+  }
+
+  &.active {
+    font-weight: 500;
+  }
+}
