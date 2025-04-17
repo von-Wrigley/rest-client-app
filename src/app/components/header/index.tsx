@@ -8,11 +8,12 @@ import { useTranslations } from "next-intl";
 import styles from "./index.module.scss";
 import { useRouter } from "next/navigation";
 import { supabase } from "@/helper/supabaseClient";
+import { Session } from "@supabase/supabase-js";
 
 const Header: React.FC = () => {
-  const [isLoading, setIsLoading] = useState(true);
-  const [isSticky, setIsSticky] = useState(false);
-  const [session, setSession] = useState<any>(null);
+  const [isLoading, setIsLoading] = useState<boolean>(true);
+  const [isSticky, setIsSticky] = useState<boolean>(false);
+  const [session, setSession] = useState<Session | null>(null);
   const t = useTranslations("Header");
   const router = useRouter();
 
