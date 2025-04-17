@@ -25,7 +25,7 @@ const CollectionsWrapper = ({
         name: decodeURIComponent(key),
         value: decodeURIComponent(value),
       })),
-    [searchParams]
+    [searchParams],
   );
 
   const preloadedState = useMemo<Partial<RootState>>(
@@ -43,7 +43,7 @@ const CollectionsWrapper = ({
         },
       },
     }),
-    [method, encodedUrl, encodedBody, searchParamsArray]
+    [method, encodedUrl, encodedBody, searchParamsArray],
   );
   const store = useMemo(() => createStore(preloadedState), [preloadedState]);
 

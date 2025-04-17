@@ -1,200 +1,89 @@
 "use client";
-import { useAppSelector, useAppDispatch } from "@/app/redux/hooks";
 import React from "react";
+import { useAppSelector, useAppDispatch } from "@/app/redux/hooks";
 import { addBodyRes, resContentDetails } from "@/app/redux/ContentSelected";
 import { useLocalStorage } from "@/app/hooks/LocStor";
+import { HttpMethod } from "@/app/types/http";
+import { fetcher } from "@/app/utils/fetcher";
 
 function BtnSend() {
   const dispatch = useAppDispatch();
 
-  const [variablestorage] = useLocalStorage("variables", []);
-  const [storage, setStorage] = useLocalStorage("country", []);
-  const [responseStorage, setResponseStorage] = useLocalStorage("req", []);
-  const dt = new Date();
+  const [variablesStorage] = useLocalStorage("variables", []);
+  const [requestHistory, setRequestHistory] = useLocalStorage("country", []);
+  const [_, setResponseStorage] = useLocalStorage("req", []);
+  const currentDate = new Date();
 
-  const stateMethod = useAppSelector(
-    (state) => state.selected.selectedContent,
-  ).method;
-  const inputState = useAppSelector(
-    (state) => state.selected.selectedContent,
-  ).inputURL;
-  const bodyPost = useAppSelector(
-    (state) => state.selected.selectedContent,
-  ).bodyReq;
-  const headers = useAppSelector(
-    (state) => state.selected.selectedContent,
-  ).headers;
+  const { method, inputURL, bodyReq, headers } = useAppSelector(
+    (state) => state.selected.selectedContent
+  );
 
-  let normalURL = atob(inputState);
+  let decodedURL = atob(inputURL);
 
-  const handlerequest = async () => {
-    const provewithoutVariables = variablestorage.map((x) =>
-      normalURL.includes(x.key),
-    );
+  const replaceVariablesInURL = () => {
+    variablesStorage.forEach((variable: { key: string; value: string }) => {
+      const regex = new RegExp(`\\{\\{\\s*${variable.key}\\s*\\}\\}`, "g");
+      decodedURL = decodedURL.replace(regex, variable.value);
+    });
+  };
 
-    if (provewithoutVariables) {
-      const newX = variablestorage.map((x) => {
-        const newstr = normalURL.replace(
-          new RegExp("\{\{(?:\\s+)?(" + x.key + ")(?:\\s+)?\}\}"),
-          x.value,
-        );
-        normalURL = newstr;
-
-        return normalURL;
-      });
-    }
-
-    if (stateMethod === "GET") {
-      console.log(normalURL);
-      const res = await fetch(`/api/collections/${normalURL}`, {
-        headers: {
-          Authorization: "EFfw2342",
-          "Access-Control-Allow-Origin": "*",
-          "Content-Type": "application/json;charset=UTF-8",
+  const saveToLocal = () => {
+    if (typeof window !== "undefined") {
+      setRequestHistory([
+        ...requestHistory,
+        {
+          method,
+          input: decodedURL,
+          date: currentDate,
+          urlCode: inputURL,
+          body: bodyReq,
+          headers,
         },
-      });
-
-      if (typeof window !== "undefined") {
-        setStorage([
-          ...storage,
-          {
-            method: stateMethod,
-            input: normalURL,
-            date: dt,
-            urlCode: inputState,
-            body: bodyPost,
-            headers: { ...headers },
-          },
-        ]);
-      }
-
-      console.log(res);
-      const x = await res.json();
-
-      dispatch(resContentDetails([{ resOk: res.ok, resStatus: res.status }]));
-
-      const res2 = JSON.stringify(res);
-
-      setResponseStorage(res);
-
-      const responseBody = JSON.stringify(x);
-      hanfleFormater(responseBody);
-    } else if (stateMethod === "DELETE") {
-      if (typeof window !== "undefined") {
-        setStorage([
-          ...storage,
-          {
-            method: stateMethod,
-            input: normalURL,
-            date: dt,
-            urlCode: inputState,
-            body: bodyPost,
-            headers: headers,
-          },
-        ]);
-      }
-      const res = await fetch(`/api/collections/${normalURL}`, {
-        method: "DELETE",
-      });
-
-      const x = await res.json();
-      console.log(x);
-      dispatch(addBodyRes("{}"));
-      dispatch(resContentDetails([{ resOk: res.ok, resStatus: res.status }]));
-    } else if (stateMethod === "POST") {
-      if (typeof window !== "undefined") {
-        setStorage([
-          ...storage,
-          {
-            method: stateMethod,
-            input: normalURL,
-            date: dt,
-            urlCode: inputState,
-            body: bodyPost,
-            headers: headers,
-          },
-        ]);
-      }
-      const res = await fetch(`/api/collections/${normalURL}`, {
-        method: "POST",
-        body: JSON.stringify(bodyPost),
-        headers: {
-          "Content-type": "application/json; charset=UTF-8",
-        },
-      });
-
-      const x = await res.json();
-      console.log(x);
-      hanfleFormater(JSON.stringify(x));
-      dispatch(resContentDetails([{ resOk: res.ok, resStatus: res.status }]));
-    } else if (stateMethod === "PUT") {
-      if (typeof window !== "undefined") {
-        setStorage([
-          ...storage,
-          {
-            method: stateMethod,
-            input: normalURL,
-            date: dt,
-            urlCode: inputState,
-            body: bodyPost,
-            headers: headers,
-          },
-        ]);
-      }
-      const res = await fetch(`/api/collections/${normalURL}`, {
-        method: "PUT",
-        body: JSON.stringify(bodyPost),
-        headers: {
-          "Content-Type": "application/json",
-        },
-      });
-      console.log(res);
-
-      const x = await res.json();
-      hanfleFormater(JSON.stringify(x));
-    } else if (stateMethod === "PATCH") {
-      if (typeof window !== "undefined") {
-        setStorage([
-          ...storage,
-          {
-            method: stateMethod,
-            input: normalURL,
-            date: dt,
-            urlCode: inputState,
-            body: bodyPost,
-          },
-        ]);
-      }
-      const res = await fetch(`/api/collections/${normalURL}`, {
-        method: "PATCH",
-        body: JSON.stringify(bodyPost),
-        headers: {
-          "Content-Type": "application/json",
-        },
-      });
-      console.log(res);
-
-      const x = await res.json();
-      hanfleFormater(JSON.stringify(x));
-      dispatch(resContentDetails([{ resOk: res.ok, resStatus: res.status }]));
+      ]);
     }
   };
 
-  const hanfleFormater = (x: string) => {
-    if (
-      stateMethod === "GET" ||
-      stateMethod === "POST" ||
-      stateMethod === "DELETE" ||
-      stateMethod === "PUT" ||
-      stateMethod === "PATCH"
-    ) {
-      const test1 = JSON.stringify(JSON.parse(x), null, 4);
-      dispatch(addBodyRes(test1));
+  const handleFormatter = (responseBody: string) => {
+    const formatted = JSON.stringify(JSON.parse(responseBody), null, 4);
+    dispatch(addBodyRes(formatted));
+  };
+
+  const handleRequest = async () => {
+    replaceVariablesInURL();
+
+    const isBodyMethod = [
+      HttpMethod.POST,
+      HttpMethod.PUT,
+      HttpMethod.PATCH,
+    ].includes(method as HttpMethod);
+
+    const { data, resOk, status } = await fetcher({
+      url: `/api/collections/${decodedURL}`,
+      method: method as HttpMethod,
+      body: isBodyMethod ? bodyReq : undefined,
+      headers: {
+        Authorization: "EFfw2342",
+        ...headers?.reduce((acc: Record<string, string>, h: any) => {
+          if (h.name && h.value) acc[h.name] = h.value;
+          return acc;
+        }, {}),
+      },
+    });
+
+    saveToLocal();
+
+    if (method === HttpMethod.DELETE) {
+      dispatch(addBodyRes("{}"));
+    } else {
+      handleFormatter(JSON.stringify(data));
     }
+
+    dispatch(resContentDetails([{ resOk, resStatus: status }]));
+    setResponseStorage(data);
   };
 
   return (
-    <button type="submit" className="bg-blue-100 p-4" onClick={handlerequest}>
+    <button type="submit" className="bg-blue-100 p-4" onClick={handleRequest}>
       Send
     </button>
   );

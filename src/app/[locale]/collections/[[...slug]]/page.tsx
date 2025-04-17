@@ -4,7 +4,7 @@ import AuthGuard from "@/components/shared/auth-guard";
 import React, { lazy, Suspense } from "react";
 
 const CollectionsWrapper = lazy(
-  () => import("@/components/collections/collections-wrapper")
+  () => import("@/components/collections/collections-wrapper"),
 );
 
 interface Props {
