@@ -1,102 +1,107 @@
 import { NextRequest, NextResponse } from "next/server";
+import { HttpMethod } from "@/app/types/http";
 import { headers } from "next/headers";
 
-//  2. Добавь хедеры
+const proxyResponse = async (res: Response) => {
+  const contentType = res.headers.get("Content-Type") ?? "text/plain";
+  const body = await res.arrayBuffer();
 
-export async function GET(
-  request: NextRequest,
-  { params }: { params: Promise<{ slug: string[] }> },
-) {
-  //   const reqf = request.nextUrl.pathname.slice(14);
-
-  // const slug = await params.slug
-  // const newSlug = slug.replace(/,/g, "/");
-  // console.log('s  '+ slug)
-  //  const headersList = await headers()
-  //  const reqHeaders = headersList.get('Authorization')
-  const param = await params;
-  const slug = await param.slug;
-
-  const newSlug = slug.join("/");
-
-  const res = await fetch(newSlug);
-  const newData = await res.json();
-  return NextResponse.json(newData);
-}
-
-export async function POST(
-  req: NextRequest,
-  { params }: { params: Promise<{ slug: string[] }> },
-) {
-  const body = await req.json();
-  const param = await params;
-  const slug = await param.slug;
-  const newSlug = slug.join("/");
-  const req2 = await fetch(newSlug, {
-    method: "POST",
-    body: body,
+  return new NextResponse(body, {
+    status: res.status,
     headers: {
-      "Content-type": "application/json; charset=UTF-8",
+      "Content-Type": contentType,
+      "X-Status-Text": res.statusText,
     },
   });
-  const res = await req2.json();
-  return NextResponse.json(res);
-}
+};
 
-export async function DELETE(
-  req: NextRequest,
-  { params }: { params: Promise<{ slug: string[] }> },
-) {
-  const param = await params;
-  const slug = await param.slug;
-
+const proxyFetch = async (
+  method: HttpMethod,
+  params: Promise<{ slug: string[] }>,
+  options?: globalThis.RequestInit,
+) => {
+  const { slug } = await params;
   const newSlug = slug.join("/");
-  console.log(newSlug);
-  const data = fetch(newSlug, { method: "DELETE" });
+  const headersList = await headers();
+  const rawHeader = headersList.get("X-Custom-Headers");
+  const parsed: { name: string; value: string }[] = rawHeader
+    ? JSON.parse(rawHeader)
+    : [];
+  const extraHeaders = Object.fromEntries(
+    parsed.map(({ name, value }) => [name, value]),
+  );
 
-  return NextResponse.json(data);
-}
+  const res = await fetch(newSlug, {
+    method,
+    ...extraHeaders,
+    ...options,
+  });
 
-export async function PUT(
+  return res;
+};
+
+export const GET = async (
+  _: NextRequest,
+  { params }: { params: Promise<{ slug: string[] }> },
+) => {
+  const res = await proxyFetch(HttpMethod.GET, params);
+  return proxyResponse(res);
+};
+
+export const POST = async (
   req: NextRequest,
   { params }: { params: Promise<{ slug: string[] }> },
-) {
+) => {
   const body = await req.json();
-  const param = await params;
-  const slug = await param.slug;
 
-  const newSlug = slug.join("/");
-  const req2 = await fetch(newSlug, {
+  const res = await proxyFetch(HttpMethod.POST, params, {
+    body: JSON.stringify(body),
+    headers: {
+      "Content-Type": "application/json; charset=UTF-8",
+    },
+  });
+
+  return proxyResponse(res);
+};
+
+export const DELETE = async (
+  _: NextRequest,
+  { params }: { params: Promise<{ slug: string[] }> },
+) => {
+  const res = await proxyFetch(HttpMethod.DELETE, params);
+  return proxyResponse(res);
+};
+
+export const PUT = async (
+  req: NextRequest,
+  { params }: { params: Promise<{ slug: string[] }> },
+) => {
+  const body = await req.json();
+
+  const res = await proxyFetch(HttpMethod.PUT, params, {
     method: "PUT",
-    body: body,
+    body: JSON.stringify(body),
     headers: {
-      "Content-type": "application/json; charset=UTF-8",
+      "Content-Type": "application/json; charset=UTF-8",
     },
   });
 
-  const res = await req2.json();
+  return proxyResponse(res);
+};
 
-  return NextResponse.json(res);
-}
-
-export async function PATCH(
+export const PATCH = async (
   req: NextRequest,
   { params }: { params: Promise<{ slug: string[] }> },
-) {
+) => {
   const body = await req.json();
-  const param = await params;
-  const slug = await param.slug;
-  const newSlug = slug.join("/");
 
-  const req2 = await fetch(newSlug, {
+  const res = await proxyFetch(HttpMethod.PATCH, params, {
     method: "PATCH",
-    body: body,
+    body: JSON.stringify(body),
     headers: {
-      "Content-type": "application/json; charset=UTF-8",
+      "Content-Type": "application/json; charset=UTF-8",
     },
   });
 
-  const res = await req2.json();
-
-  return NextResponse.json(res);
-}
+  return proxyResponse(res);
+};
