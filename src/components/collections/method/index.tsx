@@ -1,10 +1,13 @@
 "use client";
+
 import React from "react";
 import { addMethod } from "@/app/redux/ContentSelected";
 import { useAppDispatch, useAppSelector } from "@/app/redux/hooks";
 import { HttpMethod } from "@/app/types/http";
+import { useTranslations } from "next-intl";
 
 function Method() {
+  const t = useTranslations("Method");
   const method = useAppSelector(
     (state) => state.selected.selectedContent.method,
   );
@@ -24,7 +27,7 @@ function Method() {
       onChange={handleChange}
     >
       <option disabled value="">
-        Select Method
+        {t("SelectMethod")}
       </option>
       {}
       {Object.values(HttpMethod).map((m) => (

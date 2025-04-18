@@ -5,9 +5,11 @@ import { addBodyRes, resContentDetails } from "@/app/redux/ContentSelected";
 import { useLocalStorage } from "@/app/hooks/LocStor";
 import { HttpMethod } from "@/app/types/http";
 import { fetcher } from "@/app/utils/fetcher";
+import { useTranslations } from "next-intl";
 
 function BtnSend() {
   const dispatch = useAppDispatch();
+  const t = useTranslations("SendBtn");
 
   const [variablesStorage] = useLocalStorage("variables", []);
   const [requestHistory, setRequestHistory] = useLocalStorage("country", []);
@@ -84,7 +86,7 @@ function BtnSend() {
 
   return (
     <button type="submit" className="bg-blue-100 p-4" onClick={handleRequest}>
-      Send
+      {t("btnSend")}
     </button>
   );
 }

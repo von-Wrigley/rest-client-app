@@ -76,5 +76,38 @@
     "headers": "Headers",
     "key": "Key",
     "value": "Value"
+  },
+  "Method": {
+    "SelectMethod": "Select method"
+  },
+  "Headers": {
+    "btnAdd": "Add",
+    "btnDelete": "Delete",
+    "headers": "Headers",
+    "key": "Key",
+    "value": "Value"
+  },
+  "Snippet": {
+    "Snippet": "Code Snippet",
+    "ChooseLang": "Select an option"
+  },
+  "SendBtn": {
+    "btnSend": "Send"
+  },
+  "History": {
+    "lastRequest": "Last Request(s)",
+    "noRequest": "You haven't executed any requests. It's empty here. Try:",
+    "Collections": "Collections"
+  },
+  "Variables": {
+    "variables": "Variables",
+    "btnAdd": "Add",
+    "btnDelete": "Delete",
+    "key": "Key",
+    "value": "Value"
+  },
+  "BodyEditor": {
+    "BodyName": "JSON/Text Editor",
+    "BodyPlaceholder": "this text will be shown in the text area"
   }
 }

@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 import Form from "next/form";
 import { useAppDispatch, useAppSelector } from "@/app/redux/hooks";
 import { selectedHeaders } from "@/app/redux/ContentSelected";
+import { useTranslations } from "next-intl";
 
 type HeaderField = {
   name: string;
@@ -46,23 +47,25 @@ function Headers() {
     dispatch(selectedHeaders(headerFields));
   }, [headerFields, dispatch]);
 
+  const t = useTranslations("Headers");
+
   return (
     <Form action="">
-      <h2>Headers</h2>
+      <h2>{t("headers")}</h2>
       <div className="flex flex-col gap-y-7">
         <button
           onClick={handleAddHeader}
           type="button"
           className="bg-green-400 w-18"
         >
-          Add
+          {t("btnAdd")}
         </button>
 
         {headerFields.map((field, index) => (
           <div className="flex gap-x-2" key={index}>
             <input
               type="text"
-              placeholder="key"
+              placeholder={t("key")}
               name="name"
               value={field.name}
               onChange={(e) => handleHeaderChange(e, index)}
@@ -70,7 +73,7 @@ function Headers() {
             />
             <input
               type="text"
-              placeholder="value"
+              placeholder={t("value")}
               name="value"
               value={field.value}
               onChange={(e) => handleHeaderChange(e, index)}
@@ -81,7 +84,7 @@ function Headers() {
               onClick={() => handleRemoveHeader(index)}
               className="bg-red-600 p-3"
             >
-              Delete
+              {t("btnDelete")}
             </button>
           </div>
         ))}

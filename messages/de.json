@@ -76,5 +76,38 @@
     "headers": "Schlagzeilen",
     "key": "Schlüssel",
     "value": "Bedeutung"
+  },
+  "Method": {
+    "SelectMethod": "Methode auswählen"
+  },
+  "Headers": {
+    "btnAdd": "Hinzufügen",
+    "btnDelete": "Löschen",
+    "headers": "Schlagzeilen",
+    "key": "Schlüssel",
+    "value": "Bedeutung"
+  },
+  "Snippet": {
+    "Snippet": "Codevorlage",
+    "ChooseLang": "Wählen Sie eine Option"
+  },
+  "SendBtn": {
+    "btnSend": "Schicken"
+  },
+  "History": {
+    "lastRequest": "Letzte Anfrage(n)",
+    "noRequest": "Sie haben keine Anfragen ausgeführt. Hier ist nichts. Versuchen Sie:",
+    "Collections": "Sammlungen"
+  },
+  "Variables": {
+    "variables": "Variablen",
+    "btnAdd": "Hinzufügen",
+    "btnDelete": "Löschen",
+    "key": "Schlüssel",
+    "value": "Bedeutung"
+  },
+  "BodyEditor": {
+    "BodyName": "JSON/Text-Editor",
+    "BodyPlaceholder": "dieser Text wird im Textbereich angezeigt"
   }
 }

@@ -2,9 +2,11 @@
 import { addBodyReq } from "@/app/redux/ContentSelected";
 import { useAppSelector, useAppDispatch } from "@/app/redux/hooks";
 import React, { useState } from "react";
+import { useTranslations } from "next-intl";
 
 function BodyEditor() {
   const [useSelect, setSelect] = useState("JSON");
+  const t = useTranslations("BodyEditor");
 
   const dispatch = useAppDispatch();
 
@@ -32,7 +34,7 @@ function BodyEditor() {
     <>
       <form method="post" name="bodyEditor">
         <div className="flex">
-          <h2>Body: [JSON/Text Editor]</h2>
+          <h2>{t("BodyName")}</h2>
           <select
             name="selectFormat"
             id="selectFormat"
@@ -45,7 +47,7 @@ function BodyEditor() {
         </div>
 
         <textarea
-          placeholder="this text will show in the textarea"
+          placeholder={t("BodyPlaceholder")}
           value={bodyPost}
           className="border"
           rows={5}
