@@ -13,7 +13,7 @@ function BtnSend() {
 
   const [variablesStorage] = useLocalStorage("variables", []);
   const [requestHistory, setRequestHistory] = useLocalStorage("country", []);
-  const [_, setResponseStorage] = useLocalStorage("req", []);
+  const [, setResponseStorage] = useLocalStorage("req", []);
   const currentDate = new Date();
 
   const { method, inputURL, bodyReq, headers } = useAppSelector(
@@ -58,29 +58,24 @@ function BtnSend() {
       HttpMethod.PUT,
       HttpMethod.PATCH,
     ].includes(method as HttpMethod);
-
-    const { data, resOk, status } = await fetcher({
+    const cleanedHeaders = (
+      headers as { name: string; value: string }[]
+    ).filter(({ name }) => name.trim() !== "");
+    const customHeaderValue = JSON.stringify(cleanedHeaders);
+    const { data, resOk, status, statusText } = await fetcher({
       url: `/api/collections/${decodedURL}`,
       method: method as HttpMethod,
       body: isBodyMethod ? bodyReq : undefined,
       headers: {
-        Authorization: "EFfw2342",
-        ...headers?.reduce((acc: Record<string, string>, h: any) => {
-          if (h.name && h.value) acc[h.name] = h.value;
-          return acc;
-        }, {}),
+        "X-Custom-Headers": customHeaderValue,
       },
     });
 
     saveToLocal();
 
-    if (method === HttpMethod.DELETE) {
-      dispatch(addBodyRes("{}"));
-    } else {
-      handleFormatter(JSON.stringify(data));
-    }
+    handleFormatter(JSON.stringify(data));
 
-    dispatch(resContentDetails([{ resOk, resStatus: status }]));
+    dispatch(resContentDetails([{ resOk, resStatus: status, statusText }]));
     setResponseStorage(data);
   };
 

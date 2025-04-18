@@ -3,6 +3,7 @@ import { createSlice, type PayloadAction } from "@reduxjs/toolkit";
 type ResponseDet = {
   resOk: boolean;
   resStatus: number;
+  statusText: string;
 };
 
 type InitState = {
