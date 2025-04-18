@@ -2,6 +2,7 @@
 
 import { useLocalStorage } from "@/app/hooks/LocStor";
 import React, { useEffect, useState } from "react";
+import { useTranslations } from "next-intl";
 
 type Variable = {
   key: string;
@@ -15,6 +16,7 @@ function VariablesComponent() {
   );
 
   const [inputs, setInputs] = useState([{ key: "", value: "" }]);
+  const t = useTranslations("Variables");
 
   useEffect(() => {
     setInputs(variablestorage);
@@ -51,14 +53,14 @@ function VariablesComponent() {
         type="button"
         className="bg-green-400 w-18 py-1.5"
       >
-        Add
+        {t("btnAdd")}
       </button>
 
       {inputs?.map((item: Variable, index: number) => (
         <div className="flex gap-x-2 " key={index}>
           <input
             type="text"
-            placeholder="key"
+            placeholder={t("key")}
             name="key"
             value={item.key}
             onChange={(e) => handleVariable(e, index)}
@@ -66,7 +68,7 @@ function VariablesComponent() {
           />
           <input
             type="text"
-            placeholder="value"
+            placeholder={t("value")}
             name="value"
             value={item.value}
             onChange={(e) => handleVariable(e, index)}
@@ -77,7 +79,7 @@ function VariablesComponent() {
             onClick={() => handleRemoveVariable(index)}
             className="bg-red-600 p-3"
           >
-            Delete
+            {t("btnDelete")}
           </button>
         </div>
       ))}

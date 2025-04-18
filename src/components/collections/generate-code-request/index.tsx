@@ -3,22 +3,12 @@ import React, { useEffect, useState } from "react";
 import { useAppSelector } from "@/app/redux/hooks";
 import { HTTPSnippet } from "@readme/httpsnippet";
 import { useLocalStorage } from "@/app/hooks/LocStor";
-
-// const listOfLanguages = {
-//     "curl": "cURL",
-//
-// JavaScript (Fetch api)
-// JavaScript (XHR)
-//     "nodejs": "NodeJs",
-//     "python": "Python",
-//     "java": "Java",
-//     "csharp": "C#",
-//     "go": "Go",
-//   }
+import { useTranslations } from "next-intl";
 
 function GenerateCodeRequest() {
   const [selectLang, setSelectLang] = useState("null");
   const [generatedSnippet, setGeneratedSnippet] = useState("");
+  const t = useTranslations("Snippet");
 
   const stateMethod = useAppSelector(
     (state) => state.selected.selectedContent,
@@ -91,7 +81,7 @@ function GenerateCodeRequest() {
 
   return (
     <div>
-      <h2>Code snippet </h2>
+      <h2> {t("Snippet")}</h2>
       <select
         name="selLang"
         id="selLang"
@@ -99,7 +89,7 @@ function GenerateCodeRequest() {
         onChange={handlechange}
       >
         <option disabled value="null">
-          Select language{" "}
+          {t("ChooseLang")}{" "}
         </option>
         <option value="shell">cURL</option>
         <option value="javascript_fetch">JavaScript (Fetch api)</option>

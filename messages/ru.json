@@ -76,5 +76,38 @@
     "headers": "Заголовки",
     "key": "Ключ",
     "value": "Значение"
+  },
+  "Method": {
+    "SelectMethod": "Выберите метод"
+  },
+  "Headers": {
+    "btnAdd": "Добавить",
+    "btnDelete": "Удалить",
+    "headers": "Заголовки",
+    "key": "Ключ",
+    "value": "Значение"
+  },
+  "Snippet": {
+    "Snippet": "Шаблон кода",
+    "ChooseLang": "Выберите вариант"
+  },
+  "SendBtn": {
+    "btnSend": "Отправить"
+  },
+  "History": {
+    "lastRequest": "Последний(ие) запрос(ы)",
+    "noRequest": "Вы не выполнили ни одного запроса. Здесь пусто. Попробуйте:",
+    "Collections": "Коллекции"
+  },
+  "Variables": {
+    "variables": "Переменные",
+    "btnAdd": "Добавить",
+    "btnDelete": "Удалить",
+    "key": "Ключ",
+    "value": "Значение"
+  },
+  "BodyEditor": {
+    "BodyName": "JSON/текстовый редактор",
+    "BodyPlaceholder": "этот текст будет показан в текстовой области"
   }
 }
