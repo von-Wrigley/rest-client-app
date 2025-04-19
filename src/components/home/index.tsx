@@ -4,10 +4,10 @@ import React, { useEffect, useState } from "react";
 import { useTranslations } from "next-intl";
 import Skeleton from "@/app/components/skeleton";
 import Link from "next/link";
-import styles from "./index.module.scss";
 import { useRouter } from "next/navigation";
 import { supabase } from "@/helper/supabaseClient";
 import { Session } from "@supabase/supabase-js";
+import styles from "./index.module.scss";
 
 export const WelcomeSection = () => {
   const t = useTranslations("HomePage");
@@ -48,6 +48,8 @@ export const WelcomeSection = () => {
         <Skeleton variant="medium" className={styles.title} />
         <Skeleton className={`${styles.description} ${styles.skeletonLarge}`} />
         <div className={styles.authButtons}>
+          <Skeleton variant="small" className={styles.button} />
+          <Skeleton variant="small" className={styles.button} />
           <Skeleton variant="small" className={styles.button} />
           <Skeleton variant="small" className={styles.button} />
         </div>
