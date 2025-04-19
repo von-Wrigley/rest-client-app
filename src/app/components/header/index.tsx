@@ -64,6 +64,8 @@ const Header: React.FC = () => {
             <div className={styles.authLinks}>
               <Skeleton variant="small" className={styles.linkSkeleton} />
               <Skeleton variant="small" className={styles.linkSkeleton} />
+              <Skeleton variant="small" className={styles.linkSkeleton} />
+              <Skeleton className={styles.linkSkeletonButton} />
             </div>
           </div>
         </div>

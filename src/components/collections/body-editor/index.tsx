@@ -42,6 +42,7 @@ function BodyEditor() {
               id="selectFormat"
               value={useSelect}
               onChange={handleSelect}
+              className={styles.selectInput}
               >
               <option value="JSON">JSON</option>
               <option value="TEXT">TEXT</option>

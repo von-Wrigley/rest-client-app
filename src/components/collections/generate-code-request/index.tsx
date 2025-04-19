@@ -94,17 +94,6 @@ function GenerateCodeRequest() {
     setGeneratedSnippet(output || "");
   }, [selectLang, inputState]);
 
-  // SKELETON STATE: mirror the final structure with placeholders
-  if (isLoading) {
-    return (
-      <div className={styles.container}>
-        <Skeleton variant="medium" className={styles.title} />
-        <Skeleton variant="small" className={styles.selector} />
-        <Skeleton variant="large" className={styles.textarea} />
-      </div>
-    );
-  }
-
   return (
     <div className={styles.container}>
       <h2 className={styles.title}> {t("Snippet")}</h2>
