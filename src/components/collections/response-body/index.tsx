@@ -2,6 +2,7 @@
 
 import React from "react";
 import { useAppSelector } from "@/app/redux/hooks";
+import styles from "./index.module.scss";
 
 type ResponseDet = {
   resOk: boolean;
@@ -37,14 +38,12 @@ function ResponseBody() {
 
       <div>
         <textarea
-          readOnly
-          name="bodyResponse"
           id="handleJSON"
-          cols={100}
-          rows={50}
-          className="p-4 border"
+          className={styles.textarea}
           defaultValue={bodyRes?.length > 1 ? bodyRes : ""}
-        ></textarea>
+          name="bodyResponse"
+          readOnly
+        />
       </div>
     </div>
   );

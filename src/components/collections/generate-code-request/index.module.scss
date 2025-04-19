@@ -1,0 +1,66 @@
+@use "../../../styles/variables.scss" as *;
+@use "../../../styles/mixins.scss" as *;
+
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  background-color: #fafafa;
+  border-radius: 8px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.title {
+  font-size: 20px;
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 8px;
+}
+
+.selector {
+  @include input-style;
+  width: 100%;
+  max-width: 300px;
+  font-size: 16px;
+  box-sizing: border-box;
+
+  &:focus {
+    outline: none;
+    border-color: #0070f3;
+  }
+}
+
+.textarea {
+  @include input-style;
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
+  height: 200px;
+
+  font-family: Menlo, Consolas, monospace;
+  font-size: 14px;
+  line-height: 1.5;
+
+  resize: vertical;
+
+  &:focus {
+    outline: none;
+    border-color: #0070f3;
+  }
+}
+
+@media (max-width: 768px) {
+  .container {
+    padding: 16px 0px;
+    margin: 0 auto;
+  }
+
+  .selector {
+    max-width: 100%;
+  }
+
+  .textarea {
+    height: 150px;
+  }
+}

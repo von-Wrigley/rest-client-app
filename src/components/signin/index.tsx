@@ -3,9 +3,9 @@
 import React, { useEffect, useState } from "react";
 import { useTranslations } from "next-intl";
 import Link from "next/link";
-import styles from "./index.module.scss";
 import { useRouter } from "next/navigation";
 import { supabase } from "@/helper/supabaseClient";
+import styles from "./index.module.scss";
 
 const SignIn = () => {
   const t = useTranslations("SigIn");
@@ -62,6 +62,7 @@ const SignIn = () => {
         <label>
           {t("email")}
           <input
+            className={styles.input}
             type="email"
             name="email"
             value={formData.email}
@@ -74,6 +75,7 @@ const SignIn = () => {
         <label>
           {t("password")}
           <input
+            className={styles.input}
             type="password"
             name="password"
             value={formData.password}
@@ -84,11 +86,16 @@ const SignIn = () => {
 
         {authError && <p className={styles.error}>{authError}</p>}
 
-        <button type="submit" disabled={!isFormValid}>
+        <button
+          type="submit"
+          className={isFormValid ? styles.button : styles.buttonDisabled}
+        >
           {t("submit")}
         </button>
       </form>
-      <Link href="/">{t("homeLink")}</Link>
+      <Link className={styles.link} href="/">
+        {t("homeLink")}
+      </Link>
     </div>
   );
 };

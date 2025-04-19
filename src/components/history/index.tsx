@@ -4,6 +4,7 @@ import Link from "next/link";
 import React from "react";
 import { useTranslations } from "next-intl";
 import { useState, useEffect } from "react";
+import styles from "./index.module.scss";
 
 const History = () => {
   const [name] = useLocalStorage("country", []);
@@ -19,11 +20,10 @@ const History = () => {
       {routes.length > 0 ? (
         <h1 className="text-3xl">{t("lastRequest")}</h1>
       ) : (
-        <div className=" text-4xl flex flex-col  my-auto gap-y-3 ">
-          <h3>{t("noRequest")}</h3>
+        <div className={styles.requestHistoryWrapper}>
+          <h3 className={styles.historyHeader}>{t("noRequest")}</h3>
           <Link
-            className="bg-amber-300 mx-auto p-2.5 rounded-sm 
-       "
+            className={styles.link}
             href="/collections"
           >
             {t("Collections")}

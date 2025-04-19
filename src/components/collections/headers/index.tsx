@@ -4,6 +4,7 @@ import Form from "next/form";
 import { useAppDispatch, useAppSelector } from "@/app/redux/hooks";
 import { selectedHeaders } from "@/app/redux/ContentSelected";
 import { useTranslations } from "next-intl";
+import styles from "./index.module.scss";
 
 type HeaderField = {
   name: string;
@@ -52,24 +53,24 @@ function Headers() {
   return (
     <Form action="">
       <h2>{t("headers")}</h2>
-      <div className="flex flex-col gap-y-7">
+      <div className={styles.headersWrapper}>
         <button
           onClick={handleAddHeader}
           type="button"
-          className="bg-green-400 w-18"
+          className={styles.addButton}
         >
           {t("btnAdd")}
         </button>
 
         {headerFields.map((field, index) => (
-          <div className="flex gap-x-2" key={index}>
+          <div className={styles.inputWrapper} key={index}>
             <input
               type="text"
               placeholder={t("key")}
               name="name"
               value={field.name}
               onChange={(e) => handleHeaderChange(e, index)}
-              className="border border-gray-300"
+              className={styles.inputKey}
             />
             <input
               type="text"
@@ -77,12 +78,12 @@ function Headers() {
               name="value"
               value={field.value}
               onChange={(e) => handleHeaderChange(e, index)}
-              className="border border-gray-300"
+              className={styles.inputValue}
             />
             <button
               type="button"
               onClick={() => handleRemoveHeader(index)}
-              className="bg-red-600 p-3"
+              className={styles.deleteButton}
             >
               {t("btnDelete")}
             </button>

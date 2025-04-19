@@ -6,6 +6,7 @@ import { useLocalStorage } from "@/app/hooks/LocStor";
 import { HttpMethod } from "@/app/types/http";
 import { fetcher } from "@/app/utils/fetcher";
 import { useTranslations } from "next-intl";
+import styles from "./index.module.scss";
 
 function BtnSend() {
   const dispatch = useAppDispatch();
@@ -80,7 +81,7 @@ function BtnSend() {
   };
 
   return (
-    <button type="submit" className="bg-blue-100 p-4" onClick={handleRequest}>
+    <button type="submit" className={styles.sendButton} onClick={handleRequest}>
       {t("btnSend")}
     </button>
   );

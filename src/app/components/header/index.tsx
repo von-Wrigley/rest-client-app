@@ -5,10 +5,10 @@ import Link from "next/link";
 import Skeleton from "../skeleton";
 import LocaleSwitcher from "../locale-switcher";
 import { useTranslations } from "next-intl";
-import styles from "./index.module.scss";
 import { useRouter } from "next/navigation";
 import { supabase } from "@/helper/supabaseClient";
 import { Session } from "@supabase/supabase-js";
+import styles from "./index.module.scss";
 
 const Header: React.FC = () => {
   const [isLoading, setIsLoading] = useState<boolean>(true);
@@ -98,7 +98,10 @@ const Header: React.FC = () => {
                 <Link href="/variables" className={styles.link}>
                   {t("variables")}
                 </Link>
-                <button onClick={handleSignOut} className={styles.link}>
+                <button
+                  onClick={handleSignOut}
+                  className={`${styles.signoutButton}`}
+                >
                   {t("signOut")}
                 </button>
               </>

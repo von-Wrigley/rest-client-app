@@ -1,0 +1,25 @@
+@use "../../../styles/variables.scss" as *;
+@use "../../../styles/mixins.scss" as *;
+
+.variablesWrapper {
+}
+
+.addButton {
+  @include button-style;
+  padding: 12px 40px;
+  margin-bottom: 10px;
+}
+
+.inputWrapper {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 10px;
+}
+
+.input {
+  @include input-style;
+}
+
+.button {
+  @include button-style;
+}

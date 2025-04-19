@@ -3,11 +3,25 @@ import React, { useEffect, useState } from "react";
 import { useAppSelector } from "@/app/redux/hooks";
 import { HTTPSnippet } from "@readme/httpsnippet";
 import { useLocalStorage } from "@/app/hooks/LocStor";
+import Skeleton from "@/app/components/skeleton";
+import styles from "./index.module.scss";
+
+// const listOfLanguages = {
+//     "curl": "cURL",
+//     JavaScript (Fetch api)
+//     JavaScript (XHR)
+//     "nodejs": "NodeJs",
+//     "python": "Python",
+//     "java": "Java",
+//     "csharp": "C#",
+//     "go": "Go",
+//   }
 import { useTranslations } from "next-intl";
 
 function GenerateCodeRequest() {
   const [selectLang, setSelectLang] = useState("null");
   const [generatedSnippet, setGeneratedSnippet] = useState("");
+  const [isLoading, setIsLoading] = useState(true);
   const t = useTranslations("Snippet");
 
   const stateMethod = useAppSelector(
@@ -27,6 +41,7 @@ function GenerateCodeRequest() {
   const handlechange = (e: React.ChangeEvent<HTMLSelectElement>) => {
     setSelectLang(e.target.value);
   };
+
   const getVariant = (lang: string) => {
     if (lang === "Go") {
       return "Native";
@@ -79,12 +94,24 @@ function GenerateCodeRequest() {
     setGeneratedSnippet(output || "");
   }, [selectLang, inputState]);
 
+  // SKELETON STATE: mirror the final structure with placeholders
+  if (isLoading) {
+    return (
+      <div className={styles.container}>
+        <Skeleton variant="medium" className={styles.title} />
+        <Skeleton variant="small" className={styles.selector} />
+        <Skeleton variant="large" className={styles.textarea} />
+      </div>
+    );
+  }
+
   return (
-    <div>
-      <h2> {t("Snippet")}</h2>
+    <div className={styles.container}>
+      <h2 className={styles.title}> {t("Snippet")}</h2>
       <select
-        name="selLang"
         id="selLang"
+        className={styles.selector}
+        name="selLang"
         value={selectLang}
         onChange={handlechange}
       >
@@ -101,10 +128,9 @@ function GenerateCodeRequest() {
         <option value="go">Go</option>
       </select>
       <textarea
-        className="border"
-        cols={40}
-        name="generateCode"
         id="generateCode"
+        className={styles.textarea}
+        name="generateCode"
         readOnly
         value={generatedSnippet}
       ></textarea>

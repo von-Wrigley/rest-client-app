@@ -3,9 +3,9 @@
 import React, { useEffect, useState } from "react";
 import { useTranslations } from "next-intl";
 import Link from "next/link";
-import styles from "./index.module.scss";
 import { useRouter } from "next/navigation";
 import { supabase } from "@/helper/supabaseClient";
+import styles from "./index.module.scss";
 
 const SignUp = () => {
   const t = useTranslations("SigUp");
@@ -65,6 +65,7 @@ const SignUp = () => {
         <label>
           {t("email")}
           <input
+            className={styles.input}
             type="email"
             name="email"
             value={formData.email}
@@ -77,6 +78,7 @@ const SignUp = () => {
         <label>
           {t("password")}
           <input
+            className={styles.input}
             type="password"
             name="password"
             value={formData.password}
@@ -88,13 +90,22 @@ const SignUp = () => {
         {authError && <p className={styles.error}>{authError}</p>}
         {successMessage && <p className={styles.success}>{successMessage}</p>}
 
-        <button type="submit" disabled={!isFormValid}>
+        <button
+          type="submit"
+          disabled={!isFormValid}
+          className={isFormValid ? styles.button : styles.buttonDisabled}
+        >
           {t("submit")}
         </button>
       </form>
-      <Link href="/">{t("homeLink")}</Link>
+      <Link className={styles.link} href="/">
+        {t("homeLink")}
+      </Link>
       <p>
-        Already have an account? <Link href="/signin">Sign in</Link>
+        Already have an account?{" "}
+        <Link className={styles.link} href="/signin">
+          Sign in
+        </Link>
       </p>
     </div>
   );

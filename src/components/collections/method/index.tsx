@@ -5,6 +5,7 @@ import { addMethod } from "@/app/redux/ContentSelected";
 import { useAppDispatch, useAppSelector } from "@/app/redux/hooks";
 import { HttpMethod } from "@/app/types/http";
 import { useTranslations } from "next-intl";
+import styles from "./index.module.scss";
 
 function Method() {
   const t = useTranslations("Method");
@@ -20,9 +21,9 @@ function Method() {
 
   return (
     <select
-      name="Method"
       id="method"
-      className="p-2 m-2"
+      className={styles.method}
+      name="Method"
       value={method}
       onChange={handleChange}
     >
