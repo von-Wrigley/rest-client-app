@@ -1,16 +1,17 @@
 @use "../../styles/variables.scss" as *;
 @use "../../styles/mixins.scss" as *;
 
-.requestHistoryWrapper {
-}
-
 .historyHeader {
-  font-size: 1.7em;
+  font-size: 2.5em;
 }
 
 .link {
   @include postman-link;
   font-size: 1.4em;
+}
+
+.date {
+  font-size: 1.2em;
 }
 
 @media (max-width: 768px) {
@@ -22,5 +23,15 @@
   }
   .link {
     text-align: center;
+  }
+  .date {
+    font-size: 1em;
+  }
+  .link {
+    font-size: 1.2em;
+  }
+
+  .historyHeader {
+    font-size: 2em;
   }
 }

@@ -18,7 +18,7 @@ const History = () => {
   return (
     <div className="flex-1 flex flex-col gap-y-7 mx-auto mt-2.5">
       {routes.length > 0 ? (
-        <h1 className="text-3xl">{t("lastRequest")}</h1>
+        <h1 className={styles.historyHeader}>{t("lastRequest")}</h1>
       ) : (
         <div className={styles.requestHistoryWrapper}>
           <h3 className={styles.historyHeader}>{t("noRequest")}</h3>
@@ -55,8 +55,9 @@ const History = () => {
           }))
           .map((x, index) => (
             <div key={index}>
-              <p>{x.date}</p>
+              <p className={styles.date}>{x.date}</p>
               <Link
+                className={styles.link}
                 href="/collections"
                 as={`collections/${x.method}/${x.urlCode}/${x.body}?${x.headers}`}
               >
