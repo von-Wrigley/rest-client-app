@@ -7,12 +7,13 @@ import LocaleSwitcher from "../locale-switcher";
 import { useTranslations } from "next-intl";
 import { useRouter } from "next/navigation";
 import { supabase } from "@/helper/supabaseClient";
+import { Session } from "@supabase/supabase-js";
 import styles from "./index.module.scss";
 
 const Header: React.FC = () => {
-  const [isLoading, setIsLoading] = useState(true);
-  const [isSticky, setIsSticky] = useState(false);
-  const [session, setSession] = useState<any>(null);
+  const [isLoading, setIsLoading] = useState<boolean>(true);
+  const [isSticky, setIsSticky] = useState<boolean>(false);
+  const [session, setSession] = useState<Session | null>(null);
   const t = useTranslations("Header");
   const router = useRouter();
 
@@ -47,7 +48,7 @@ const Header: React.FC = () => {
 
   const handleSignOut = async () => {
     await supabase.auth.signOut();
-    router.refresh();
+    router.push("/signin");
   };
 
   if (isLoading) {

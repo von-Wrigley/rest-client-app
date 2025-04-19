@@ -1,7 +1,7 @@
 "use client";
 import { render, screen, act } from "@testing-library/react";
 import "@testing-library/jest-dom";
-import NotFound from "@/app/pages/not-found";
+import NotFound from "@/components/not-found";
 
 jest.mock("next/link", () => {
   return ({ children, href }: { children: React.ReactNode; href: string }) => (

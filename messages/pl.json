@@ -76,5 +76,39 @@
     "headers": "Nagłówki",
     "key": "Klawisz",
     "value": "Oznaczający"
+  },
+  "Method": {
+    "SelectMethod": "Wybierz metodę"
+  },
+  "Headers": {
+    "btnAdd": "Dodać",
+    "btnDelete": "Usuwać",
+    "headers": "Nagłówki",
+    "key": "Klawisz",
+    "value": "Oznaczający"
+  },
+  "Snippet": {
+    "Snippet": "Fragment kodu",
+    "ChooseLang": "Wybierz opcję"
+  },
+  "SendBtn": {
+    "btnSend": "Wysłać"
+  },
+
+  "History": {
+    "lastRequest": "Ostatnie żądanie(a)",
+    "noRequest": "Nie wykonałeś żadnych żądań. Tutaj jest pusto. Spróbuj:",
+    "Collections": "Kolekcje"
+  },
+  "Variables": {
+    "variables": "Zmienne",
+    "btnAdd": "Dodać",
+    "btnDelete": "Usuwać",
+    "key": "Klawisz",
+    "value": "Oznaczający"
+  },
+  "BodyEditor": {
+    "BodyName": "Edytor JSON/Tekstu",
+    "BodyPlaceholder": "ten tekst będzie wyświetlany w polu tekstowym"
   }
 }

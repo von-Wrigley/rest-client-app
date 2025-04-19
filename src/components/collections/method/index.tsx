@@ -1,10 +1,14 @@
 "use client";
+
 import React from "react";
 import { addMethod } from "@/app/redux/ContentSelected";
 import { useAppDispatch, useAppSelector } from "@/app/redux/hooks";
+import { HttpMethod } from "@/app/types/http";
+import { useTranslations } from "next-intl";
 import styles from "./index.module.scss";
 
 function Method() {
+  const t = useTranslations("Method");
   const method = useAppSelector(
     (state) => state.selected.selectedContent.method,
   );
@@ -12,7 +16,7 @@ function Method() {
   const dispatch = useAppDispatch();
 
   const handleChange = ({ target }: React.ChangeEvent<HTMLSelectElement>) => {
-    dispatch(addMethod(target.value));
+    dispatch(addMethod(target.value as HttpMethod));
   };
 
   return (
@@ -24,13 +28,14 @@ function Method() {
       onChange={handleChange}
     >
       <option disabled value="">
-        Select Method
+        {t("SelectMethod")}
       </option>
-      <option value="GET">GET</option>
-      <option value="DELETE">DELETE</option>
-      <option value="POST">POST</option>
-      <option value="PUT">PUT</option>
-      <option value="PATCH">PATCH</option>
+      {}
+      {Object.values(HttpMethod).map((m) => (
+        <option key={m} value={m}>
+          {m}
+        </option>
+      ))}
     </select>
   );
 }

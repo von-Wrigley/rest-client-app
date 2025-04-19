@@ -16,7 +16,7 @@ const Footer: React.FC = () => {
   }, []);
 
   const githubLinks = [
-    { href: "https://github.com/Tati-Moon", label: t("github1") },
+    { href: "https://github.com/lionna", label: t("github1") },
     { href: "https://github.com/von-Wrigley", label: t("github2") },
     { href: "https://github.com/CROCIATOFAF", label: t("github3") },
   ];

@@ -16,11 +16,13 @@ import styles from "./index.module.scss";
 //     "csharp": "C#",
 //     "go": "Go",
 //   }
+import { useTranslations } from "next-intl";
 
 function GenerateCodeRequest() {
   const [selectLang, setSelectLang] = useState("null");
   const [generatedSnippet, setGeneratedSnippet] = useState("");
   const [isLoading, setIsLoading] = useState(true);
+  const t = useTranslations("Snippet");
 
   const stateMethod = useAppSelector(
     (state) => state.selected.selectedContent,
@@ -75,9 +77,7 @@ function GenerateCodeRequest() {
         console.log(newstr);
         return atobURl;
       });
-      console.log(newX[0]);
     }
-    //нужно проверить с боди гнератор
 
     const snippet = new HTTPSnippet({
       method: stateMethod,
@@ -90,8 +90,8 @@ function GenerateCodeRequest() {
       selectLang.length > 7 ? selectLang.slice(0, 10) : selectLang,
       getVariant(selectLang),
     );
-    setGeneratedSnippet(output);
-    setIsLoading(false);
+
+    setGeneratedSnippet(output || "");
   }, [selectLang, inputState]);
 
   // SKELETON STATE: mirror the final structure with placeholders
@@ -107,7 +107,7 @@ function GenerateCodeRequest() {
 
   return (
     <div className={styles.container}>
-      <h2 className={styles.title}>Code snippet</h2>
+      <h2 className={styles.title}> {t("Snippet")}</h2>
       <select
         id="selLang"
         className={styles.selector}
@@ -116,7 +116,7 @@ function GenerateCodeRequest() {
         onChange={handlechange}
       >
         <option disabled value="null">
-          Select language{" "}
+          {t("ChooseLang")}{" "}
         </option>
         <option value="shell">cURL</option>
         <option value="javascript_fetch">JavaScript (Fetch api)</option>

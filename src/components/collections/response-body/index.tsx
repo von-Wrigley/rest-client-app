@@ -7,6 +7,7 @@ import styles from "./index.module.scss";
 type ResponseDet = {
   resOk: boolean;
   resStatus: number;
+  statusText?: string;
 };
 
 function ResponseBody() {
@@ -24,11 +25,11 @@ function ResponseBody() {
           <div key={index} className="w-1/9 mx-auto">
             {x.resOk == true ? (
               <div className="bg-green-500 text-black">
-                {x.resStatus} <span>OK</span>
+                {x.resStatus} <span>{x.statusText ?? "OK"}</span>
               </div>
             ) : (
               <div className="bg-red-500">
-                {x.resStatus} <span>Not Found</span>
+                {x.resStatus} <span>{x.statusText ?? "Not Found"}</span>
               </div>
             )}
           </div>
