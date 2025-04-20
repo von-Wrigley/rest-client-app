@@ -45,6 +45,7 @@ const SignIn = () => {
 
       router.push("/collections");
     } catch (error) {
+      console.log(error)
       setAuthError("An unexpected error occurred");
     }
   };

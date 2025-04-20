@@ -30,7 +30,6 @@ const eslintConfig = [
       "jest/expect-expect": "off",
       "no-unused-vars": "off",
       "@typescript-eslint/no-unused-vars": "warn",
-      "no-undef": "warn",
       "object-shorthand": ["warn"],
       "react/react-in-jsx-scope": "off",
       "@next/next/no-img-element": "off",
