@@ -1,0 +1,16 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Variables Page Component should match the expected structure 1`] = `
+<div>
+  <div>
+    <h1
+      class="header"
+    >
+      variables
+    </h1>
+    <div
+      data-testid="variables-component"
+    />
+  </div>
+</div>
+`;

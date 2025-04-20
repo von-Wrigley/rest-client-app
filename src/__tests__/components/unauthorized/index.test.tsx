@@ -1,5 +1,4 @@
-"use client";
-import { render, screen, act } from "@testing-library/react";
+import { render, screen } from "@testing-library/react";
 import "@testing-library/jest-dom";
 import Unauthorized from "@/components/unauthorized";
 
@@ -9,35 +8,19 @@ jest.mock("next/link", () => {
   );
 });
 
-jest.mock("next-intl", () => ({
-  useTranslations: () => (key: string) => key,
-}));
+describe("Unauthorized (content only)", () => {
+  const t = (key: string) => key;
 
-describe("Unauthorized Page", () => {
-  beforeEach(() => {
-    jest.useFakeTimers();
+  it("renders loading skeletons when isLoading is true", () => {
+    render(<Unauthorized isLoading={true} t={(key) => key} />);
+    const skeletons = screen.getAllByTestId("skeleton");
+    expect(skeletons).toHaveLength(3);
   });
 
-  afterEach(() => {
-    act(() => {
-      jest.runOnlyPendingTimers();
-    });
-    jest.useRealTimers();
-  });
-
-  it("renders title, description, and home link after loading", () => {
-    render(<Unauthorized />);
-    act(() => {
-      jest.advanceTimersByTime(2000);
-    });
-
-    const heading = screen.getByRole("heading", { name: "title" });
-    expect(heading).toBeInTheDocument();
-
-    const description = screen.getByText("description");
-    expect(description).toBeInTheDocument();
-
-    const homeLink = screen.getByRole("link", { name: "homeLink" });
-    expect(homeLink).toBeInTheDocument();
+  it("renders title, description and home link when isLoading is false", () => {
+    render(<Unauthorized isLoading={false} t={t} />);
+    expect(screen.getByRole("heading", { name: "title" })).toBeInTheDocument();
+    expect(screen.getByText("description")).toBeInTheDocument();
+    expect(screen.getByRole("link", { name: "homeLink" })).toBeInTheDocument();
   });
 });

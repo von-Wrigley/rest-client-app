@@ -13,7 +13,10 @@ const Skeleton: React.FC<SkeletonProps> = ({
   className = "",
 }) => {
   return (
-    <div className={`${styles.skeleton} ${styles[variant]} ${className}`} />
+    <div
+      data-testid="skeleton"
+      className={`${styles.skeleton} ${styles[variant]} ${className}`}
+    />
   );
 };
 

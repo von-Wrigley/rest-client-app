@@ -1,36 +1,15 @@
 import React from "react";
-import { render, screen, fireEvent } from "@testing-library/react";
+import { render, screen } from "@testing-library/react";
 import { Provider } from "react-redux";
-import { configureStore, combineReducers } from "@reduxjs/toolkit";
+import { configureStore } from "@reduxjs/toolkit";
 import selectedReducer from "@/app/redux/ContentSelected";
-import Headers from "@/components/collections/headers";
+import ResponseBody from "@/components/collections/response-body";
 
-const TEST_HEADERS = {
-  EMPTY: [],
-  SINGLE: [{ Authorization: "Bearer token" }],
-  UPDATED: [{ name: "Content-Type", value: "application/json" }],
-};
-
-const UI_TEXT = {
-  KEY_PLACEHOLDER: "key",
-  VALUE_PLACEHOLDER: "value",
-  ADD_BUTTON: "btnAdd",
-  DELETE_BUTTON: "btnDelete",
-  AUTHORIZATION: "Authorization",
-  BEARER_TOKEN: "Bearer token",
-  CONTENT_TYPE: "Content-Type",
-  APP_JSON: "application/json",
-};
-
-jest.mock("next-intl", () => ({
-  useTranslations: () => (key: string) => key,
-}));
-
-const renderWithRedux = (ui: React.ReactElement, preloadedState: any) => {
+const renderWithStore = (preloadedState: any) => {
   const store = configureStore({
-    reducer: combineReducers({
+    reducer: {
       selected: selectedReducer,
-    }),
+    },
     preloadedState: {
       selected: {
         selectedContent: preloadedState,
@@ -38,75 +17,61 @@ const renderWithRedux = (ui: React.ReactElement, preloadedState: any) => {
     },
   });
 
-  return {
-    ...render(<Provider store={store}>{ui}</Provider>),
-    store,
-  };
+  return render(
+    <Provider store={store}>
+      <ResponseBody />
+    </Provider>,
+  );
 };
 
-describe("Headers Component", () => {
-  describe("Initial Rendering", () => {
-    it("shows empty key/value inputs when no headers exist", () => {
-      renderWithRedux(<Headers />, { headers: TEST_HEADERS.EMPTY });
+describe("ResponseBody", () => {
+  it("renders success status and body text", () => {
+    const bodyText = JSON.stringify({ message: "Success" }, null, 2);
+    const state = {
+      bodyRes: bodyText,
+      details: [
+        {
+          resOk: true,
+          resStatus: 200,
+          statusText: "OK",
+        },
+      ],
+    };
 
-      expect(
-        screen.getByPlaceholderText(UI_TEXT.KEY_PLACEHOLDER),
-      ).toBeInTheDocument();
-      expect(
-        screen.getByPlaceholderText(UI_TEXT.VALUE_PLACEHOLDER),
-      ).toBeInTheDocument();
-    });
+    renderWithStore(state);
 
-    it("displays existing headers when provided", () => {
-      renderWithRedux(<Headers />, { headers: TEST_HEADERS.SINGLE });
-
-      expect(
-        screen.getByDisplayValue(UI_TEXT.AUTHORIZATION),
-      ).toBeInTheDocument();
-      expect(
-        screen.getByDisplayValue(UI_TEXT.BEARER_TOKEN),
-      ).toBeInTheDocument();
-    });
+    expect(screen.getByText("200")).toBeInTheDocument();
+    expect(screen.getByText("OK")).toBeInTheDocument();
+    expect(screen.getByRole("textbox")).toHaveValue(bodyText);
   });
 
-  describe("Header Management", () => {
-    it("adds new header fields when clicking add button", () => {
-      renderWithRedux(<Headers />, { headers: TEST_HEADERS.EMPTY });
+  it("renders error status with fallback statusText", () => {
+    const state = {
+      bodyRes: "Some error",
+      details: [
+        {
+          resOk: false,
+          resStatus: 404,
+          statusText: undefined,
+        },
+      ],
+    };
 
-      fireEvent.click(screen.getByRole("button", { name: UI_TEXT.ADD_BUTTON }));
-      const inputs = screen.getAllByPlaceholderText(UI_TEXT.KEY_PLACEHOLDER);
+    renderWithStore(state);
 
-      expect(inputs.length).toBe(2);
-    });
-
-    it("removes header fields when clicking delete button", () => {
-      renderWithRedux(<Headers />, { headers: TEST_HEADERS.SINGLE });
-
-      fireEvent.click(
-        screen.getByRole("button", { name: UI_TEXT.DELETE_BUTTON }),
-      );
-
-      expect(
-        screen.queryByDisplayValue(UI_TEXT.AUTHORIZATION),
-      ).not.toBeInTheDocument();
-    });
+    expect(screen.getByText("404")).toBeInTheDocument();
+    expect(screen.getByText("Not Found")).toBeInTheDocument();
+    expect(screen.getByRole("textbox")).toHaveValue("Some error");
   });
 
-  describe("State Management", () => {
-    it("updates store when header values change", () => {
-      const { store } = renderWithRedux(<Headers />, {
-        headers: TEST_HEADERS.EMPTY,
-      });
+  it("renders nothing in textarea if bodyRes is empty", () => {
+    const state = {
+      bodyRes: "",
+      details: [],
+    };
 
-      fireEvent.change(screen.getByPlaceholderText(UI_TEXT.KEY_PLACEHOLDER), {
-        target: { value: UI_TEXT.CONTENT_TYPE },
-      });
-      fireEvent.change(screen.getByPlaceholderText(UI_TEXT.VALUE_PLACEHOLDER), {
-        target: { value: UI_TEXT.APP_JSON },
-      });
+    renderWithStore(state);
 
-      const stateHeaders = store.getState().selected.selectedContent.headers;
-      expect(stateHeaders).toEqual(TEST_HEADERS.UPDATED);
-    });
+    expect(screen.getByRole("textbox")).toHaveValue("");
   });
 });
