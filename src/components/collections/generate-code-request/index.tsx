@@ -12,16 +12,16 @@ function GenerateCodeRequest() {
   const t = useTranslations("Snippet");
 
   const stateMethod = useAppSelector(
-    (state) => state.selected.selectedContent
+    (state) => state.selected.selectedContent,
   ).method;
   const inputState = useAppSelector(
-    (state) => state.selected.selectedContent
+    (state) => state.selected.selectedContent,
   ).inputURL;
   const headersRedux = useAppSelector(
-    (state) => state.selected.selectedContent
+    (state) => state.selected.selectedContent,
   ).headers;
   const bodyRedux = useAppSelector(
-    (state) => state.selected.selectedContent
+    (state) => state.selected.selectedContent,
   ).bodyReq;
 
   const handlechange = (e: React.ChangeEvent<HTMLSelectElement>) => {
@@ -63,15 +63,9 @@ function GenerateCodeRequest() {
     const output = snippet.convert(langConfig.target, langConfig.client);
 
     setGeneratedSnippet(
-      Array.isArray(output) ? output.join("\n") : output || ""
+      Array.isArray(output) ? output.join("\n") : output || "",
     );
-  }, [
-    selectLang,
-    inputState,
-    stateMethod,
-    headersRedux,
-    bodyRedux,
-  ]);
+  }, [selectLang, inputState, stateMethod, headersRedux, bodyRedux]);
 
   return (
     <div className={styles.container}>

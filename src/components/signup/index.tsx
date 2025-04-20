@@ -61,8 +61,8 @@ const SignUp = () => {
       <h1>{t("title")}</h1>
       <p>{t("description")}</p>
       <form onSubmit={handleSubmit} className={styles.form}>
-        <label>
-          {t("email")}
+        <div className={styles.field}>
+          <label htmlFor="email">{t("email")}</label>
           <input
             className={styles.input}
             type="email"
@@ -71,11 +71,11 @@ const SignUp = () => {
             onChange={handleChange}
             required
           />
-        </label>
-        {!isValidEmail && <p className={styles.error}>{t("invalidEmail")}</p>}
+          {!isValidEmail && <p className={styles.error}>{t("invalidEmail")}</p>}
+        </div>
 
-        <label>
-          {t("password")}
+        <div className={styles.field}>
+          <label htmlFor="password">{t("password")}</label>
           <input
             className={styles.input}
             type="password"
@@ -84,10 +84,9 @@ const SignUp = () => {
             onChange={handleChange}
             required
           />
-        </label>
-
-        {authError && <p className={styles.error}>{authError}</p>}
-        {successMessage && <p className={styles.success}>{successMessage}</p>}
+          {authError && <p className={styles.error}>{authError}</p>}
+          {successMessage && <p className={styles.success}>{successMessage}</p>}
+        </div>
 
         <button
           type="submit"
@@ -97,13 +96,14 @@ const SignUp = () => {
           {t("submit")}
         </button>
       </form>
+
       <Link className={styles.link} href="/">
         {t("homeLink")}
       </Link>
       <p>
-        Already have an account?{" "}
+        {t("haveAccount")}{" "}
         <Link className={styles.link} href="/signin">
-          Sign in
+          {t("signIn")}
         </Link>
       </p>
     </div>

@@ -4,8 +4,11 @@
 
 .form {
   display: flex;
-  gap: 10px;
-  margin-bottom: 10px;
+  flex-direction: column;
+  gap: 20px;
+  width: 100%;
+  max-width: 400px;
+  margin: 0 auto;
 }
 .container {
   display: flex;
@@ -21,17 +24,34 @@
 
 .input {
   @include input-style;
-  margin-left: 10px;
+  width: 100%;
 }
 
 .button {
   @include button-style;
+  display: flex;
+  justify-content: center;
 }
 
 .buttonDisabled {
   @include button-disabled;
+  width: 100%;
 }
 
 .link {
   @include postman-link;
+  margin-top: 20px;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 5px;
+}
+
+.error {
+  color: $accent-color;
+  font-size: 0.875rem;
+  margin-top: 2px;
 }

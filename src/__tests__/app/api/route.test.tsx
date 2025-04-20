@@ -4,10 +4,9 @@ import {
   DELETE,
   PUT,
   PATCH,
-  proxyResponse,
-  proxyFetch,
 } from "../../../app/api/collections/[[...slug]]/route";
 import { NextRequest } from "next/server";
+import { proxyFetch, proxyResponse } from "@/helper/http";
 import { HttpMethod } from "@/app/types/http";
 
 const mockNextRequest = {
@@ -49,77 +48,77 @@ jest.mock("next/headers", () => ({
 global.Headers = Headers;
 global.fetch = jest.fn();
 
-/*
 describe("proxyResponse", () => {
-  it("should return a NextResponse with correct headers and body", async () => {
+  const mockBody = new ArrayBuffer(8);
+
+  it("should return response with correct headers and status", async () => {
     const mockResponse = {
       status: 200,
       statusText: "OK",
       headers: new Headers({ "Content-Type": "application/json" }),
-      arrayBuffer: jest.fn().mockResolvedValue(new ArrayBuffer(8)),
+      arrayBuffer: jest.fn().mockResolvedValue(mockBody),
     } as unknown as Response;
 
     const result = await proxyResponse(mockResponse);
+
     expect(result.status).toBe(200);
     expect(result.headers.get("Content-Type")).toBe("application/json");
     expect(result.headers.get("X-Status-Text")).toBe("OK");
+    expect(result.body).toBe(mockBody);
   });
 
-  it("should use text/plain as default content type", async () => {
+  it("should default to 'text/plain' when no Content-Type header is present", async () => {
     const mockResponse = {
       status: 200,
       statusText: "OK",
       headers: new Headers(),
-      arrayBuffer: jest.fn().mockResolvedValue(new ArrayBuffer(8)),
+      arrayBuffer: jest.fn().mockResolvedValue(mockBody),
     } as unknown as Response;
 
     const result = await proxyResponse(mockResponse);
+
     expect(result.headers.get("Content-Type")).toBe("text/plain");
   });
 });
-*/
 
-/*
 describe("proxyFetch", () => {
   beforeEach(() => {
     (global.fetch as jest.Mock).mockClear();
     mockHeadersMap.clear();
   });
 
-  it("should join slug array into path", async () => {
-    const params = Promise.resolve({ slug: ["api", "users", "123"] });
+  it("should call fetch with joined slug as path", async () => {
+    const params = Promise.resolve({ slug: ["api", "users", "1"] });
     (global.fetch as jest.Mock).mockResolvedValue({} as Response);
 
     await proxyFetch(HttpMethod.GET, params);
+
     expect(global.fetch).toHaveBeenCalledWith(
-      "api/users/123",
-      expect.anything(),
+      "api/users/1",
+      expect.objectContaining({ method: "GET" }),
     );
   });
 
-  it("should include extra headers from X-Custom-Headers", async () => {
+  it("should include custom headers from 'X-Custom-Headers'", async () => {
     const params = Promise.resolve({ slug: ["api"] });
+
     mockHeadersMap.set(
       "X-Custom-Headers",
-      JSON.stringify([{ name: "Authorization", value: "Bearer token" }]),
+      JSON.stringify([{ name: "Authorization", value: "Bearer abc" }]),
     );
+
     (global.fetch as jest.Mock).mockResolvedValue({} as Response);
 
     await proxyFetch(HttpMethod.GET, params);
-    expect(global.fetch).toHaveBeenCalledWith(
-      "api",
-      expect.objectContaining({
-        method: "GET",
-        Authorization: "Bearer token",
-      }),
-    );
+
+    const fetchOptions = (global.fetch as jest.Mock).mock.calls[0][1];
+    expect(fetchOptions?.Authorization).toBe("Bearer abc");
   });
 });
-*/
-
 
 describe("HTTP Methods", () => {
   const mockParams = Promise.resolve({ slug: ["api"] });
+
   const mockRequest = {
     json: jest.fn().mockResolvedValue({ key: "value" }),
   } as unknown as NextRequest;
@@ -133,20 +132,20 @@ describe("HTTP Methods", () => {
     } as Response);
   });
 
-  it("GET should call proxyFetch with GET method", async () => {
+  it("GET should proxy with GET method", async () => {
     await GET({} as NextRequest, { params: mockParams });
+
     expect(global.fetch).toHaveBeenCalledWith(
-      expect.anything(),
-      expect.objectContaining({
-        method: "GET",
-      }),
+      "api",
+      expect.objectContaining({ method: "GET" }),
     );
   });
 
-  it("POST should include JSON body and content type", async () => {
+  it("POST should send JSON body with correct headers", async () => {
     await POST(mockRequest, { params: mockParams });
+
     expect(global.fetch).toHaveBeenCalledWith(
-      expect.anything(),
+      "api",
       expect.objectContaining({
         method: "POST",
         body: JSON.stringify({ key: "value" }),
@@ -155,20 +154,11 @@ describe("HTTP Methods", () => {
     );
   });
 
-  it("DELETE should call proxyFetch with DELETE method", async () => {
-    await DELETE({} as NextRequest, { params: mockParams });
-    expect(global.fetch).toHaveBeenCalledWith(
-      expect.anything(),
-      expect.objectContaining({
-        method: "DELETE",
-      }),
-    );
-  });
-
-  it("PUT should include JSON body and content type", async () => {
+  it("PUT should send JSON body with PUT method and headers", async () => {
     await PUT(mockRequest, { params: mockParams });
+
     expect(global.fetch).toHaveBeenCalledWith(
-      expect.anything(),
+      "api",
       expect.objectContaining({
         method: "PUT",
         body: JSON.stringify({ key: "value" }),
@@ -177,15 +167,25 @@ describe("HTTP Methods", () => {
     );
   });
 
-  it("PATCH should include JSON body and content type", async () => {
+  it("PATCH should send JSON body with PATCH method and headers", async () => {
     await PATCH(mockRequest, { params: mockParams });
+
     expect(global.fetch).toHaveBeenCalledWith(
-      expect.anything(),
+      "api",
       expect.objectContaining({
         method: "PATCH",
         body: JSON.stringify({ key: "value" }),
         headers: { "Content-Type": "application/json; charset=UTF-8" },
       }),
+    );
+  });
+
+  it("DELETE should call fetch with DELETE method", async () => {
+    await DELETE({} as NextRequest, { params: mockParams });
+
+    expect(global.fetch).toHaveBeenCalledWith(
+      "api",
+      expect.objectContaining({ method: "DELETE" }),
     );
   });
 });

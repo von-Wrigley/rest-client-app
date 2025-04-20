@@ -47,7 +47,7 @@
 @mixin button-disabled {
   background-color: $btn-disabled-bg;
   color: $btn-disabled-text;
-  border: 1px solid darken($btn-disabled-bg, 10%);
+  border: 1px solid color.adjust($btn-disabled-bg, $lightness: -10%);
   cursor: not-allowed;
   padding: 12px 20px;
   opacity: 0.7;
