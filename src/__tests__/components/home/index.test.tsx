@@ -2,6 +2,7 @@
 import { render, screen, act } from "@testing-library/react";
 import "@testing-library/jest-dom";
 import { WelcomeSection } from "@/components/home";
+import { useRouter } from "next/navigation";
 
 jest.mock("next/link", () => {
   return ({ children, href }: { children: React.ReactNode; href: string }) => {
@@ -11,6 +12,39 @@ jest.mock("next/link", () => {
 
 jest.mock("next-intl", () => ({
   useTranslations: () => (key: string) => key,
+}));
+
+const mockPush = jest.fn();
+const defaultRouterData = {
+  basePath: "http://127.0.0.1:3000",
+  push: mockPush,
+  refresh: jest.fn(),
+  asPath: "/",
+  query: {},
+};
+jest.mock("next/navigation", () => ({
+  useRouter: jest.fn(),
+}));
+(useRouter as jest.Mock).mockReturnValue(defaultRouterData);
+
+jest.mock("@/helper/supabaseClient", () => ({
+  supabase: {
+    auth: {
+      getSession: jest.fn().mockResolvedValue({
+        data: {
+          session: null,
+        },
+      }),
+      onAuthStateChange: jest.fn().mockReturnValue({
+        data: {
+          subscription: {
+            unsubscribe: jest.fn(),
+          },
+        },
+      }),
+      signOut: jest.fn().mockResolvedValue(undefined),
+    },
+  },
 }));
 
 describe("WelcomeSection component", () => {
@@ -25,13 +59,10 @@ describe("WelcomeSection component", () => {
     jest.useRealTimers();
   });
 
-  it("renders correctly with all elements after loading", () => {
-    render(<WelcomeSection />);
-    act(() => {
-      jest.advanceTimersByTime(2000);
-    });
+  it("renders correctly with all elements after loading", async () => {
+    const { asFragment } = render(<WelcomeSection />);
 
-    expect(screen.getByRole("heading", { level: 2 })).toHaveTextContent(
+    expect(await screen.findByRole("heading", { level: 2 })).toHaveTextContent(
       "title",
     );
     expect(screen.getByText("description")).toBeInTheDocument();
@@ -41,13 +72,6 @@ describe("WelcomeSection component", () => {
 
     const signUpButton = screen.getByRole("link", { name: "signUp" });
     expect(signUpButton).toHaveAttribute("href", "/signup");
-  });
-
-  it("matches snapshot after loading", () => {
-    const { asFragment } = render(<WelcomeSection />);
-    act(() => {
-      jest.advanceTimersByTime(2000);
-    });
     expect(asFragment()).toMatchSnapshot();
   });
 });

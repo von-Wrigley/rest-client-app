@@ -111,6 +111,7 @@
   },
   "BodyEditor": {
     "BodyName": "Edytor JSON/Tekstu",
-    "BodyPlaceholder": "ten tekst będzie wyświetlany w polu tekstowym"
+    "BodyPlaceholder": "ten tekst będzie wyświetlany w polu tekstowym",
+    "BeautifyButton": "Upiększ"
   }
 }

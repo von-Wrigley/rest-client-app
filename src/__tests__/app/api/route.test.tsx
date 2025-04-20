@@ -16,7 +16,7 @@ const mockNextRequest = {
 jest.mock("next/server", () => {
   const MockNextResponse = function (
     body: string | object,
-    init?: ResponseInit,
+    init?: ResponseInit
   ) {
     return {
       body,
@@ -95,7 +95,7 @@ describe("proxyFetch", () => {
 
     expect(global.fetch).toHaveBeenCalledWith(
       "api/users/1",
-      expect.objectContaining({ method: "GET" }),
+      expect.objectContaining({ method: "GET" })
     );
   });
 
@@ -104,7 +104,7 @@ describe("proxyFetch", () => {
 
     mockHeadersMap.set(
       "X-Custom-Headers",
-      JSON.stringify([{ name: "Authorization", value: "Bearer abc" }]),
+      JSON.stringify([{ name: "Authorization", value: "Bearer abc" }])
     );
 
     (global.fetch as jest.Mock).mockResolvedValue({} as Response);
@@ -129,7 +129,7 @@ describe("HTTP Methods", () => {
       statusText: "OK",
       headers: new Headers({ "Content-Type": "application/json" }),
       arrayBuffer: jest.fn().mockResolvedValue(new ArrayBuffer(8)),
-    } as Response);
+    } as unknown as Response);
   });
 
   it("GET should proxy with GET method", async () => {
@@ -137,7 +137,7 @@ describe("HTTP Methods", () => {
 
     expect(global.fetch).toHaveBeenCalledWith(
       "api",
-      expect.objectContaining({ method: "GET" }),
+      expect.objectContaining({ method: "GET" })
     );
   });
 
@@ -148,9 +148,9 @@ describe("HTTP Methods", () => {
       "api",
       expect.objectContaining({
         method: "POST",
-        body: JSON.stringify({ key: "value" }),
+        body: { key: "value" },
         headers: { "Content-Type": "application/json; charset=UTF-8" },
-      }),
+      })
     );
   });
 
@@ -161,9 +161,9 @@ describe("HTTP Methods", () => {
       "api",
       expect.objectContaining({
         method: "PUT",
-        body: JSON.stringify({ key: "value" }),
+        body: { key: "value" },
         headers: { "Content-Type": "application/json; charset=UTF-8" },
-      }),
+      })
     );
   });
 
@@ -174,9 +174,9 @@ describe("HTTP Methods", () => {
       "api",
       expect.objectContaining({
         method: "PATCH",
-        body: JSON.stringify({ key: "value" }),
+        body: { key: "value" },
         headers: { "Content-Type": "application/json; charset=UTF-8" },
-      }),
+      })
     );
   });
 
@@ -185,7 +185,7 @@ describe("HTTP Methods", () => {
 
     expect(global.fetch).toHaveBeenCalledWith(
       "api",
-      expect.objectContaining({ method: "DELETE" }),
+      expect.objectContaining({ method: "DELETE" })
     );
   });
 });

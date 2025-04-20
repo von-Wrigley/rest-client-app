@@ -19,7 +19,7 @@ export const POST = async (
   const body = await req.json();
 
   const backendResponse = await proxyFetch(HttpMethod.POST, params, {
-    body: JSON.stringify(body),
+    body,
     headers: {
       "Content-Type": JSON_CONTENT_TYPE,
     },
@@ -44,7 +44,7 @@ export const PUT = async (
 
   const backendResponse = await proxyFetch(HttpMethod.PUT, params, {
     method: "PUT",
-    body: JSON.stringify(body),
+    body,
     headers: {
       "Content-Type": JSON_CONTENT_TYPE,
     },
@@ -61,7 +61,7 @@ export const PATCH = async (
 
   const backendResponse = await proxyFetch(HttpMethod.PATCH, params, {
     method: "PATCH",
-    body: JSON.stringify(body),
+    body,
     headers: {
       "Content-Type": JSON_CONTENT_TYPE,
     },

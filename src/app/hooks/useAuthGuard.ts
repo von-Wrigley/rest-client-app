@@ -8,14 +8,19 @@ export const useAuthGuard = () => {
 
   useEffect(() => {
     const checkAuth = async () => {
-      const {
-        data: { session },
-      } = await supabase.auth.getSession();
+      try {
+        const {
+          data: { session },
+        } = await supabase.auth.getSession();
 
-      if (!session) {
+        if (!session) {
+          router.push("/unauthorized");
+        } else {
+          setIsLoading(false);
+        }
+      } catch (error) {
+        console.error(error);
         router.push("/unauthorized");
-      } else {
-        setIsLoading(false);
       }
     };
 

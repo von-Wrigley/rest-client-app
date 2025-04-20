@@ -110,6 +110,7 @@
   },
   "BodyEditor": {
     "BodyName": "JSON/ტექსტის რედაქტორი",
-    "BodyPlaceholder": "ეს ტექსტი გამოჩნდება ტექსტის არეალში"
+    "BodyPlaceholder": "ეს ტექსტი გამოჩნდება ტექსტის არეალში",
+    "BeautifyButton": "გალამაზება"
   }
 }

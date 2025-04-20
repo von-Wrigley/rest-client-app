@@ -9,7 +9,7 @@ const config: Config = {
   coverageProvider: "v8",
   testEnvironment: "jsdom",
 
-  testPathIgnorePatterns: ["<rootDir>/src/i18n/", "<rootDir>/node_modules/"],
+  testPathIgnorePatterns: ["<rootDir>/node_modules/"],
 
   setupFilesAfterEnv: ["<rootDir>/setupTests.ts"],
 
@@ -17,8 +17,15 @@ const config: Config = {
     "^@/(.*)$": "<rootDir>/src/$1",
     "\\.(scss|css|sass)$": "identity-obj-proxy",
   },
-  transformIgnorePatterns: ["node_modules/(?!(next-intl)/)"],
-  collectCoverageFrom: ["src/**/*.{ts,tsx}"],
+
+  transformIgnorePatterns: ["/node_modules/(?!(next-intl)/)"],
+
+  collectCoverageFrom: [
+    "src/**/*.{ts,tsx}",
+    "!src/**/*.d.ts",
+  ],
+
+
 };
 
 export default createJestConfig(config);

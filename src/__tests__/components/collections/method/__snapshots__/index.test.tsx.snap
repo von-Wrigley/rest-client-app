@@ -1,0 +1,43 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Method Componeent match snapshot 1`] = `
+<DocumentFragment>
+  <select
+    class="method"
+    id="method"
+    name="Method"
+  >
+    <option
+      disabled=""
+      value=""
+    >
+      Select Method
+    </option>
+    <option
+      value="GET"
+    >
+      GET
+    </option>
+    <option
+      value="POST"
+    >
+      POST
+    </option>
+    <option
+      value="PUT"
+    >
+      PUT
+    </option>
+    <option
+      value="DELETE"
+    >
+      DELETE
+    </option>
+    <option
+      value="PATCH"
+    >
+      PATCH
+    </option>
+  </select>
+</DocumentFragment>
+`;
