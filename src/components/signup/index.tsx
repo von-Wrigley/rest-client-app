@@ -3,13 +3,11 @@
 import React, { useEffect, useState } from "react";
 import { useTranslations } from "next-intl";
 import Link from "next/link";
-import { useRouter } from "next/navigation";
 import { supabase } from "@/helper/supabaseClient";
 import styles from "./index.module.scss";
 
 const SignUp = () => {
   const t = useTranslations("SigUp");
-  const router = useRouter();
   const [isLoading, setIsLoading] = useState(true);
   const [formData, setFormData] = useState({ email: "", password: "" });
   const [isValidEmail, setIsValidEmail] = useState(true);
@@ -48,6 +46,7 @@ const SignUp = () => {
         setSuccessMessage("Check your email for confirmation!");
       }
     } catch (error) {
+      console.log(error);
       setAuthError("An unexpected error occurred");
     }
   };
