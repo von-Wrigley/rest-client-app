@@ -1,20 +1,14 @@
-"use client";
-
-import React, { useEffect, useState } from "react";
-import { useTranslations } from "next-intl";
-import Skeleton from "@/app/components/skeleton";
+import React from "react";
 import Link from "next/link";
+import Skeleton from "@/app/components/skeleton";
 import styles from "./index.module.scss";
 
-const Unauthorized = () => {
-  const t = useTranslations("UnauthorizedPage");
-  const [isLoading, setIsLoading] = useState(true);
+interface UnauthorizedProps {
+  isLoading: boolean;
+  t: (key: string) => string;
+}
 
-  useEffect(() => {
-    const timer = setTimeout(() => setIsLoading(false), 2000);
-    return () => clearTimeout(timer);
-  }, []);
-
+const Unauthorized: React.FC<UnauthorizedProps> = ({ isLoading, t }) => {
   if (isLoading) {
     return (
       <div className={styles.container}>

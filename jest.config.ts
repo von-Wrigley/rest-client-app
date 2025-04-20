@@ -20,12 +20,7 @@ const config: Config = {
 
   transformIgnorePatterns: ["/node_modules/(?!(next-intl)/)"],
 
-  collectCoverageFrom: [
-    "src/**/*.{ts,tsx}",
-    "!src/**/*.d.ts",
-  ],
-
-
+  collectCoverageFrom: ["src/**/*.{ts,tsx}", "!src/**/*.d.ts"],
 };
 
 export default createJestConfig(config);

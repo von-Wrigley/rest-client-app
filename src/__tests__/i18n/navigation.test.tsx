@@ -1,5 +1,3 @@
-
-
 import { createNavigation } from "next-intl/navigation";
 import * as Navigation from "../../i18n/navigation";
 import { routing } from "../../i18n/routing";

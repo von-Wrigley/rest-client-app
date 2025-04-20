@@ -29,7 +29,6 @@ describe("ErrorBoundary", () => {
       throw new Error("Test Error");
     };
 
-    // suppress expected error log in test output
     jest.spyOn(console, "error").mockImplementation(() => {});
 
     render(

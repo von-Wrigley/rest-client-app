@@ -35,7 +35,6 @@ const TEST_DATA = {
   },
 };
 
-// Mocks
 jest.mock("@/app/hooks/LocalStorage", () => {
   const mockSetReqHistory = jest.fn();
   const mockSetResponseStorage = jest.fn();
