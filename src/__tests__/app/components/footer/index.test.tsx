@@ -40,10 +40,7 @@ describe("Footer component", () => {
       link.getAttribute("href")?.startsWith("https://github.com/"),
     );
     expect(githubLinks).toHaveLength(3);
-    expect(githubLinks[0]).toHaveAttribute(
-      "href",
-      "https://github.com/Tati-Moon",
-    );
+    expect(githubLinks[0]).toHaveAttribute("href", "https://github.com/lionna");
     expect(githubLinks[1]).toHaveAttribute(
       "href",
       "https://github.com/von-Wrigley",

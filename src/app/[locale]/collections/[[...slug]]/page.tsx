@@ -8,8 +8,8 @@ const CollectionsWrapper = lazy(
 );
 
 interface Props {
-  params: { locale: string; slug?: string[] };
-  searchParams: { [key: string]: string };
+  params: Promise<{ locale: string; slug?: string[] }>;
+  searchParams: Promise<{ [key: string]: string }>;
 }
 
 const CollectionsPage = async ({ params, searchParams }: Props) => {

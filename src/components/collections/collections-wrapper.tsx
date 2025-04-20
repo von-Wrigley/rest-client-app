@@ -3,8 +3,9 @@
 import React, { useMemo } from "react";
 import { Provider } from "react-redux";
 import { createStore } from "@/app/redux/store";
-import { RootState } from "@/app/redux/types";
+
 import Collections from ".";
+import { RootState } from "@/app/redux/rootReducer";
 
 interface Props {
   method?: string;

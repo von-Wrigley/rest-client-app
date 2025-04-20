@@ -2,26 +2,14 @@
 import React, { useEffect, useState } from "react";
 import { useAppSelector } from "@/app/redux/hooks";
 import { HTTPSnippet } from "@readme/httpsnippet";
-import { useLocalStorage } from "@/app/hooks/LocStor";
-import Skeleton from "@/app/components/skeleton";
 import styles from "./index.module.scss";
+import { useLocalStorage } from "@/app/hooks/LocalStorage";
 
-// const listOfLanguages = {
-//     "curl": "cURL",
-//     JavaScript (Fetch api)
-//     JavaScript (XHR)
-//     "nodejs": "NodeJs",
-//     "python": "Python",
-//     "java": "Java",
-//     "csharp": "C#",
-//     "go": "Go",
-//   }
 import { useTranslations } from "next-intl";
 
 function GenerateCodeRequest() {
   const [selectLang, setSelectLang] = useState("null");
   const [generatedSnippet, setGeneratedSnippet] = useState("");
-  const [isLoading, setIsLoading] = useState(true);
   const t = useTranslations("Snippet");
 
   const stateMethod = useAppSelector(
@@ -61,8 +49,22 @@ function GenerateCodeRequest() {
       return "xhr";
     }
   };
+  type Target = Parameters<HTTPSnippet["convert"]>[0];
+  type Client = Parameters<HTTPSnippet["convert"]>[1];
+  const languageMap: Record<string, { target: Target; client?: Client }> = {
+    shell: { target: "shell", client: "curl" },
+    javascript_fetch: { target: "javascript", client: "fetch" },
+    javascript_xhr: { target: "javascript", client: "xhr" },
+    node: { target: "node", client: "request" },
+    python: { target: "python", client: "requests" },
+    java: { target: "java", client: "okhttp" },
+    csharp: { target: "csharp", client: "httpclient" },
+    go: { target: "go", client: "native" },
+  };
 
   useEffect(() => {
+    const langConfig = languageMap[selectLang];
+    if (!langConfig) return;
     let atobURl = atob(inputState);
     const provewithoutVariables = variablestorage.map(
       (x: { key: string; value: string }) => atobURl.includes(x.key),
@@ -70,7 +72,7 @@ function GenerateCodeRequest() {
     if (provewithoutVariables) {
       const newX = variablestorage.map((x: { key: string; value: string }) => {
         const newstr = atobURl.replace(
-          new RegExp("\{\{(?:\\s+)?(" + x.key + ")(?:\\s+)?\}\}"),
+          new RegExp("{{(?:\\s+)?(" + x.key + ")(?:\\s+)?}}"),
           x.value,
         );
         atobURl = newstr;
@@ -78,20 +80,25 @@ function GenerateCodeRequest() {
         return atobURl;
       });
     }
-
     const snippet = new HTTPSnippet({
       method: stateMethod,
       url: atobURl,
-      headers: headersRedux,
-      body: bodyRedux,
+      httpVersion: "HTTP/1.1",
+      headers: headersRedux.map((header) => ({
+        name: Object.keys(header)[0],
+        value: Object.values(header)[0],
+      })),
+      postData: {
+        mimeType: "application/json",
+        text: bodyRedux,
+      },
     });
 
-    const output = snippet.convert(
-      selectLang.length > 7 ? selectLang.slice(0, 10) : selectLang,
-      getVariant(selectLang),
-    );
+    const output = snippet.convert(langConfig.target, langConfig.client);
 
-    setGeneratedSnippet(output || "");
+    setGeneratedSnippet(
+      Array.isArray(output) ? output.join("\n") : output || "",
+    );
   }, [selectLang, inputState]);
 
   return (

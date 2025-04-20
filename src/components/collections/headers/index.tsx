@@ -16,8 +16,14 @@ function Headers() {
     (state) => state.selected.selectedContent.headers,
   );
 
-  const [headerFields, setHeaderFields] = useState<HeaderField[]>(
-    savedHeaders.length > 0 ? savedHeaders : [{ name: "", value: "" }],
+  const [headerFields, setHeaderFields] = useState<HeaderField[]>(() =>
+    savedHeaders.length > 0
+      ? savedHeaders.map((h) => {
+          const key = Object.keys(h)[0];
+          const value = h[key];
+          return { name: key, value };
+        })
+      : [{ name: "", value: "" }],
   );
 
   const dispatch = useAppDispatch();
