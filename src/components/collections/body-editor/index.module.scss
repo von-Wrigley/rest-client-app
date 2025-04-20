@@ -1,4 +1,5 @@
 @use "@/styles/mixins.scss" as *;
+@use "@/styles/variables.scss" as *;
 
 .formWrapper {
   width: 100%;
@@ -61,4 +62,10 @@
   .textareaInput {
     min-height: 120px;
   }
+}
+
+.button {
+  @include button-style;
+  margin-top: 5px;
+  max-width: 150px;
 }

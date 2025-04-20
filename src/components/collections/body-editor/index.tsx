@@ -59,7 +59,11 @@ function BodyEditor() {
         </div>
       </form>
       {bodyPost.length > 0 && useSelect === "JSON" && (
-        <button type="button" onClick={() => formatCode(bodyPost)}>
+        <button
+          type="button"
+          className={styles.button}
+          onClick={() => formatCode(bodyPost)}
+        >
           Beautify
         </button>
       )}

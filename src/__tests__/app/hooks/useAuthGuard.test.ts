@@ -1,6 +1,6 @@
-import { renderHook } from "@testing-library/react";
 import { useRouter } from "next/navigation";
 import { useAuthGuard } from "@/app/hooks/useAuthGuard";
+import { renderHook, act } from "@testing-library/react";
 
 jest.mock("next/navigation");
 jest.mock("@/helper/supabaseClient", () => ({
@@ -23,7 +23,6 @@ describe("useAuthGuard", () => {
     require("@/helper/supabaseClient").supabase.auth.getSession =
       mockGetSession;
   });
-
   it("should set isLoading to false when user is authenticated", async () => {
     mockGetSession.mockResolvedValue({
       data: { session: { user: { id: "123" } } },
@@ -31,7 +30,11 @@ describe("useAuthGuard", () => {
 
     const { result, rerender } = renderHook(() => useAuthGuard());
     expect(result.current).toBe(true);
-    await new Promise(process.nextTick);
+
+    await act(async () => {
+      await Promise.resolve();
+    });
+
     rerender();
     expect(result.current).toBe(false);
     expect(mockRouterPush).not.toHaveBeenCalled();
@@ -44,7 +47,9 @@ describe("useAuthGuard", () => {
 
     const { result, rerender } = renderHook(() => useAuthGuard());
     expect(result.current).toBe(true);
-    await new Promise(process.nextTick);
+    await act(async () => {
+      await Promise.resolve();
+    });
     rerender();
     expect(result.current).toBe(true);
     expect(mockRouterPush).toHaveBeenCalledWith("/unauthorized");
@@ -57,7 +62,9 @@ describe("useAuthGuard", () => {
       .mockImplementation(() => {});
     const { result, rerender } = renderHook(() => useAuthGuard());
     expect(result.current).toBe(true);
-    await new Promise(process.nextTick);
+    await act(async () => {
+      await Promise.resolve();
+    });
     rerender();
     expect(result.current).toBe(true);
     expect(mockRouterPush).toHaveBeenCalledWith("/unauthorized");

@@ -110,6 +110,7 @@
   },
   "BodyEditor": {
     "BodyName": "JSON/Text-Editor",
-    "BodyPlaceholder": "dieser Text wird im Textbereich angezeigt"
+    "BodyPlaceholder": "dieser Text wird im Textbereich angezeigt",
+    "BeautifyButton": "Verschönern"
   }
 }

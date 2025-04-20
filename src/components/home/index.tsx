@@ -21,9 +21,7 @@ export const WelcomeSection = () => {
         data: { session },
       } = await supabase.auth.getSession();
       setSession(session);
-
-      const timer = setTimeout(() => setIsLoading(false), 2000);
-      return () => clearTimeout(timer);
+      setIsLoading(false);
     };
 
     checkSession();

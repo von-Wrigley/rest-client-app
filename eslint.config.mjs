@@ -28,8 +28,6 @@ const eslintConfig = [
       "react/no-unescaped-entities": "off",
       "@next/next/no-page-custom-font": "off",
       "jest/expect-expect": "off",
-      "no-unused-vars": "off",
-      "@typescript-eslint/no-unused-vars": "warn",
       "object-shorthand": ["warn"],
       "react/react-in-jsx-scope": "off",
       "@next/next/no-img-element": "off",

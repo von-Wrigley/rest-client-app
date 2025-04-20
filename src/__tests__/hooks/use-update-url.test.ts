@@ -26,7 +26,7 @@ describe("useUpdateUrl", () => {
   });
 
   it("should update URL correctly with all values provided", () => {
-    (useAppSelector as jest.Mock).mockImplementation((selectorFn) =>
+    (useAppSelector as unknown as jest.Mock).mockImplementation((selectorFn) =>
       selectorFn({
         selected: {
           selectedContent: {
@@ -52,7 +52,7 @@ describe("useUpdateUrl", () => {
   });
 
   it("should handle missing optional values gracefully", () => {
-    (useAppSelector as jest.Mock).mockImplementation((selectorFn) =>
+    (useAppSelector as unknown as jest.Mock).mockImplementation((selectorFn) =>
       selectorFn({
         selected: {
           selectedContent: {
@@ -75,7 +75,7 @@ describe("useUpdateUrl", () => {
   });
 
   it("should ignore headers with empty name", () => {
-    (useAppSelector as jest.Mock).mockImplementation((selectorFn) =>
+    (useAppSelector as unknown as jest.Mock).mockImplementation((selectorFn) =>
       selectorFn({
         selected: {
           selectedContent: {

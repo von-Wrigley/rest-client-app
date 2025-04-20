@@ -110,6 +110,7 @@
   },
   "BodyEditor": {
     "BodyName": "JSON/Text Editor",
-    "BodyPlaceholder": "this text will be shown in the text area"
+    "BodyPlaceholder": "this text will be shown in the text area",
+    "BeautifyButton": "Beautify"
   }
 }

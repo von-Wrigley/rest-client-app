@@ -15,13 +15,6 @@
     "test:coverage:html": "jest --coverage --coverageReporters=html",
     "prepare": "husky"
   },
-  "lint-staged": {
-    "*.{ts,tsx}": [
-      "eslint --fix",
-      "prettier --write"
-    ],
-    "*.js": "eslint --cache --fix"
-  },
   "dependencies": {
     "@readme/httpsnippet": "^11.0.0",
     "@reduxjs/toolkit": "^2.6.1",
