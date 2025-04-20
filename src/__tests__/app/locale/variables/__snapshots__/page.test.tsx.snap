@@ -1,0 +1,15 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`VariablesPage matches snapshot 1`] = `
+<DocumentFragment>
+  <div
+    data-testid="auth-guard"
+  >
+    <div
+      data-testid="variables-component"
+    >
+      Variables Component
+    </div>
+  </div>
+</DocumentFragment>
+`;

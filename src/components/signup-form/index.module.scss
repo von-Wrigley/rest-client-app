@@ -1,0 +1,68 @@
+@use "../../styles/variables.scss" as *;
+@use "../../styles/mixins.scss" as *;
+@use "../../app/page.module.scss" as *;
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 70vh;
+  text-align: center;
+  background-color: $background-color;
+  color: $text-color;
+  padding: 20px;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  width: 100%;
+  max-width: 400px;
+  margin: 0 auto;
+}
+.input {
+  @include input-style;
+  width: 100%;
+}
+
+.button {
+  @include button-style;
+  display: flex;
+  justify-content: center;
+}
+
+.buttonDisabled {
+  @include button-disabled;
+  width: 100%;
+}
+
+.link {
+  @include postman-link;
+  margin-top: 20px;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 5px;
+}
+
+.error {
+  color: $accent-color;
+  font-size: 0.875rem;
+  margin-top: 2px;
+}
+
+.success {
+  color: green;
+  font-size: 0.875rem;
+  margin-top: 2px;
+}
+@media (max-width: 767px) {
+  .container {
+    height: 50vh;
+  }
+}

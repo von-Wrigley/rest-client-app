@@ -1,0 +1,116 @@
+{
+  "LocaleSwitcher": {
+    "label": "Язык",
+    "locales": {
+      "en": "Английский",
+      "de": "Немецкий",
+      "ru": "Русский",
+      "ka": "Грузинский",
+      "pl": "Польский"
+    }
+  },
+  "Header": {
+    "title": "Клон Postman",
+    "signIn": "Войти",
+    "signUp": "Зарегистрироваться",
+    "signOut": "Выход",
+    "collections": "Коллекции",
+    "history": "История",
+    "variables": "Переменные",
+    "language": "Язык"
+  },
+  "Footer": {
+    "github1": "GitHub Таццяны",
+    "github2": "GitHub Элины",
+    "github3": "GitHub Давида",
+    "courseAlt": "Логотип Курса"
+  },
+  "HomePage": {
+    "title": "Добро пожаловать!",
+    "subtitle": "REST Client приложение",
+    "description": "Это приложение REST Client позволяет тестировать любые API, управлять историей запросов и работать с переменными.",
+    "signIn": "Войти",
+    "signUp": "Зарегистрироваться",
+    "signInAria": "Перейти на страницу входа",
+    "signUpAria": "Перейти на страницу регистрации",
+    "signOut": "Выход",
+    "collections": "Коллекции",
+    "history": "История",
+    "variables": "Переменные"
+  },
+  "NotFoundPage": {
+    "title": "404 - Страница не найдена",
+    "description": "Извините, запрашиваемая страница не найдена.",
+    "homeLink": "Вернуться на главную"
+  },
+  "UnauthorizedPage": {
+    "title": "401 - Не авторизован",
+    "description": "У вас нет доступа к этой странице.",
+    "homeLink": "Вернуться на главную"
+  },
+  "SigIn": {
+    "title": "Вход",
+    "description": "Пожалуйста, введите свои данные для входа.",
+    "email": "Электронная почта",
+    "password": "Пароль",
+    "submit": "Войти",
+    "homeLink": "На главную",
+    "invalidEmail": "Некорректный адрес электронной почты.",
+    "loading": "Загрузка"
+  },
+  "SigUp": {
+    "title": "Регистрация",
+    "description": "Создайте новую учетную запись ниже.",
+    "email": "Электронная почта",
+    "password": "Пароль",
+    "submit": "Зарегистрироваться",
+    "homeLink": "На главную",
+    "invalidEmail": "Некорректный адрес электронной почты.",
+    "loading": "Загрузка",
+    "haveAccount": "Уже есть аккаунт?",
+    "signIn": "Войти"
+  },
+  "CollectionsPage": {
+    "method": "Выберите метод",
+    "btnSend": "Отправить",
+    "btnAdd": "Добавить",
+    "btnDelete": "Удалить",
+    "headers": "Заголовки",
+    "key": "Ключ",
+    "value": "Значение"
+  },
+  "Method": {
+    "SelectMethod": "Выберите метод"
+  },
+  "Headers": {
+    "btnAdd": "Добавить",
+    "btnDelete": "Удалить",
+    "headers": "Заголовки",
+    "key": "Ключ",
+    "value": "Значение"
+  },
+  "Snippet": {
+    "Snippet": "Шаблон кода",
+    "ChooseLang": "Выберите вариант"
+  },
+  "SendBtn": {
+    "btnSend": "Отправить"
+  },
+  "History": {
+    "lastRequest": "Последний(ие) запрос(ы)",
+    "noRequest": "Вы не выполнили ни одного запроса. Здесь пусто. Попробуйте:",
+    "Collections": "Коллекции"
+  },
+  "Variables": {
+    "variables": "Переменные",
+    "btnAdd": "Добавить",
+    "btnDelete": "Удалить",
+    "key": "Ключ",
+    "value": "Значение"
+  },
+  "BodyEditor": {
+    "BodyName": "JSON/текстовый редактор",
+    "BodyPlaceholder": "этот текст будет показан в текстовой области",
+    "BeautifyButton": "Форматировать"
+  }
+}

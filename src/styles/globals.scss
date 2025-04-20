@@ -1,0 +1,28 @@
+@use "./variables.scss" as *;
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  font-family: $font-primary, sans-serif;
+  background-color: $background-color;
+  color: $text-color;
+}
+
+.layoutContainer {
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
+.contentArea {
+  padding: 20px 20px 65px 20px;
+  margin-bottom: $footer-height;
+}
+
+@media (max-width: 767px) {
+  .contentArea {
+    margin-bottom: $footer-height-mob;
+  }
+}

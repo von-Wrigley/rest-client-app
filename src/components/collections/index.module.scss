@@ -1,0 +1,18 @@
+@use "@/styles/mixins.scss" as *;
+
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  width: 65%;
+  margin: 0 auto;
+}
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+}
+
+.selector__wrapper {
+  display: flex;
+}

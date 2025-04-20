@@ -1,0 +1,71 @@
+@use "@/styles/mixins.scss" as *;
+@use "@/styles/variables.scss" as *;
+
+.formWrapper {
+  width: 100%;
+  max-width: 600px;
+  box-sizing: border-box;
+
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.inputWrapper {
+  display: flex;
+}
+
+.selectInput {
+  @include input-style;
+  width: 100%;
+  max-width: 200px;
+  box-sizing: border-box;
+  font-size: 16px;
+
+  &:focus {
+    outline: none;
+    border-color: #0070f3;
+  }
+}
+
+.textareaInput {
+  @include input-style;
+
+  width: 100%;
+  box-sizing: border-box;
+  min-height: 150px;
+  resize: vertical;
+  margin-top: 12px;
+
+  font-family: Menlo, Consolas, monospace;
+  font-size: 14px;
+  line-height: 1.5;
+
+  &:focus {
+    outline: none;
+    border-color: #0070f3;
+  }
+}
+
+@media (max-width: 768px) {
+  .formWrapper {
+    padding: 16px 0px;
+    gap: 12px;
+    margin: 0 auto;
+  }
+
+  .selectInput,
+  .textareaInput {
+    max-width: 100%;
+  }
+
+  .textareaInput {
+    min-height: 120px;
+  }
+}
+
+.button {
+  @include button-style;
+  margin-top: 5px;
+  max-width: 150px;
+}

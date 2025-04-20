@@ -1,0 +1,4 @@
+#!/bin/sh
+
+echo "✅ Running pre-push tests..."
+npm run test:ci

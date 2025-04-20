@@ -1,0 +1,116 @@
+{
+  "LocaleSwitcher": {
+    "label": "Language",
+    "locales": {
+      "en": "English",
+      "de": "German",
+      "ru": "Russian",
+      "ka": "Georgian",
+      "pl": "Polish"
+    }
+  },
+  "Header": {
+    "title": "Postman Clone",
+    "signIn": "Sign In",
+    "signUp": "Sign Up",
+    "signOut": "Sign Out",
+    "collections": "Collections",
+    "history": "History",
+    "variables": "Variables",
+    "language": "Language"
+  },
+  "Footer": {
+    "github1": "Tatsiana's GitHub",
+    "github2": "Elina's GitHub",
+    "github3": "Davit's GitHub",
+    "courseAlt": "Course Logo"
+  },
+  "HomePage": {
+    "title": "Welcome!",
+    "subtitle": "REST Client Application",
+    "description": "This REST client application allows you to test any API, manage request history, and work with variables.",
+    "signIn": "Sign In",
+    "signUp": "Sign Up",
+    "signInAria": "Navigate to sign in page",
+    "signUpAria": "Navigate to sign up page",
+    "signOut": "Sign Out",
+    "collections": "Collections",
+    "history": "History",
+    "variables": "Variables"
+  },
+  "NotFoundPage": {
+    "title": "404 - Page Not Found",
+    "description": "Sorry, we couldn't find the page you were looking for.",
+    "homeLink": "Go back home"
+  },
+  "UnauthorizedPage": {
+    "title": "401 - Unauthorized",
+    "description": "You do not have access to this page.",
+    "homeLink": "Go back home"
+  },
+  "SigIn": {
+    "title": "Sign In",
+    "description": "Please enter your credentials to log in.",
+    "email": "Email",
+    "password": "Password",
+    "submit": "Log In",
+    "homeLink": "Back to home",
+    "invalidEmail": "Invalid email address.",
+    "loading": "Loading"
+  },
+  "SigUp": {
+    "title": "Sign Up",
+    "description": "Create a new account below.",
+    "email": "Email",
+    "password": "Password",
+    "submit": "Register",
+    "homeLink": "Back to home",
+    "invalidEmail": "Invalid email address.",
+    "loading": "Loading",
+    "haveAccount": "Already have an account?",
+    "signIn": "Sign in"
+  },
+  "CollectionsPage": {
+    "method": "Select method",
+    "btnSend": "Send",
+    "btnAdd": "Add",
+    "btnDelete": "Delete",
+    "headers": "Headers",
+    "key": "Key",
+    "value": "Value"
+  },
+  "Method": {
+    "SelectMethod": "Select method"
+  },
+  "Headers": {
+    "btnAdd": "Add",
+    "btnDelete": "Delete",
+    "headers": "Headers",
+    "key": "Key",
+    "value": "Value"
+  },
+  "Snippet": {
+    "Snippet": "Code Snippet",
+    "ChooseLang": "Select an option"
+  },
+  "SendBtn": {
+    "btnSend": "Send"
+  },
+  "History": {
+    "lastRequest": "Last Request(s)",
+    "noRequest": "You haven't executed any requests. It's empty here. Try:",
+    "Collections": "Collections"
+  },
+  "Variables": {
+    "variables": "Variables",
+    "btnAdd": "Add",
+    "btnDelete": "Delete",
+    "key": "Key",
+    "value": "Value"
+  },
+  "BodyEditor": {
+    "BodyName": "JSON/Text Editor",
+    "BodyPlaceholder": "this text will be shown in the text area",
+    "BeautifyButton": "Beautify"
+  }
+}

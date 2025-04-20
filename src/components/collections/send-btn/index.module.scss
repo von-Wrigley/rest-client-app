@@ -1,0 +1,6 @@
+@use "@/styles/mixins.scss" as *;
+
+.sendButton {
+  max-width: 150px;
+  @include button-style;
+}

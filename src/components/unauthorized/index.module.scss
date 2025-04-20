@@ -1,0 +1,24 @@
+@use "../../styles/variables.scss" as *;
+@use "../../app/page.module.scss" as *;
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 64vh;
+  text-align: center;
+  background-color: $background-color;
+  color: $text-color;
+  padding: 20px;
+}
+
+.homeLink {
+  margin-top: 20px;
+  text-decoration: none;
+  color: $accent-color;
+  font-size: 18px;
+  &:hover {
+    text-decoration: underline;
+  }
+}
