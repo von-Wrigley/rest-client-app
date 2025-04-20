@@ -1,5 +1,74 @@
 # Postman Clone
 
+# Project URL 
+  -  Opens [https://rest-client-app-final.vercel.app/en](https://rest-client-app-final.vercel.app/en) in your browser
+
+## Project Setup
+
+1. **Clone the repository**
+   ```bash
+   git clone [repository-url]
+   cd [project-directory]
+   ```
+
+2. **Install dependencies**
+   ```bash
+   npm install
+   # or
+   yarn install
+   ```
+
+## Available Scripts
+
+In the project directory, you can run:
+
+### Development
+- `npm run dev` - Starts the development server
+  ```bash
+  npm run dev
+  # or
+  yarn dev
+  ```
+  Opens [http://localhost:3000](http://localhost:3000) in your browser.
+
+### Production
+- `npm run build` - Builds the application for production
+  ```bash
+  npm run build
+  # or
+  yarn build
+  ```
+
+- `npm run start` - Starts the production server
+  ```bash
+  npm run start
+  # or
+  yarn start
+  ```
+
+### Linting & Formatting
+- `npm run lint` - Runs Next.js linting
+- `npm run format:fix` - Formats code with Prettier
+
+### Testing
+- `npm run test` - Runs Jest in watch mode
+- `npm run test:ci` - Runs tests for CI environments
+- `npm run test:watch` - Runs tests in watch mode
+- `npm run test:coverage` - Generates test coverage report
+- `npm run test:coverage:html` - Generates HTML coverage report
+
+### Git Hooks
+- The project uses Husky for Git hooks (automatically configured during `npm install`)
+
+## Environment Variables
+
+Create a `.env.local` file in the root directory with your environment variables:
+```
+NEXT_PUBLIC_SUPABASE_URL= your_value
+NEXT_PUBLIC_SUPABASE_ANONKEY=your_value
+```
+
+
 ## Documentation
 
 <details><summary>About developers and Teamwork:</summary>

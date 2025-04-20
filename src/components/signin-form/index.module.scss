@@ -55,3 +55,8 @@
   font-size: 0.875rem;
   margin-top: 2px;
 }
+@media (max-width: 767px) {
+  .container {
+    height: 50vh;
+  }
+}
