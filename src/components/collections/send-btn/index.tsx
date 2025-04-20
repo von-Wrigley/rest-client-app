@@ -2,7 +2,7 @@
 import React from "react";
 import { useAppSelector, useAppDispatch } from "@/app/redux/hooks";
 import { addBodyRes, resContentDetails } from "@/app/redux/ContentSelected";
-import { useLocalStorage } from "@/app/hooks/LocStor";
+import { useLocalStorage } from "@/app/hooks/LocalStorage";
 import { HttpMethod } from "@/app/types/http";
 import { fetcher } from "@/app/utils/fetcher";
 import { useTranslations } from "next-intl";

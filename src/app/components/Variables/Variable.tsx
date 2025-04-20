@@ -1,6 +1,6 @@
 "use client";
 
-import { useLocalStorage } from "@/app/hooks/LocStor";
+import { useLocalStorage } from "@/app/hooks/LocalStorage";
 import React, { useEffect, useState } from "react";
 import styles from "./Variable.module.scss";
 import { useTranslations } from "next-intl";
@@ -11,26 +11,27 @@ type Variable = {
 };
 
 function VariablesComponent() {
-  const [variablestorage, setVariableStorage] = useLocalStorage(
+  const [variablesStorage, setVariableStorage] = useLocalStorage(
     "variables",
     [],
   );
-
-  const [inputs, setInputs] = useState([{ key: "", value: "" }]);
+  const [inputs, setInputs] = useState<Variable[]>([{ key: "", value: "" }]);
   const t = useTranslations("Variables");
 
   useEffect(() => {
-    setInputs(variablestorage);
-  }, [variablestorage]);
+    if (Array.isArray(variablesStorage) && variablesStorage.length > 0) {
+      setInputs(variablesStorage);
+    }
+  }, [variablesStorage]);
 
   const handleAddVariable = () => {
     setInputs([...inputs, { key: "", value: "" }]);
   };
 
   const handleRemoveVariable = (index: number) => {
-    const newArray = [...inputs];
-    newArray.splice(index, 1);
+    const newArray = inputs.filter((_, i) => i !== index);
     setInputs(newArray);
+    setVariableStorage(newArray);
   };
 
   const handleVariable = (
@@ -38,13 +39,17 @@ function VariablesComponent() {
     index: number,
   ) => {
     const { name, value } = e.target;
-    const list = [...inputs];
-    list[index][name] = value;
-    setInputs(list);
 
-    if (typeof window !== "undefined") {
-      setVariableStorage(inputs);
-    }
+    if (name !== "key" && name !== "value") return;
+
+    const list = [...inputs];
+    list[index] = {
+      ...list[index],
+      [name]: value,
+    };
+
+    setInputs(list);
+    setVariableStorage(list);
   };
 
   return (

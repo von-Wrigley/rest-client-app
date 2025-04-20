@@ -1,14 +1,22 @@
 "use client";
-import { useLocalStorage } from "@/app/hooks/LocStor";
+import { useLocalStorage } from "@/app/hooks/LocalStorage";
 import Link from "next/link";
-import React from "react";
 import { useTranslations } from "next-intl";
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import styles from "./index.module.scss";
+
+type RouteItem = {
+  date: string;
+  method: string;
+  urlCode: string;
+  body: string;
+  headers: string;
+  input: string;
+};
 
 const History = () => {
   const [name] = useLocalStorage("country", []);
-  const [routes, setRoutes] = useState([]);
+  const [routes, setRoutes] = useState<RouteItem[]>([]);
   const t = useTranslations("History");
 
   useEffect(() => {
@@ -22,10 +30,7 @@ const History = () => {
       ) : (
         <div className={styles.requestHistoryWrapper}>
           <h3 className={styles.historyHeader}>{t("noRequest")}</h3>
-          <Link
-            className={styles.link}
-            href="/collections"
-          >
+          <Link className={styles.link} href="/collections">
             {t("Collections")}
           </Link>
         </div>

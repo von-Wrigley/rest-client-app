@@ -1,17 +1,12 @@
-import { combineReducers, configureStore } from "@reduxjs/toolkit";
-import contentReducer from "./ContentSelected";
-import type { RootState } from "./types";
+import { configureStore } from "@reduxjs/toolkit";
+import { rootReducer, RootState } from "./rootReducer";
 
-const rootReducer = combineReducers({
-  selected: contentReducer,
-});
-
-export const createStore = (preloadedState?: Partial<RootState>) => {
-  return configureStore({
+export const createStore = (preloadedState?: Partial<RootState>) =>
+  configureStore({
     reducer: rootReducer,
     preloadedState,
   });
-};
 
 export type AppStore = ReturnType<typeof createStore>;
-export type AppDispatch = AppStore["dispatch"];
+export type StoreDispatch = AppStore["dispatch"];
+export type StoreGetState = AppStore["getState"];
