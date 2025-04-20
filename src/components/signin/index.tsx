@@ -45,7 +45,7 @@ const SignIn = () => {
 
       router.push("/collections");
     } catch (error) {
-      console.log(error)
+      console.log(error);
       setAuthError("An unexpected error occurred");
     }
   };
@@ -60,8 +60,8 @@ const SignIn = () => {
       <h1>{t("title")}</h1>
       <p>{t("description")}</p>
       <form onSubmit={handleSubmit} className={styles.form}>
-        <label>
-          {t("email")}
+        <div className={styles.field}>
+          <label htmlFor="email">{t("email")}</label>
           <input
             className={styles.input}
             type="email"
@@ -70,11 +70,11 @@ const SignIn = () => {
             onChange={handleChange}
             required
           />
-        </label>
-        {!isValidEmail && <p className={styles.error}>{t("invalidEmail")}</p>}
+          {!isValidEmail && <p className={styles.error}>{t("invalidEmail")}</p>}
+        </div>
 
-        <label>
-          {t("password")}
+        <div className={styles.field}>
+          <label htmlFor="password">{t("password")}</label>
           <input
             className={styles.input}
             type="password"
@@ -83,9 +83,8 @@ const SignIn = () => {
             onChange={handleChange}
             required
           />
-        </label>
-
-        {authError && <p className={styles.error}>{authError}</p>}
+          {authError && <p className={styles.error}>{authError}</p>}
+        </div>
 
         <button
           type="submit"
@@ -94,6 +93,7 @@ const SignIn = () => {
           {t("submit")}
         </button>
       </form>
+
       <Link className={styles.link} href="/">
         {t("homeLink")}
       </Link>

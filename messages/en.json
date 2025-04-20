@@ -66,7 +66,9 @@
     "submit": "Register",
     "homeLink": "Back to home",
     "invalidEmail": "Invalid email address.",
-    "loading": "Loading"
+    "loading": "Loading",
+    "haveAccount": "Already have an account?",
+    "signIn": "Sign in"
   },
   "CollectionsPage": {
     "method": "Select method",
